@@ -61,6 +61,8 @@ trsteel_ckeditor:
 These settings can also be configured for a specific form.
 
 ```php
+<?php
+
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
             ->add('content', 'ckeditor', array(
