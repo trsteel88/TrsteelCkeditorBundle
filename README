@@ -1,0 +1,78 @@
+<p>Add the following lines to the deps file:<br />
+ <pre>
+[TrsteelCkeditorBundle]
+    git=http://github.com/trsteel88/TrsteelCkeditorBundle.git
+    target=/bundles/Trsteel/CkeditorBundle
+</pre>
+</p>
+
+<p>Update your vendors by running:<br />
+<pre>
+./bin/vendors
+</pre>
+</p>
+
+<p>Add the Trsteel namespace to your autoloader.<br />
+<pre>
+&lt;?php
+// app/autoload.php
+
+$loader->registerNamespaces(array(
+    'Trsteel' => __DIR__.'/../vendor/bundles',
+    // your other namespaces
+));
+</pre>
+</p>
+
+<p>Add the bundle to the application kernal.<br />
+<pre>
+&lt;?php
+// app/AppKernel.php
+
+public function registerBundles()
+{
+    return array(
+        // ...
+		new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
+        // ...
+    );
+}
+</pre>
+
+<p>Configure the default settings for the app.<br />
+<pre>
+trsteel_ckeditor:
+	class: Trsteel\CkeditorBundle\Form\CkeditorType
+    uiColor: '#000'
+    startupOutlineBlocks: true
+    toolbar: ['document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
+    toolbar_groups:
+        document: ['Source','-','Save','-','Templates']
+        clipboard: ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo']
+        editing: ['Find','Replace','-','SelectAll']
+        basicstyles: ['Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat']
+        paragraph: ['NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft', 'JustifyCenter','JustifyRight','JustifyBlock']
+        links: ['Link','Unlink','Anchor']
+        insert: ['Image','Flash','Table','HorizontalRule']
+        styles: ['Styles','Format']
+        tools: ['Maximize', 'ShowBlocks']
+</pre>
+<br /><br />
+THe above is the full configuration options. These settings can also be configured for a specific form.
+<pre>
+$form = $this->createFormBuilder($post)
+            ->add('title', 'text')
+            ->add('description', 'ckeditor', array(
+				'uiColor' => '#fff',
+				'startupOutlineBlocks' => false,
+            	'toolbar' => array('document','basicstyles'),
+				'toolbar_groups' => array(
+					'document' => array('Source')
+				)
+            ))
+            ->getForm()
+;
+
+</pre>
+
+<p>You can create additional toolbar groups. Just create the group and specify the items.</p>
