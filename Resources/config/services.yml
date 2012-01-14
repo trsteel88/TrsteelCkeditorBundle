@@ -1,0 +1,13 @@
+parameters:
+#    trsteel_ckeditor.example.class: Trsteel\CkeditorBundle\Example
+
+services:
+#    trsteel_ckeditor.example:
+#        class: %trsteel_ckeditor.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    trsteel_ckeditor.form.type:
+        class: %trsteel_ckeditor.form.type.class%
+        tags:
+            - { name: form.type, alias: ckeditor }
+        calls:
+            - [ setContainer, [ @service_container ] ]
