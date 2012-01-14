@@ -38,7 +38,7 @@ public function registerBundles()
 }
 ```
 
-Configure the default settings for the app.
+Configure the default settings for the app. This step is not required for the bundle to function.
 
 ```yaml
 trsteel_ckeditor:
@@ -58,12 +58,12 @@ trsteel_ckeditor:
         tools: ['Maximize', 'ShowBlocks']
 ```
 
-THe above is the full configuration options. These settings can also be configured for a specific form.
+These settings can also be configured for a specific form.
 
 ```php
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
-            ->add('description', 'ckeditor', array(
+            ->add('content', 'ckeditor', array(
 				'uiColor' => '#fff',
 				'startupOutlineBlocks' => false,
             	'toolbar' => array('document','basicstyles'),
