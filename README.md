@@ -79,7 +79,7 @@ $form = $this->createFormBuilder($post)
 
 You can create additional toolbar groups. Just create the group and specify the items.
 
-Clear your cache.
+Install assets.
 ```bash
-$ php ./app/console cache:clear
+$ php ./app/console assets:install web --symlink
 ```
