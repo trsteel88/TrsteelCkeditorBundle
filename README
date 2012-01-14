@@ -1,32 +1,31 @@
-<p>Add the following lines to the deps file:<br />
- <pre>
-[TrsteelCkeditorBundle]
-    git=http://github.com/trsteel88/TrsteelCkeditorBundle.git
-    target=/bundles/Trsteel/CkeditorBundle
-</pre>
-</p>
+Add the following lines to the deps file:
 
-<p>Update your vendors by running:<br />
-<pre>
-./bin/vendors
-</pre>
-</p>
+    [TrsteelCkeditorBundle]
+        git=http://github.com/trsteel88/TrsteelCkeditorBundle.git
+        target=/bundles/Trsteel/CkeditorBundle
 
-<p>Add the Trsteel namespace to your autoloader.<br />
-<pre>
-&lt;?php
+Update your vendors by running:
+
+```bash
+$ php ./bin/vendors
+```
+
+Add the Trsteel namespace to your autoloader.
+
+```php
+<?php
 // app/autoload.php
 
 $loader->registerNamespaces(array(
     'Trsteel' => __DIR__.'/../vendor/bundles',
     // your other namespaces
 ));
-</pre>
-</p>
+```
 
-<p>Add the bundle to the application kernal.<br />
-<pre>
-&lt;?php
+Add the bundle to the application kernal.
+
+```php
+<?php
 // app/AppKernel.php
 
 public function registerBundles()
@@ -37,10 +36,11 @@ public function registerBundles()
         // ...
     );
 }
-</pre>
+```
 
-<p>Configure the default settings for the app.<br />
-<pre>
+Configure the default settings for the app.
+
+```yaml
 trsteel_ckeditor:
 	class: Trsteel\CkeditorBundle\Form\CkeditorType
     uiColor: '#000'
@@ -56,10 +56,11 @@ trsteel_ckeditor:
         insert: ['Image','Flash','Table','HorizontalRule']
         styles: ['Styles','Format']
         tools: ['Maximize', 'ShowBlocks']
-</pre>
-<br /><br />
+```
+
 THe above is the full configuration options. These settings can also be configured for a specific form.
-<pre>
+
+```php
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
             ->add('description', 'ckeditor', array(
@@ -72,7 +73,6 @@ $form = $this->createFormBuilder($post)
             ))
             ->getForm()
 ;
+```
 
-</pre>
-
-<p>You can create additional toolbar groups. Just create the group and specify the items.</p>
+You can create additional toolbar groups. Just create the group and specify the items.
