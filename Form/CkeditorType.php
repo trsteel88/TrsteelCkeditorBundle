@@ -98,6 +98,7 @@ class CkeditorType extends AbstractType
     {
         return array(
 			'required'				=> array(false),
+			'startupOutlineBlocks'	=> array(true, false)
 		);
     }
     
