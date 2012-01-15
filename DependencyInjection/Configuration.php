@@ -27,8 +27,7 @@ class Configuration implements ConfigurationInterface
 				->end()
 			->end()
 			->children()
-			    ->arrayNode('toolbar')
-					->prototype('scalar')->end()
+			    ->variableNode('toolbar')
 					->defaultValue(array(
 						'document', 'clipboard', 'editing', '/',
 						'basicstyles', 'paragraph', 'links', '/',
@@ -37,12 +36,9 @@ class Configuration implements ConfigurationInterface
 			    ->end()
 			->end()
 			->children()
-				->arrayNode('toolbar_groups')
-					->useAttributeAsKey('[is this right?]')
-					->prototype('array')
-						->prototype('scalar')->end()
-					->end()
-			    ->end()
+				->variableNode('toolbar_groups')
+					->defaultValue(array())
+				->end()
 			->end()
 			->children()
 				->booleanNode('startupOutlineBlocks')
