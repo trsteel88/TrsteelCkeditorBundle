@@ -9,5 +9,4 @@ services:
         class: %trsteel_ckeditor.form.type.class%
         tags:
             - { name: form.type, alias: ckeditor }
-        calls:
-            - [ setContainer, [ @service_container ] ]
+        arguments: [ @service_container ]

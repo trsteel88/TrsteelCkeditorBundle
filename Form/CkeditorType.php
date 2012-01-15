@@ -16,9 +16,9 @@ class CkeditorType extends AbstractType
 {
 	protected $container;
 	
-	public function setContainer(Container $container)
+	public function __construct(Container $container)
 	{
-		$this->container = $container;
+		$this->container = $container;		
 	}
 	
     /**
