@@ -69,12 +69,14 @@ These settings can also be configured for a specific form.
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
             ->add('content', 'ckeditor', array(
-				'uiColor' => '#fff',
-				'startupOutlineBlocks' => false,
             	'toolbar' => array('document','basicstyles'),
 				'toolbar_groups' => array(
 					'document' => array('Source')
 				)
+				'uiColor' => '#fff',
+				'startupOutlineBlocks' => false,
+				'width'	=> '100%',
+				'height' => '300',
             ))
             ->getForm()
 ;
