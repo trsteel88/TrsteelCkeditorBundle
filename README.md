@@ -43,8 +43,6 @@ Configure the default settings for the app. This step is not required for the bu
 ```yaml
 trsteel_ckeditor:
 	class: Trsteel\CkeditorBundle\Form\CkeditorType
-    uiColor: '#000'
-    startupOutlineBlocks: true
     toolbar: ['document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
     toolbar_groups:
         document: ['Source','-','Save','-','Templates']
@@ -56,6 +54,11 @@ trsteel_ckeditor:
         insert: ['Image','Flash','Table','HorizontalRule']
         styles: ['Styles','Format']
         tools: ['Maximize', 'ShowBlocks']
+    uiColor: '#000000'
+    startupOutlineBlocks: true
+	width: 800 #Integer or %
+	height: 300 #Integer or %
+
 ```
 
 These settings can also be configured for a specific form.

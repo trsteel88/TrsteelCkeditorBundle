@@ -34,6 +34,8 @@ class CkeditorType extends AbstractType
             ->setAttribute('toolbar_groups', array_merge($default_toolbar_groups, $options['toolbar_groups']))
             ->setAttribute('uiColor', $options['uiColor'] ? '#'.ltrim($options['uiColor'], '#') : null)
             ->setAttribute('startupOutlineBlocks', $options['startupOutlineBlocks'])
+            ->setAttribute('width', $options['width'])
+            ->setAttribute('height', $options['height'])
 		;
     }
     
@@ -68,8 +70,10 @@ class CkeditorType extends AbstractType
 	
         $view
             ->set('toolbar', $toolbar)
-            ->set('uiColor', $form->getAttribute('uiColor'))
             ->set('startupOutlineBlocks', $form->getAttribute('startupOutlineBlocks'))
+            ->set('uiColor', $form->getAttribute('uiColor'))
+			->set('width', $form->getAttribute('width'))
+			->set('height', $form->getAttribute('height'))
 		;
     }
     
@@ -84,6 +88,8 @@ class CkeditorType extends AbstractType
             'toolbar_groups' 		=> $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
 			'startupOutlineBlocks'	=> $this->container->getParameter('trsteel_ckeditor.ckeditor.startupOutlineBlocks'),
             'uiColor' 				=> $this->container->getParameter('trsteel_ckeditor.ckeditor.uiColor'),
+			'width'					=> $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
+			'height'				=> $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
         );
     }
     

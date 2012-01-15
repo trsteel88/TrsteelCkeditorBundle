@@ -7,6 +7,12 @@
     <script type="text/javascript" src="{{ asset('bundles/trsteelckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">//<![CDATA[
         CKEDITOR.replace("{{ id }}",{
+			{% if width is not null %}
+			width: '{{ width }}',
+			{% endif %}
+			{% if height is not null %}
+			height: '{{ height }}',
+			{% endif %}
             toolbar: {{ toolbar | json_encode | raw }},
             {% if uiColor is not null %}
                 uiColor: "{{ uiColor }}",

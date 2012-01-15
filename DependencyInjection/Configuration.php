@@ -54,7 +54,16 @@ class Configuration implements ConfigurationInterface
 					->defaultNull()
 				->end()
 			->end()
-
+			->children()
+				->scalarNode('width')
+					->defaultNull()
+				->end()
+			->end()
+			->children()
+				->scalarNode('height')
+					->defaultNull()
+				->end()
+			->end()
 		;
 
         return $treeBuilder;

@@ -35,6 +35,8 @@ class TrsteelCkeditorExtension extends Extension
 		$container->setParameter('trsteel_ckeditor.ckeditor.toolbar_groups', array_merge($this->getDefaultGroups(), $config['toolbar_groups']));
 		$container->setParameter('trsteel_ckeditor.ckeditor.startupOutlineBlocks', $config['startupOutlineBlocks']);
 		$container->setParameter('trsteel_ckeditor.ckeditor.uiColor', $config['uiColor']);
+		$container->setParameter('trsteel_ckeditor.ckeditor.width', $config['width']);
+		$container->setParameter('trsteel_ckeditor.ckeditor.height', $config['height']);
     }
 
 	private function getDefaultGroups()
