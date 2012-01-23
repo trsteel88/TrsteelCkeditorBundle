@@ -20,47 +20,47 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('trsteel_ckeditor');
 
-		$rootNode
-			->children()
-				->scalarNode('class')
-					->defaultValue('Trsteel\CkeditorBundle\Form\CkeditorType')
-				->end()
-			->end()
-			->children()
-			    ->variableNode('toolbar')
-					->defaultValue(array(
-						'document', 'clipboard', 'editing', '/',
-						'basicstyles', 'paragraph', 'links', '/',
-						'insert', 'styles', 'tools'
-					))
-			    ->end()
-			->end()
-			->children()
-				->variableNode('toolbar_groups')
-					->defaultValue(array())
-				->end()
-			->end()
-			->children()
-				->booleanNode('startupOutlineBlocks')
-					->defaultTrue()
-				->end()
-			->end()
-			->children()
-				->scalarNode('uiColor')
-					->defaultNull()
-				->end()
-			->end()
-			->children()
-				->scalarNode('width')
-					->defaultNull()
-				->end()
-			->end()
-			->children()
-				->scalarNode('height')
-					->defaultNull()
-				->end()
-			->end()
-		;
+        $rootNode
+            ->children()
+                ->scalarNode('class')
+                    ->defaultValue('Trsteel\CkeditorBundle\Form\CkeditorType')
+                ->end()
+            ->end()
+            ->children()
+                ->variableNode('toolbar')
+                    ->defaultValue(array(
+                        'document', 'clipboard', 'editing', '/',
+                        'basicstyles', 'paragraph', 'links', '/',
+                        'insert', 'styles', 'tools'
+                    ))
+                ->end()
+            ->end()
+            ->children()
+                ->variableNode('toolbar_groups')
+                    ->defaultValue(array())
+                ->end()
+            ->end()
+            ->children()
+                ->booleanNode('startupOutlineBlocks')
+                    ->defaultTrue()
+                ->end()
+            ->end()
+            ->children()
+                ->scalarNode('uiColor')
+                    ->defaultNull()
+                ->end()
+            ->end()
+            ->children()
+                ->scalarNode('width')
+                    ->defaultNull()
+                ->end()
+            ->end()
+            ->children()
+                ->scalarNode('height')
+                    ->defaultNull()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }

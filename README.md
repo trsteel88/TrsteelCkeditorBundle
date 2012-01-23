@@ -32,7 +32,7 @@ public function registerBundles()
 {
     return array(
         // ...
-		new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
+        new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
         // ...
     );
 }
@@ -42,7 +42,7 @@ Configure the default settings for the app. This step is not required for the bu
 
 ```yaml
 trsteel_ckeditor:
-	class: Trsteel\CkeditorBundle\Form\CkeditorType
+    class: Trsteel\CkeditorBundle\Form\CkeditorType
     toolbar: ['document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
     toolbar_groups:
         document: ['Source','-','Save','-','Templates']
@@ -56,8 +56,8 @@ trsteel_ckeditor:
         tools: ['Maximize', 'ShowBlocks']
     uiColor: '#000000'
     startupOutlineBlocks: true
-	width: 800 #Integer or %
-	height: 300 #Integer or %
+    width: 800 #Integer or %
+    height: 300 #Integer or %
 
 ```
 
@@ -69,14 +69,14 @@ These settings can also be configured for a specific form.
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
             ->add('content', 'ckeditor', array(
-            	'toolbar' => array('document','basicstyles'),
-				'toolbar_groups' => array(
-					'document' => array('Source')
-				)
-				'uiColor' => '#fff',
-				'startupOutlineBlocks' => false,
-				'width'	=> '100%',
-				'height' => '300',
+                'toolbar' => array('document','basicstyles'),
+                'toolbar_groups' => array(
+                    'document' => array('Source')
+                )
+                'uiColor' => '#fff',
+                'startupOutlineBlocks' => false,
+                'width'    => '100%',
+                'height' => '300',
             ))
             ->getForm()
 ;

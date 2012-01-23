@@ -25,51 +25,51 @@ class TrsteelCkeditorExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-		$container->setParameter('twig.form.resources', array_merge(
+        $container->setParameter('twig.form.resources', array_merge(
             $container->getParameter('twig.form.resources'),
             array('TrsteelCkeditorBundle:Form:ckeditor_widget.html.twig')
         ));
 
-		$container->setParameter('trsteel_ckeditor.form.type.class', $config['class']);
-		$container->setParameter('trsteel_ckeditor.ckeditor.toolbar', $config['toolbar']);
-		$container->setParameter('trsteel_ckeditor.ckeditor.toolbar_groups', array_merge($this->getDefaultGroups(), $config['toolbar_groups']));
-		$container->setParameter('trsteel_ckeditor.ckeditor.startupOutlineBlocks', $config['startupOutlineBlocks']);
-		$container->setParameter('trsteel_ckeditor.ckeditor.uiColor', $config['uiColor']);
-		$container->setParameter('trsteel_ckeditor.ckeditor.width', $config['width']);
-		$container->setParameter('trsteel_ckeditor.ckeditor.height', $config['height']);
+        $container->setParameter('trsteel_ckeditor.form.type.class', $config['class']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.toolbar', $config['toolbar']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.toolbar_groups', array_merge($this->getDefaultGroups(), $config['toolbar_groups']));
+        $container->setParameter('trsteel_ckeditor.ckeditor.startupOutlineBlocks', $config['startupOutlineBlocks']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.uiColor', $config['uiColor']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.width', $config['width']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.height', $config['height']);
     }
 
-	private function getDefaultGroups()
-	{
-		return array(
-	        'document'		=> array(
-				'Source','-','Save','-','Templates'
-	        ),
-	        'clipboard'		=> array(
-				'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo'
-	        ),
-	        'editing'		=> array(
-				'Find','Replace','-','SelectAll'
-	        ),
-	        'basicstyles'	=> array(
-				'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat'
-	        ),
-	        'paragraph'		=> array(
-				'NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft',
-				'JustifyCenter','JustifyRight','JustifyBlock'
-	        ),
-	        'links' 		=> array(
-				'Link','Unlink','Anchor'
-	        ),
-	        'insert' 		=> array(
-				'Image','Flash','Table','HorizontalRule'
-	        ),
-	        'styles' 		=> array(
-				'Styles','Format'
-	        ),
-	        'tools' 		=> array(
-				'Maximize', 'ShowBlocks'
-	        ),
-		);
-	}
+    private function getDefaultGroups()
+    {
+        return array(
+            'document'        => array(
+                'Source','-','Save','-','Templates'
+            ),
+            'clipboard'        => array(
+                'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo'
+            ),
+            'editing'        => array(
+                'Find','Replace','-','SelectAll'
+            ),
+            'basicstyles'    => array(
+                'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat'
+            ),
+            'paragraph'        => array(
+                'NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft',
+                'JustifyCenter','JustifyRight','JustifyBlock'
+            ),
+            'links'         => array(
+                'Link','Unlink','Anchor'
+            ),
+            'insert'         => array(
+                'Image','Flash','Table','HorizontalRule'
+            ),
+            'styles'         => array(
+                'Styles','Format'
+            ),
+            'tools'         => array(
+                'Maximize', 'ShowBlocks'
+            ),
+        );
+    }
 }
