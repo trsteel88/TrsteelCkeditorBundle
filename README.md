@@ -1,4 +1,4 @@
-Symfony2 CkEditor Bundle
+Symfony2 CKEditor Bundle
 
 Add the following lines to the deps file:
 
