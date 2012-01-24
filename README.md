@@ -1,3 +1,5 @@
+Symfony2 CkEditor Bundle
+
 Add the following lines to the deps file:
 
     [TrsteelCkeditorBundle]
