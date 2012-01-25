@@ -1,0 +1,5 @@
+language: php
+php: 5.3
+notifications:
+  email:
+    - trsteel88@gmail.com
