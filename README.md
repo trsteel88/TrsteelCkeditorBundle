@@ -56,8 +56,8 @@ trsteel_ckeditor:
         insert: ['Image','Flash','Table','HorizontalRule']
         styles: ['Styles','Format']
         tools: ['Maximize', 'ShowBlocks']
-    uiColor: '#000000'
-    startupOutlineBlocks: true
+    ui_colour: '#000000'
+    startup_outline_blocks: true
     width: 800 #Integer or %
     height: 300 #Integer or %
 
@@ -75,8 +75,8 @@ $form = $this->createFormBuilder($post)
                 'toolbar_groups' => array(
                     'document' => array('Source')
                 )
-                'uiColor' => '#fff',
-                'startupOutlineBlocks' => false,
+                'ui_colour' => '#fff',
+                'startup_outline_blocks' => false,
                 'width'    => '100%',
                 'height' => '300',
             ))

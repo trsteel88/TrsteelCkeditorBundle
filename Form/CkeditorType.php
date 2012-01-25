@@ -32,8 +32,8 @@ class CkeditorType extends AbstractType
         $builder
             ->setAttribute('toolbar', $options['toolbar'])
             ->setAttribute('toolbar_groups', array_merge($default_toolbar_groups, $options['toolbar_groups']))
-            ->setAttribute('uiColor', $options['uiColor'] ? '#'.ltrim($options['uiColor'], '#') : null)
-            ->setAttribute('startupOutlineBlocks', $options['startupOutlineBlocks'])
+            ->setAttribute('ui_colour', $options['ui_colour'] ? '#'.ltrim($options['ui_colour'], '#') : null)
+            ->setAttribute('startup_outline_blocks', $options['startup_outline_blocks'])
             ->setAttribute('width', $options['width'])
             ->setAttribute('height', $options['height'])
         ;
@@ -70,8 +70,8 @@ class CkeditorType extends AbstractType
     
         $view
             ->set('toolbar', $toolbar)
-            ->set('startupOutlineBlocks', $form->getAttribute('startupOutlineBlocks'))
-            ->set('uiColor', $form->getAttribute('uiColor'))
+            ->set('startup_outline_blocks', $form->getAttribute('startup_outline_blocks'))
+            ->set('ui_colour', $form->getAttribute('ui_colour'))
             ->set('width', $form->getAttribute('width'))
             ->set('height', $form->getAttribute('height'))
         ;
@@ -83,13 +83,13 @@ class CkeditorType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            'required'              => false,
-            'toolbar'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
-            'toolbar_groups'        => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
-            'startupOutlineBlocks'  => $this->container->getParameter('trsteel_ckeditor.ckeditor.startupOutlineBlocks'),
-            'uiColor'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.uiColor'),
-            'width'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
-            'height'                => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
+            'required'                  => false,
+            'toolbar'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
+            'toolbar_groups'            => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
+            'startup_outline_blocks'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks'),
+            'ui_colour'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_colour'),
+            'width'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
+            'height'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
         );
     }
     
@@ -103,8 +103,8 @@ class CkeditorType extends AbstractType
     public function getAllowedOptionValues(array $options)
     {
         return array(
-            'required'                => array(false),
-            'startupOutlineBlocks'    => array(true, false)
+            'required'                  => array(false),
+            'startup_outline_blocks'    => array(true, false)
         );
     }
     

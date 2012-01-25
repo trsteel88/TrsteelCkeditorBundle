@@ -192,57 +192,57 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default startupOutlineBlocks property
+     * Check default startup_outline_blocks property
      */
     public function testDefaultstartupOutlineBlocks()
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $startupOutlineBlocks = $view->get('startupOutlineBlocks');
+        $startup_outline_blocks = $view->get('startup_outline_blocks');
         
-        $this->assertTrue($startupOutlineBlocks);
+        $this->assertTrue($startup_outline_blocks);
     }
 
     /**
-     * Checks startupOutlineBlocks property
+     * Checks startup_outline_blocks property
      */
     public function teststartupOutlineBlocks()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'startupOutlineBlocks' => false
+            'startup_outline_blocks' => false
         ));
         
         $view = $form->createView();
-        $startupOutlineBlocks = $view->get('startupOutlineBlocks');
+        $startup_outline_blocks = $view->get('startup_outline_blocks');
         
-        $this->assertFalse($startupOutlineBlocks);
+        $this->assertFalse($startup_outline_blocks);
     }
     
     /**
-     * Check default uiColor property
+     * Check default ui_colour property
      */
     public function testDefaultUiColor()
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $uiColor = $view->get('uiColor');
+        $ui_colour = $view->get('ui_colour');
         
-        $this->assertNull($uiColor);
+        $this->assertNull($ui_colour);
     }
 
     /**
-     * Checks uiColor property
+     * Checks ui_colour property
      */
     public function testUiColor()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'uiColor' => '#333333'
+            'ui_colour' => '#333333'
         ));
         
         $view = $form->createView();
-        $uiColor = $view->get('uiColor');
+        $ui_colour = $view->get('ui_colour');
         
-        $this->assertEquals($uiColor, '#333333');
+        $this->assertEquals($ui_colour, '#333333');
     }
     
     /**

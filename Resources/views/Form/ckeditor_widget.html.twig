@@ -14,11 +14,11 @@
             height: '{{ height }}',
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }},
-            {% if uiColor is not null %}
-                uiColor: "{{ uiColor }}",
+            {% if ui_colour is not null %}
+                uiColor: "{{ ui_colour }}",
             {% endif %}
-            {% if startupOutlineBlocks == true %}
-            startupOutlineBlocks: {{ startupOutlineBlocks }}
+            {% if startup_outline_blocks == true %}
+            startupOutlineBlocks: {{ startup_outline_blocks }}
             {% endif %}
         });
     //]]></script>
