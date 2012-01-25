@@ -190,6 +190,33 @@ class CkeditorTypeTest extends TypeTestCase
             )
         ));
     }
+
+    /**
+     * Check default startupOutlineBlocks property
+     */
+    public function testDefaultstartupOutlineBlocks()
+    {
+        $form = $this->factory->create('ckeditor');
+        $view = $form->createView();
+        $startupOutlineBlocks = $view->get('startupOutlineBlocks');
+        
+        $this->assertTrue($startupOutlineBlocks);
+    }
+
+    /**
+     * Checks startupOutlineBlocks property
+     */
+    public function teststartupOutlineBlocks()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'startupOutlineBlocks' => false
+        ));
+        
+        $view = $form->createView();
+        $startupOutlineBlocks = $view->get('startupOutlineBlocks');
+        
+        $this->assertFalse($startupOutlineBlocks);
+    }
     
     /**
      * Check default uiColor property
@@ -208,7 +235,10 @@ class CkeditorTypeTest extends TypeTestCase
      */
     public function testUiColor()
     {
-        $form = $this->factory->create('ckeditor', null, array('uiColor' => '#333333'));
+        $form = $this->factory->create('ckeditor', null, array(
+            'uiColor' => '#333333'
+        ));
+        
         $view = $form->createView();
         $uiColor = $view->get('uiColor');
         
@@ -232,7 +262,10 @@ class CkeditorTypeTest extends TypeTestCase
      */
     public function testWidth()
     {
-        $form = $this->factory->create('ckeditor', null, array('width' => '100%'));
+        $form = $this->factory->create('ckeditor', null, array(
+            'width' => '100%'
+        ));
+        
         $view = $form->createView();
         $width = $view->get('width');
         
@@ -256,7 +289,10 @@ class CkeditorTypeTest extends TypeTestCase
      */
     public function testHeight()
     {
-        $form = $this->factory->create('ckeditor', null, array('height' => '350px'));
+        $form = $this->factory->create('ckeditor', null, array(
+            'height' => '350px'
+        ));
+        
         $view = $form->createView();
         $height = $view->get('height');
         
