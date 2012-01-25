@@ -1,0 +1,21 @@
+{
+    "name": "Trsteel/ckeditor-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony2 bundle for easy integration of the CKEditor WYSIWYG",
+    "keywords": ["CKEditor"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Trent Steel",
+            "email": "trsteel88@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/framework-bundle": "2.*"
+    },
+    "autoload": {
+        "psr-0": { "Trsteel\\CkeditorBundle": "" }
+    },
+    "target-dir": "Trsteel/CkeditorBundle"
+}

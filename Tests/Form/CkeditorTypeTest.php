@@ -14,7 +14,7 @@ class CkeditorTypeTest extends TypeTestCase
     public static function setUpBeforeClass()
     {
         require_once __DIR__.'/../../../../../app/AppKernel.php';
-        
+
         self::$kernel = new \AppKernel('dev', true);
         self::$kernel->boot();
 
