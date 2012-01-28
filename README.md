@@ -40,6 +40,12 @@ public function registerBundles()
 }
 ```
 
+Install assets.
+
+```bash
+$ php ./app/console assets:install web --symlink
+```
+
 Configure the default settings for the app. This step is not required for the bundle to function.
 
 ```yaml
@@ -84,10 +90,23 @@ $form = $this->createFormBuilder($post)
 ;
 ```
 
-You can create additional toolbar groups. Just create the group and specify the items.
+You can create additional toolbar groups. Just create the group and specify the items. As you can see in the above form the 'document' toolbar group has been overwritten and only shows the 'Source' icon.
 
-Install assets.
+In your config.yml you could add an additional toolbar_group:
 
-```bash
-$ php ./app/console assets:install web --symlink
+```yaml
+trsteel_ckeditor:
+    toolbar: ['document_with_source_only', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links']
+    toolbar_groups:
+        document_with_source_only: ['Source']
+```
+
+Or even overwrite the 'document' toolbar group in your application completely.
+
+```yaml
+trsteel_ckeditor:
+    class: Trsteel\CkeditorBundle\Form\CkeditorType
+    toolbar: ['document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
+    toolbar_groups:
+        document: ['Source']
 ```
