@@ -6,15 +6,12 @@ use Symfony\Tests\Component\Form\Extension\Core\Type\TypeTestCase;
 use Trsteel\CkeditorBundle\Form\CkeditorType;
 
 class CkeditorTypeTest extends TypeTestCase
-{
-
+{	
     protected static $kernel;
     protected static $container;
     
     public static function setUpBeforeClass()
     {
-        require_once __DIR__.'/../../../../../app/AppKernel.php';
-
         self::$kernel = new \AppKernel('dev', true);
         self::$kernel->boot();
 
@@ -31,7 +28,7 @@ class CkeditorTypeTest extends TypeTestCase
         parent::setUp();
         
         $this->factory->addType(new CkeditorType($this->get('service_container')));
-    }
+    } 
     
     /**
     * Check the default required property
@@ -299,3 +296,39 @@ class CkeditorTypeTest extends TypeTestCase
         $this->assertEquals($height, '350px');
     }
 }
+
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
+
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+        );
+
+        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
+            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+        }
+
+        return $bundles;
+    }
+
+    public function registerContainerConfiguration(LoaderInterface $loader)
+    {
+        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+    }
+}
+

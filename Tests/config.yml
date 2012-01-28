@@ -1,0 +1,9 @@
+framework:
+    secret:          'secret'
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%

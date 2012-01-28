@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://www.phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit
+    colors="true"
+    bootstrap="Tests/bootstrap.php">
+
+    <testsuites>
+        <testsuite name="TrsteelCkeditorBundle Test Suite">
+            <directory suffix="Test.php">./Tests</directory>
+            <exclude>./Tests/vendor</exclude>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./Resources</directory>
+                <directory>./Tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+</phpunit>
