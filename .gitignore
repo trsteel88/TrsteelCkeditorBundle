@@ -1,1 +1,3 @@
 Tests/vendor/*
+Tests/cache/*
+Tests/logs/*
