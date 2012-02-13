@@ -1,5 +1,7 @@
 Symfony2 CKEditor Bundle
 
+[![Build Status](https://secure.travis-ci.org/trsteel88/TrsteelCkeditorBundle.png?branch=master)](http://travis-ci.org/trsteel88/TrsteelCkeditorBundle)
+
 Add the following lines to the deps file:
 
     [TrsteelCkeditorBundle]
