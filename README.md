@@ -86,7 +86,7 @@ $form = $this->createFormBuilder($post)
                 'ui_colour' => '#fff',
                 'startup_outline_blocks' => false,
                 'width'    => '100%',
-                'height' => '320',
+                'height' => '300',
             ))
             ->getForm()
 ;
