@@ -31,8 +31,8 @@ class CkeditorTypeTest extends TypeTestCase
     } 
     
     /**
-    * Check the default required property
-    */
+     * Check the default required property
+     */
     public function testDefaultRequired()
     {
         $form = $this->factory->create('ckeditor');
@@ -43,8 +43,8 @@ class CkeditorTypeTest extends TypeTestCase
     }
     
     /**
-    * Check the required property
-    */
+     * Check the required property
+     */
     public function testRequired()
     {
         $this->setExpectedException('Symfony\Component\Form\Exception\CreationException');
@@ -55,8 +55,8 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-    * Check the default toolbar property
-    */
+     * Check the default toolbar property
+     */
     public function testDefaultToolbar()
     {
         $form = $this->factory->create('ckeditor');
