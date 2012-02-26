@@ -12,7 +12,9 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "symfony/framework-bundle": "2.*"
+        "symfony/framework-bundle": "2.*",
+        "symfony/form": ">=2.*",
+        "twig/twig": ">=1.1,<2.0-dev",
     },
     "autoload": {
         "psr-0": { "Trsteel\\CkeditorBundle": "" }
