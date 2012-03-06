@@ -5,7 +5,8 @@
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
 
     <script type="text/javascript" src="{{ asset('bundles/trsteelckeditor/ckeditor.js') }}"></script>
-    <script type="text/javascript">//<![CDATA[
+    <script type="text/javascript">
+    {% autoescape true js %}
         CKEDITOR.replace("{{ id }}",{
             {% if width is not null %}
             width: '{{ width }}',
@@ -21,6 +22,7 @@
             startupOutlineBlocks: {{ startup_outline_blocks }}
             {% endif %}
         });
-    //]]></script>
+    {% endautoescape %}
+    </script>
 {% endspaceless %}
 {% endblock %}
