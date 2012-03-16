@@ -82,7 +82,7 @@ $form = $this->createFormBuilder($post)
                 'toolbar' => array('document','basicstyles'),
                 'toolbar_groups' => array(
                     'document' => array('Source')
-                )
+                ),
                 'ui_colour' => '#fff',
                 'startup_outline_blocks' => false,
                 'width'    => '100%',
