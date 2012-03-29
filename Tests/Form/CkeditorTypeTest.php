@@ -2,7 +2,7 @@
 
 namespace Trsteel\CkeditorBundle\Tests\Form;
 
-use Symfony\Tests\Component\Form\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
 use Trsteel\CkeditorBundle\Form\CkeditorType;
 
 class CkeditorTypeTest extends TypeTestCase
