@@ -36,6 +36,12 @@ class CkeditorType extends AbstractType
             ->setAttribute('startup_outline_blocks', $options['startup_outline_blocks'])
             ->setAttribute('width', $options['width'])
             ->setAttribute('height', $options['height'])
+            ->setAttribute('filebrowserBrowseUrl', $options['filebrowserBrowseUrl'])
+            ->setAttribute('filebrowserUploadUrl', $options['filebrowserUploadUrl'])
+            ->setAttribute('filebrowserImageBrowseUrl', $options['filebrowserImageBrowseUrl'])
+            ->setAttribute('filebrowserImageUploadUrl', $options['filebrowserImageUploadUrl'])
+            ->setAttribute('filebrowserFlashBrowseUrl', $options['filebrowserFlashBrowseUrl'])
+            ->setAttribute('filebrowserFlashUploadUrl', $options['filebrowserFlashUploadUrl'])
         ;
     }
     
@@ -74,6 +80,12 @@ class CkeditorType extends AbstractType
             ->set('ui_colour', $form->getAttribute('ui_colour'))
             ->set('width', $form->getAttribute('width'))
             ->set('height', $form->getAttribute('height'))
+            ->set('filebrowserBrowseUrl', $form->getAttribute('filebrowserBrowseUrl'))
+            ->set('filebrowserUploadUrl', $form->getAttribute('filebrowserUploadUrl'))
+            ->set('filebrowserImageBrowseUrl', $form->getAttribute('filebrowserImageBrowseUrl'))
+            ->set('filebrowserImageUploadUrl', $form->getAttribute('filebrowserImageUploadUrl'))
+            ->set('filebrowserFlashBrowseUrl', $form->getAttribute('filebrowserFlashBrowseUrl'))
+            ->set('filebrowserFlashUploadUrl', $form->getAttribute('filebrowserFlashUploadUrl'))
         ;
     }
     
@@ -90,6 +102,12 @@ class CkeditorType extends AbstractType
             'ui_colour'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_colour'),
             'width'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
             'height'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
+            'filebrowserBrowseUrl'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowserBrowseUrl'),
+            'filebrowserUploadUrl'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowserUploadUrl'),
+            'filebrowserImageBrowseUrl'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowserImageBrowseUrl'),
+            'filebrowserImageUploadUrl'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowserImageUploadUrl'),
+            'filebrowserFlashBrowseUrl'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowserFlashBrowseUrl'),
+            'filebrowserFlashUploadUrl'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowserFlashUploadUrl'),            
         );
     }
     

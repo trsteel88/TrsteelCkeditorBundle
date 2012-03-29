@@ -21,6 +21,24 @@
             {% if startup_outline_blocks == true %}
             startupOutlineBlocks: {{ startup_outline_blocks }}
             {% endif %}
+            {% if filebrowserBrowseUrl is not null %}
+                filebrowserBrowseUrl: '{{ filebrowserBrowseUrl }}',
+            {% endif %}
+            {% if filebrowserUploadUrl is not null %}
+                filebrowserUploadUrl: '{{ filebrowserUploadUrl }}',
+            {% endif %}
+            {% if filebrowserImageBrowseUrl is not null %}
+                filebrowserImageBrowseUrl: '{{ filebrowserImageBrowseUrl }}',
+            {% endif %}
+            {% if filebrowserImageUploadUrl is not null %}
+                filebrowserImageUploadUrl: '{{ filebrowserImageUploadUrl }}',
+            {% endif %}
+            {% if filebrowserFlashBrowseUrl is not null %}
+                filebrowserFlashBrowseUrl: '{{ filebrowserFlashBrowseUrl }}',
+            {% endif %}
+            {% if filebrowserFlashUploadUrl is not null %}
+                filebrowserFlashUploadUrl: '{{ filebrowserFlashUploadUrl }}',
+            {% endif %}
         });
     {% endautoescape %}
     </script>
