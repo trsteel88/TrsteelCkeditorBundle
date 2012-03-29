@@ -295,4 +295,95 @@ class CkeditorTypeTest extends TypeTestCase
         
         $this->assertEquals($height, '350px');
     }
+
+    /**
+     * Checks filebrowserBrowseUrl property
+     */
+    public function testFilebrowserBrowseUrl()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'filebrowserBrowseUrl' => '/myfilebrowser/browser.html'
+        ));
+        
+        $view = $form->createView();
+        $filebrowserBrowseUrl = $view->get('filebrowserBrowseUrl');
+        
+        $this->assertEquals($filebrowserBrowseUrl, '/myfilebrowser/browser.html');
+    }
+
+    /**
+     * Checks filebrowserUploadUrl property
+     */
+    public function testFilebrowserUploadUrl()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'filebrowserUploadUrl' => '/myfilebrowser/uploads'
+        ));
+        
+        $view = $form->createView();
+        $filebrowserUploadUrl = $view->get('filebrowserUploadUrl');
+        
+        $this->assertEquals($filebrowserUploadUrl, '/myfilebrowser/uploads');
+    }
+
+    /**
+     * Checks filebrowserImageBrowseUrl property
+     */
+    public function testFilebrowserImageBrowseUrl()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'filebrowserImageBrowseUrl' => '/myfilebrowser/browser.html'
+        ));
+        
+        $view = $form->createView();
+        $filebrowserImageBrowseUrl = $view->get('filebrowserImageBrowseUrl');
+        
+        $this->assertEquals($filebrowserImageBrowseUrl, '/myfilebrowser/browser.html');
+    }
+
+    /**
+     * Checks filebrowserImageUploadUrl property
+     */
+    public function testFilebrowserImageUploadUrl()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'filebrowserImageUploadUrl' => '/myfilebrowser/uploads'
+        ));
+        
+        $view = $form->createView();
+        $filebrowserImageUploadUrl = $view->get('filebrowserImageUploadUrl');
+        
+        $this->assertEquals($filebrowserImageUploadUrl, '/myfilebrowser/uploads');
+    }
+
+
+    /**
+     * Checks filebrowserFlashBrowseUrl property
+     */
+    public function testFilebrowserFlashBrowseUrl()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'filebrowserFlashBrowseUrl' => '/myfilebrowser/browser.html'
+        ));
+        
+        $view = $form->createView();
+        $filebrowserFlashBrowseUrl = $view->get('filebrowserFlashBrowseUrl');
+        
+        $this->assertEquals($filebrowserFlashBrowseUrl, '/myfilebrowser/browser.html');
+    }
+
+    /**
+     * Checks filebrowserFlashUploadUrl property
+     */
+    public function testFilebrowserFlashUploadUrl()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'filebrowserFlashUploadUrl' => '/myfilebrowser/uploads'
+        ));
+        
+        $view = $form->createView();
+        $filebrowserFlashUploadUrl = $view->get('filebrowserFlashUploadUrl');
+        
+        $this->assertEquals($filebrowserFlashUploadUrl, '/myfilebrowser/uploads');
+    }    
 }
