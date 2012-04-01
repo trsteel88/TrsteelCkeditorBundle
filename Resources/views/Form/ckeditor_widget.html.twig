@@ -19,7 +19,25 @@
                 uiColor: "{{ ui_colour }}",
             {% endif %}
             {% if startup_outline_blocks == true %}
-            startupOutlineBlocks: {{ startup_outline_blocks }}
+            startupOutlineBlocks: {{ startup_outline_blocks }},
+            {% endif %}
+            {% if filebrowser_browse_url is not null %}
+                filebrowserBrowseUrl: '{{ filebrowser_browse_url }}',
+            {% endif %}
+            {% if filebrowser_upload_url is not null %}
+                filebrowserUploadUrl: '{{ filebrowser_upload_url }}',
+            {% endif %}
+            {% if filebrowser_image_browse_url is not null %}
+                filebrowserImageBrowseUrl: '{{ filebrowser_image_browse_url }}',
+            {% endif %}
+            {% if filebrowser_image_upload_url is not null %}
+                filebrowserImageUploadUrl: '{{ filebrowser_image_upload_url }}',
+            {% endif %}
+            {% if filebrowser_flash_browse_url is not null %}
+                filebrowserFlashBrowseUrl: '{{ filebrowser_flash_browse_url }}',
+            {% endif %}
+            {% if filebrowser_flash_upload_url is not null %}
+                filebrowserFlashUploadUrl: '{{ filebrowser_flash_upload_url }}',
             {% endif %}
         });
     {% endautoescape %}
