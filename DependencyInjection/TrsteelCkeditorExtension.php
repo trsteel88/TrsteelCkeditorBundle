@@ -34,7 +34,7 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.toolbar', $config['toolbar']);
         $container->setParameter('trsteel_ckeditor.ckeditor.toolbar_groups', array_merge($this->getDefaultGroups(), $config['toolbar_groups']));
         $container->setParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks', $config['startup_outline_blocks']);
-        $container->setParameter('trsteel_ckeditor.ckeditor.ui_colour', $config['ui_colour']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.ui_color', $config['ui_color']);
         $container->setParameter('trsteel_ckeditor.ckeditor.width', $config['width']);
         $container->setParameter('trsteel_ckeditor.ckeditor.height', $config['height']);
         $container->setParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url', $config['filebrowser_browse_url']);

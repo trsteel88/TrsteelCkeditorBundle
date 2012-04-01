@@ -32,7 +32,7 @@ class CkeditorType extends AbstractType
         $builder
             ->setAttribute('toolbar', $options['toolbar'])
             ->setAttribute('toolbar_groups', array_merge($default_toolbar_groups, $options['toolbar_groups']))
-            ->setAttribute('ui_colour', $options['ui_colour'] ? '#'.ltrim($options['ui_colour'], '#') : null)
+            ->setAttribute('ui_color', $options['ui_color'] ? '#'.ltrim($options['ui_color'], '#') : null)
             ->setAttribute('startup_outline_blocks', $options['startup_outline_blocks'])
             ->setAttribute('width', $options['width'])
             ->setAttribute('height', $options['height'])
@@ -77,7 +77,7 @@ class CkeditorType extends AbstractType
         $view
             ->set('toolbar', $toolbar)
             ->set('startup_outline_blocks', $form->getAttribute('startup_outline_blocks'))
-            ->set('ui_colour', $form->getAttribute('ui_colour'))
+            ->set('ui_color', $form->getAttribute('ui_color'))
             ->set('width', $form->getAttribute('width'))
             ->set('height', $form->getAttribute('height'))
             ->set('filebrowser_browse_url', $form->getAttribute('filebrowser_browse_url'))
@@ -99,7 +99,7 @@ class CkeditorType extends AbstractType
             'toolbar'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
             'toolbar_groups'            => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
             'startup_outline_blocks'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks'),
-            'ui_colour'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_colour'),
+            'ui_color'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_color'),
             'width'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
             'height'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
             'filebrowser_browse_url'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url'),

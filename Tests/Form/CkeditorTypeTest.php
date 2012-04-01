@@ -216,30 +216,30 @@ class CkeditorTypeTest extends TypeTestCase
     }
     
     /**
-     * Check default ui_colour property
+     * Check default ui_color property
      */
     public function testDefaultUiColor()
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $ui_colour = $view->get('ui_colour');
+        $ui_color = $view->get('ui_color');
         
-        $this->assertNull($ui_colour);
+        $this->assertNull($ui_color);
     }
 
     /**
-     * Checks ui_colour property
+     * Checks ui_color property
      */
     public function testUiColor()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'ui_colour' => '#333333'
+            'ui_color' => '#333333'
         ));
         
         $view = $form->createView();
-        $ui_colour = $view->get('ui_colour');
+        $ui_color = $view->get('ui_color');
         
-        $this->assertEquals($ui_colour, '#333333');
+        $this->assertEquals($ui_color, '#333333');
     }
     
     /**

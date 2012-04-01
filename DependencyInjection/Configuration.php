@@ -46,7 +46,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
             ->children()
-                ->scalarNode('ui_colour')
+                ->scalarNode('ui_color')
                     ->defaultNull()
                 ->end()
             ->end()
