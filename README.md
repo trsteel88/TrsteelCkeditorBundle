@@ -68,6 +68,7 @@ trsteel_ckeditor:
     startup_outline_blocks: true
     width: 800 #Integer or %
     height: 300 #Integer or %
+    language: 'en-au'
 
 ```
 
@@ -79,15 +80,15 @@ These settings can also be configured for a specific form.
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
             ->add('content', 'ckeditor', array(
-                'toolbar'  => array('document','basicstyles'),
-                'toolbar_groups' => array(
+                'toolbar'                => array('document','basicstyles'),
+                'toolbar_groups'         => array(
                     'document' => array('Source')
                 ),
-                'ui_color' => '#fff',
+                'ui_color'               => '#fff',
                 'startup_outline_blocks' => false,
-                'width'    => '100%',
-                'height'   => '320',
-                'language' => 'en-au',
+                'width'                  => '100%',
+                'height'                 => '320',
+                'language'               => 'en-au',
             ))
             ->getForm()
 ;
