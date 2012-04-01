@@ -14,6 +14,9 @@
             {% if height is not null %}
             height: '{{ height }}',
             {% endif %}
+            {% if language is not null %}
+            language: '{{ language }}',            
+            {% endif %}
             {% if ui_color is not null %}
                 uiColor: "{{ ui_color }}",
             {% endif %}

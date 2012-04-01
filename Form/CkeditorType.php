@@ -36,6 +36,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('startup_outline_blocks', $options['startup_outline_blocks'])
             ->setAttribute('width', $options['width'])
             ->setAttribute('height', $options['height'])
+            ->setAttribute('language', $options['language'])
             ->setAttribute('filebrowser_browse_url', $options['filebrowser_browse_url'])
             ->setAttribute('filebrowser_upload_url', $options['filebrowser_upload_url'])
             ->setAttribute('filebrowser_image_browse_url', $options['filebrowser_image_browse_url'])
@@ -80,6 +81,7 @@ class CkeditorType extends AbstractType
             ->set('ui_color', $form->getAttribute('ui_color'))
             ->set('width', $form->getAttribute('width'))
             ->set('height', $form->getAttribute('height'))
+            ->set('language', $form->getAttribute('language'))
             ->set('filebrowser_browse_url', $form->getAttribute('filebrowser_browse_url'))
             ->set('filebrowser_upload_url', $form->getAttribute('filebrowser_upload_url'))
             ->set('filebrowser_image_browse_url', $form->getAttribute('filebrowser_image_browse_url'))
@@ -95,19 +97,20 @@ class CkeditorType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            'required'                  => false,
-            'toolbar'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
-            'toolbar_groups'            => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
-            'startup_outline_blocks'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks'),
-            'ui_color'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_color'),
-            'width'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
-            'height'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
-            'filebrowser_browse_url'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url'),
-            'filebrowser_upload_url'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_upload_url'),
-            'filebrowser_image_browse_url'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_browse_url'),
-            'filebrowser_image_upload_url'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_upload_url'),
-            'filebrowser_flash_browse_url'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'),
-            'filebrowser_flash_upload_url'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),            
+            'required'                     => false,
+            'toolbar'                      => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
+            'toolbar_groups'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
+            'startup_outline_blocks'       => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks'),
+            'ui_color'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_color'),
+            'width'                        => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
+            'height'                       => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
+            'language'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.language'),
+            'filebrowser_browse_url'       => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url'),
+            'filebrowser_upload_url'       => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_upload_url'),
+            'filebrowser_image_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_browse_url'),
+            'filebrowser_image_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_upload_url'),
+            'filebrowser_flash_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'),
+            'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),            
         );
     }
     

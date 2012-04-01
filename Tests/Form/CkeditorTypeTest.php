@@ -6,7 +6,7 @@ use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
 use Trsteel\CkeditorBundle\Form\CkeditorType;
 
 class CkeditorTypeTest extends TypeTestCase
-{	
+{
     protected static $kernel;
     protected static $container;
     
@@ -297,6 +297,34 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
+     * Check default language property
+     */
+    public function testDefaultLanguage()
+    {
+        $form = $this->factory->create('ckeditor');
+        $view = $form->createView();
+        $language = $view->get('language');
+        
+        $this->assertNull($language);
+    }
+
+    /**
+     * Checks language property
+     */
+    public function testLanguage()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'language' => 'en-au'
+        ));
+        
+        $view = $form->createView();
+        $language = $view->get('language');
+        
+        $this->assertEquals($language, 'en-au');
+    }
+
+
+    /**
      * Checks filebrowserBrowseUrl property
      */
     public function testFilebrowserBrowseUrl()
@@ -355,7 +383,6 @@ class CkeditorTypeTest extends TypeTestCase
         
         $this->assertEquals($filebrowserImageUploadUrl, '/myfilebrowser/uploads');
     }
-
 
     /**
      * Checks filebrowserFlashBrowseUrl property
