@@ -14,7 +14,6 @@
             {% if height is not null %}
             height: '{{ height }}',
             {% endif %}
-            toolbar: {{ toolbar | json_encode | raw }},
             {% if ui_colour is not null %}
                 uiColor: "{{ ui_colour }}",
             {% endif %}
@@ -39,6 +38,7 @@
             {% if filebrowser_flash_upload_url is not null %}
                 filebrowserFlashUploadUrl: '{{ filebrowser_flash_upload_url }}',
             {% endif %}
+            toolbar: {{ toolbar | json_encode | raw }}
         });
     {% endautoescape %}
     </script>
