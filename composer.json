@@ -2,7 +2,7 @@
     "name": "Trsteel/ckeditor-bundle",
     "type": "symfony-bundle",
     "description": "Symfony2 bundle for easy integration of the CKEditor WYSIWYG",
-    "keywords": ["CKEditor"],
+    "keywords": ["ckeditor", 'wysiwyg', 'editor'],
     "license": "MIT",
     "authors": [
         {
