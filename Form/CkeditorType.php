@@ -26,7 +26,7 @@ class CkeditorType extends AbstractType
      */
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $default_toolbar_groups = $this->getDefaultOptions(array());
+        $default_toolbar_groups = $this->getDefaultOptions();
         $default_toolbar_groups = $default_toolbar_groups['toolbar_groups'];
         
         $builder
