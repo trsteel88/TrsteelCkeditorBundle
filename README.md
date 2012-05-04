@@ -118,9 +118,11 @@ Data transformers will automatically update the html content when the form is pr
 
 This bundle comes with several built-in transformers.
 
-strip_js: Strips all javascript from the posted data
-strip_css: Strips all css from the posted data
-strip_comments: Strips all comments from html eg. <!-- This is a comment -->
+**strip_js:** Strips all javascript from the posted data
+
+**strip_css:** Strips all css from the posted data
+
+**strip_comments:** Strips all comments from html eg. <!-- This is a comment -->
 
 If you do not want any transformers enabled you should disable them by:
 
@@ -147,4 +149,4 @@ $form = $this->createFormBuilder($post)
 
 ## Next Steps
 
-- [Creating your own transformers](Resources/doc/transformers.md)
+- [Creating your own transformers](TrsteelCkeditorBundle/blob/master/Resources/doc/transformers.md)
