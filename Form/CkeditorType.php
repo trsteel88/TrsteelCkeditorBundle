@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+use Symfony\Component\Form\DataTransformerInterface;
+
 /**
  * CKEditor type
  *
@@ -15,10 +17,19 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class CkeditorType extends AbstractType
 {
     protected $container;
+    protected $transformers;
     
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;       
+    }
+
+    public function addTransformer(DataTransformerInterface $transformer, $alias)
+    {
+        if (isset($this->transformers[$alias])) {
+            throw new \Exception('Transformer alias must be unique.');
+        }
+        $this->transformers[$alias] = $transformer;
     }
     
     /**
@@ -26,12 +37,20 @@ class CkeditorType extends AbstractType
      */
     public function buildForm(FormBuilder $builder, array $options)
     {
+        foreach($options['transformers'] as $transformer_alias) {
+            if (isset($this->transformers[$transformer_alias])) {
+                $builder->appendClientTransformer($this->transformers[$transformer_alias]);
+            } else {
+                throw new \Exception(sprintf("'%s' is not a valid transformer.", $transformer_alias));
+            }
+        }
+
         $default_toolbar_groups = $this->getDefaultOptions();
-        $default_toolbar_groups = $default_toolbar_groups['toolbar_groups'];
+        $default_toolbar_groups = array_merge($default_toolbar_groups['toolbar_groups'], $options['toolbar_groups']);
         
         $builder
             ->setAttribute('toolbar', $options['toolbar'])
-            ->setAttribute('toolbar_groups', array_merge($default_toolbar_groups, $options['toolbar_groups']))
+            ->setAttribute('toolbar_groups', $default_toolbar_groups)
             ->setAttribute('ui_color', $options['ui_color'] ? '#'.ltrim($options['ui_color'], '#') : null)
             ->setAttribute('startup_outline_blocks', $options['startup_outline_blocks'])
             ->setAttribute('width', $options['width'])
@@ -98,6 +117,7 @@ class CkeditorType extends AbstractType
     {
         return array(
             'required'                     => false,
+            'transformers'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.transformers'),
             'toolbar'                      => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
             'toolbar_groups'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
             'startup_outline_blocks'       => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks'),
@@ -124,8 +144,8 @@ class CkeditorType extends AbstractType
     public function getAllowedOptionValues()
     {
         return array(
-            'required'                  => array(false),
-            'startup_outline_blocks'    => array(true, false)
+            'required'               => array(false),
+            'startup_outline_blocks' => array(true, false)
         );
     }
     

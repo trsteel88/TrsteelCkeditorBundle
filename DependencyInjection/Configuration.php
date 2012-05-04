@@ -27,12 +27,20 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
             ->children()
+                ->variableNode('transformers')
+                    ->defaultValue(array(
+                        'strip_js', 'strip_css', 'strip_comments'
+                    ))
+                ->end()
+            ->end()
+            ->children()
                 ->variableNode('toolbar')
                     ->defaultValue(array(
                         'document', 'clipboard', 'editing', '/',
                         'basicstyles', 'paragraph', 'links', '/',
                         'insert', 'styles', 'tools'
                     ))
+
                 ->end()
             ->end()
             ->children()

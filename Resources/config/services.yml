@@ -10,3 +10,18 @@ services:
         tags:
             - { name: form.type, alias: ckeditor }
         arguments: [ @service_container ]
+
+    trsteel_ckeditor.transformer.strip_js:
+        class: Trsteel\CkeditorBundle\Transformer\StripJS
+        tags:
+            - { name: trsteel_ckeditor.transformer, alias: strip_js }
+
+    trsteel_ckeditor.transformer.strip_css:
+        class: Trsteel\CkeditorBundle\Transformer\StripCSS
+        tags:
+            - { name: trsteel_ckeditor.transformer, alias: strip_css }
+
+    trsteel_ckeditor.transformer.strip_comments:
+        class: Trsteel\CkeditorBundle\Transformer\StripComments
+        tags:
+            - { name: trsteel_ckeditor.transformer, alias: strip_comments }

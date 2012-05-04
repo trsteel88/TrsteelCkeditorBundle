@@ -31,6 +31,7 @@ class TrsteelCkeditorExtension extends Extension
         ));
 
         $container->setParameter('trsteel_ckeditor.form.type.class', $config['class']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.transformers', $config['transformers']);
         $container->setParameter('trsteel_ckeditor.ckeditor.toolbar', $config['toolbar']);
         $container->setParameter('trsteel_ckeditor.ckeditor.toolbar_groups', array_merge($this->getDefaultGroups(), $config['toolbar_groups']));
         $container->setParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks', $config['startup_outline_blocks']);

@@ -4,6 +4,9 @@ namespace Trsteel\CkeditorBundle\Tests\Form;
 
 use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
 use Trsteel\CkeditorBundle\Form\CkeditorType;
+use Trsteel\CkeditorBundle\Transformer\StripJS;
+use Trsteel\CkeditorBundle\Transformer\StripCSS;
+use Trsteel\CkeditorBundle\Transformer\StripComments;
 
 class CkeditorTypeTest extends TypeTestCase
 {
@@ -26,8 +29,14 @@ class CkeditorTypeTest extends TypeTestCase
     public function setUp()
     {
         parent::setUp();
+
+        $CkeditorType = new CkeditorType($this->get('service_container'));
+
+        $CkeditorType->addTransformer(new StripJS(), 'strip_js');
+        $CkeditorType->addTransformer(new StripCSS(), 'strip_css');
+        $CkeditorType->addTransformer(new StripComments(), 'strip_comments');
         
-        $this->factory->addType(new CkeditorType($this->get('service_container')));
+        $this->factory->addType($CkeditorType);
     } 
     
     /**
@@ -405,7 +414,7 @@ class CkeditorTypeTest extends TypeTestCase
     public function testFilebrowserFlashUploadUrl()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'filebrowser_flash_upload_url' => '/myfilebrowser/uploads'
+            'filebrowser_flash_upload_url' => '/myfilebrowser/uploads',
         ));
         
         $view = $form->createView();
