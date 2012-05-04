@@ -40,7 +40,6 @@ class Configuration implements ConfigurationInterface
                         'basicstyles', 'paragraph', 'links', '/',
                         'insert', 'styles', 'tools'
                     ))
-
                 ->end()
             ->end()
             ->children()
