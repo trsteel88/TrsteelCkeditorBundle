@@ -2,7 +2,7 @@
 
 Transformers are used to change the html data before it is saved.
 
-For an example transformer see [Transformer/StripJS.php](Transformer/StripJS.php)
+For an example transformer see [Transformer/StripJS.php](TrsteelCkeditorBundle/blob/master/Transformer/StripJS.php)
 
 ### Step 1: Create your transformer
 
