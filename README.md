@@ -73,17 +73,6 @@ trsteel_ckeditor:
 
 ```
 
-You can create additional toolbar groups. Just create the group and specify the items. As you can see in the above form the 'document' toolbar group has been overwritten and only shows the 'Source' icon.
-
-In your config.yml you could add an additional toolbar_group:
-
-```yaml
-trsteel_ckeditor:
-    toolbar: ['document_with_source_only', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links']
-    toolbar_groups:
-        document_with_source_only: ['Source']
-```
-
 Or even overwrite the 'document' toolbar group in your application completely.
 
 ```yaml
@@ -93,6 +82,8 @@ trsteel_ckeditor:
     toolbar_groups:
         document: ['Source']
 ```
+
+You can create additional toolbar groups. Just create the group and specify the items. As you can see in the above config the 'document' toolbar group has been overwritten and only shows the 'Source' icon.
 
 ### Step 5: Add the editor to a form
 
