@@ -113,7 +113,7 @@ class CkeditorType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions(array $options = array())
+    public function getDefaultOptions()
     {
         return array(
             'required'                     => false,
@@ -141,7 +141,7 @@ class CkeditorType extends AbstractType
      *
      * @return array The allowed option values
      */
-    public function getAllowedOptionValues(array $options = array())
+    public function getAllowedOptionValues()
     {
         return array(
             'required'               => array(false),
