@@ -1,10 +1,10 @@
 <?php
 
-namespace Trsteel\CkeditorBundle\Transformer;
+namespace Trsteel\CkeditorBundle\Form\Transformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 
-class StripJS implements DataTransformerInterface
+class StripComments implements DataTransformerInterface
 {
     /**
      * {@inheritDoc}
@@ -19,6 +19,6 @@ class StripJS implements DataTransformerInterface
      */
     public function reverseTransform($data)
     {
-        return preg_replace('/<script[^>]*>(.*?)<\/script>/is', '', $data);
+        return preg_replace('/<!--(.*?)-->/is', '', $data);
     }
 }

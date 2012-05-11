@@ -3,10 +3,10 @@
 namespace Trsteel\CkeditorBundle\Tests\Form;
 
 use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
-use Trsteel\CkeditorBundle\Form\CkeditorType;
-use Trsteel\CkeditorBundle\Transformer\StripJS;
-use Trsteel\CkeditorBundle\Transformer\StripCSS;
-use Trsteel\CkeditorBundle\Transformer\StripComments;
+use Trsteel\CkeditorBundle\Form\Type\CkeditorType;
+use Trsteel\CkeditorBundle\Form\Transformer\StripJS;
+use Trsteel\CkeditorBundle\Form\Transformer\StripCSS;
+use Trsteel\CkeditorBundle\Form\Transformer\StripComments;
 
 class CkeditorTypeTest extends TypeTestCase
 {
