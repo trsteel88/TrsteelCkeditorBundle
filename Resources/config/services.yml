@@ -12,16 +12,16 @@ services:
         arguments: [ @service_container ]
 
     trsteel_ckeditor.transformer.strip_js:
-        class: Trsteel\CkeditorBundle\Transformer\StripJS
+        class: Trsteel\CkeditorBundle\Form\Transformer\StripJS
         tags:
             - { name: trsteel_ckeditor.transformer, alias: strip_js }
 
     trsteel_ckeditor.transformer.strip_css:
-        class: Trsteel\CkeditorBundle\Transformer\StripCSS
+        class: Trsteel\CkeditorBundle\Form\Transformer\StripCSS
         tags:
             - { name: trsteel_ckeditor.transformer, alias: strip_css }
 
     trsteel_ckeditor.transformer.strip_comments:
-        class: Trsteel\CkeditorBundle\Transformer\StripComments
+        class: Trsteel\CkeditorBundle\Form\Transformer\StripComments
         tags:
             - { name: trsteel_ckeditor.transformer, alias: strip_comments }
