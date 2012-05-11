@@ -52,7 +52,7 @@ An example configuration:
 
 ```yaml
 trsteel_ckeditor:
-    class: Trsteel\CkeditorBundle\Form\CkeditorType
+    class: Trsteel\CkeditorBundle\Form\Type\CkeditorType
     transformers: ['strip_js', 'strip_css', 'strip_comments']
     toolbar: ['document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
     toolbar_groups:
@@ -77,7 +77,7 @@ Or even overwrite the 'document' toolbar group in your application completely.
 
 ```yaml
 trsteel_ckeditor:
-    class: Trsteel\CkeditorBundle\Form\CkeditorType
+    class: Trsteel\CkeditorBundle\Form\Type\CkeditorType
     toolbar: ['document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
     toolbar_groups:
         document: ['Source']
