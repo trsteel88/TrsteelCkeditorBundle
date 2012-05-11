@@ -149,4 +149,4 @@ $form = $this->createFormBuilder($post)
 
 ## Next Steps
 
-- [Creating your own transformers](TrsteelCkeditorBundle/blob/master/Resources/doc/transformers.md)
+- [Creating your own transformers](/trsteel88/TrsteelCkeditorBundle/blob/master/Resources/doc/transformers.md)
