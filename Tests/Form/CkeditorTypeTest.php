@@ -56,7 +56,7 @@ class CkeditorTypeTest extends TypeTestCase
      */
     public function testRequired()
     {
-        $this->setExpectedException('Symfony\Component\Form\Exception\InvalidOptionException');
+        $this->setExpectedException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
         
         $form = $this->factory->create('ckeditor', null, array(
             'required' => true
