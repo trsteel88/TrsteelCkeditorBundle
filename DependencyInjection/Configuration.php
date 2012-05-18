@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('class')
-                    ->defaultValue('Trsteel\CkeditorBundle\Form\CkeditorType')
+                    ->defaultValue('Trsteel\CkeditorBundle\Form\Type\CkeditorType')
                 ->end()
             ->end()
             ->children()
