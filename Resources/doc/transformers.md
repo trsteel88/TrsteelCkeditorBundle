@@ -40,7 +40,7 @@ class RemoveImages implements DataTransformerInterface
 src/AcmeDemoBundle/config/services.yml
 
 ```yaml
-    acme_demo_ckeditor.transformer.strip_comments:
+    acme_demo_ckeditor.transformer.remove_images:
         class: Acme\DemoBundle\Transformer\RemoveImages
         tags:
             - { name: trsteel_ckeditor.transformer, alias: remove_images }
