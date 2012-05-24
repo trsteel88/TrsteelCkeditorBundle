@@ -121,12 +121,11 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
             ->children()
-                ->variableNode('format_tags')
-                    ->defaultValue(array('p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'address', 'div'))
+                ->scalarNode('format_tags')
+                    ->defaultValue('p;h1;h2;h3;h4;h5;h6;pre;address;div')
                     ->setInfo("Element names that are displayed in the Format pulldown in the toolbar")
                 ->end()
-            ->end()
-            	
+            ->end()            	
         ;
 
         return $treeBuilder;
