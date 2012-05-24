@@ -41,6 +41,9 @@
             {% if filebrowser_flash_upload_url is not null %}
                 filebrowserFlashUploadUrl: '{{ filebrowser_flash_upload_url }}',
             {% endif %}
+            {% if format_tags is not null %}
+                format_tags: '{{ format_tags }}',
+            {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
         });
     {% endautoescape %}

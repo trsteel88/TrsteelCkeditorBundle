@@ -119,7 +119,14 @@ class Configuration implements ConfigurationInterface
                     ->defaultNull()
                     ->setInfo("The location of the script that handles file uploads in the Flash dialog window.")
                 ->end()
-            ->end()   
+            ->end()
+            ->children()
+                ->variableNode('format_tags')
+                    ->defaultValue(array('p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'address', 'div'))
+                    ->setInfo("Element names that are displayed in the Format pulldown in the toolbar")
+                ->end()
+            ->end()
+            	
         ;
 
         return $treeBuilder;
