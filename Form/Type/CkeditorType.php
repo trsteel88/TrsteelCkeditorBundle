@@ -62,6 +62,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('filebrowser_image_upload_url', $options['filebrowser_image_upload_url'])
             ->setAttribute('filebrowser_flash_browse_url', $options['filebrowser_flash_browse_url'])
             ->setAttribute('filebrowser_flash_upload_url', $options['filebrowser_flash_upload_url'])
+			->setAttribute('skin', $options['skin'])
         ;
     }
     
@@ -107,6 +108,7 @@ class CkeditorType extends AbstractType
             ->set('filebrowser_image_upload_url', $form->getAttribute('filebrowser_image_upload_url'))
             ->set('filebrowser_flash_browse_url', $form->getAttribute('filebrowser_flash_browse_url'))
             ->set('filebrowser_flash_upload_url', $form->getAttribute('filebrowser_flash_upload_url'))
+			->set('skin', $form->getAttribute('skin'))
         ;
     }
     
@@ -130,7 +132,8 @@ class CkeditorType extends AbstractType
             'filebrowser_image_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_browse_url'),
             'filebrowser_image_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_upload_url'),
             'filebrowser_flash_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'),
-            'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),            
+            'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),
+			'skin'                         => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'),
         );
     }
     

@@ -119,7 +119,13 @@ class Configuration implements ConfigurationInterface
                     ->defaultNull()
                     ->setInfo("The location of the script that handles file uploads in the Flash dialog window.")
                 ->end()
-            ->end()   
+            ->end()
+			->children()
+                ->scalarNode('skin')
+                    ->defaultNull()
+                    ->setInfo("The location and name of the skin to be used.")
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;

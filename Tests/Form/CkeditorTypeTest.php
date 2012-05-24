@@ -421,5 +421,20 @@ class CkeditorTypeTest extends TypeTestCase
         $filebrowserFlashUploadUrl = $view->get('filebrowser_flash_upload_url');
         
         $this->assertEquals($filebrowserFlashUploadUrl, '/myfilebrowser/uploads');
-    }    
+    }
+	
+	/**
+     * Checks skin property
+     */
+    public function testSkin()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'skin' => 'myskin,/skins/myskin/',
+        ));
+        
+        $view = $form->createView();
+        $skin = $view->get('skin');
+        
+        $this->assertEquals($skin, 'myskin,/skins/myskin/');
+    }
 }
