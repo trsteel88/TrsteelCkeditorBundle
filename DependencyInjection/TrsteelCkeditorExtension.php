@@ -53,33 +53,34 @@ class TrsteelCkeditorExtension extends Extension
     private function getDefaultGroups()
     {
         return array(
-            'document'        => array(
-                'Source','-','Save','-','Templates'
+            'document'    => array(
+                'Source', '-', 'Save', '-', 'Templates'
             ),
-            'clipboard'        => array(
-                'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo'
+            'clipboard'   => array(
+                'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',
             ),
-            'editing'        => array(
-                'Find','Replace','-','SelectAll'
+            'editing'     => array(
+                'Find', 'Replace', '-', 'SelectAll',
             ),
-            'basicstyles'    => array(
-                'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat'
+            'basicstyles' => array(
+                'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-',
+                'RemoveFormat',
             ),
-            'paragraph'        => array(
-                'NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft',
-                'JustifyCenter','JustifyRight','JustifyBlock'
+            'paragraph'   => array(
+                'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft',
+                'JustifyCenter', 'JustifyRight', 'JustifyBlock',
             ),
-            'links'         => array(
-                'Link','Unlink','Anchor'
+            'links'       => array(
+                'Link', 'Unlink', 'Anchor',
             ),
-            'insert'         => array(
-                'Image','Flash','Table','HorizontalRule'
+            'insert'      => array(
+                'Image', 'Flash', 'Table', 'HorizontalRule',
             ),
-            'styles'         => array(
-                'Styles','Format'
+            'styles'      => array(
+                'Styles', 'Format',
             ),
-            'tools'         => array(
-                'Maximize', 'ShowBlocks'
+            'tools'       => array(
+                'Maximize', 'ShowBlocks',
             ),
         );
     }
