@@ -29,11 +29,13 @@ class TrsteelCkeditorExtension extends Extension
             $container->getParameter('twig.form.resources'),
             array('TrsteelCkeditorBundle:Form:ckeditor_widget.html.twig')
         ));
+        
+        $config['toolbar_groups'] = array_merge($this->getDefaultGroups(), $config['toolbar_groups']);
 
         $container->setParameter('trsteel_ckeditor.form.type.class', $config['class']);
         $container->setParameter('trsteel_ckeditor.ckeditor.transformers', $config['transformers']);
         $container->setParameter('trsteel_ckeditor.ckeditor.toolbar', $config['toolbar']);
-        $container->setParameter('trsteel_ckeditor.ckeditor.toolbar_groups', array_merge($this->getDefaultGroups(), $config['toolbar_groups']));
+        $container->setParameter('trsteel_ckeditor.ckeditor.toolbar_groups', $config['toolbar_groups']);
         $container->setParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks', $config['startup_outline_blocks']);
         $container->setParameter('trsteel_ckeditor.ckeditor.ui_color', $config['ui_color']);
         $container->setParameter('trsteel_ckeditor.ckeditor.width', $config['width']);
