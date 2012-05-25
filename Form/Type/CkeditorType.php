@@ -3,8 +3,8 @@
 namespace Trsteel\CkeditorBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
-use Symfony\Component\Form\FormView;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormViewInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -35,7 +35,7 @@ class CkeditorType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         foreach($options['transformers'] as $transformer_alias) {
             if (isset($this->transformers[$transformer_alias])) {
@@ -69,7 +69,7 @@ class CkeditorType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildView(FormView $view, FormInterface $form)
+    public function buildView(FormViewInterface $view, FormInterface $form, array $options)
     {
         if (!is_array($form->getAttribute('toolbar_groups')) || count($form->getAttribute('toolbar_groups')) < 1) {
             throw new \Exception('You must supply at least 1 toolbar group.');
@@ -96,19 +96,19 @@ class CkeditorType extends AbstractType
         }
     
         $view
-            ->set('toolbar', $toolbar)
-            ->set('startup_outline_blocks', $form->getAttribute('startup_outline_blocks'))
-            ->set('ui_color', $form->getAttribute('ui_color'))
-            ->set('width', $form->getAttribute('width'))
-            ->set('height', $form->getAttribute('height'))
-            ->set('language', $form->getAttribute('language'))
-            ->set('filebrowser_browse_url', $form->getAttribute('filebrowser_browse_url'))
-            ->set('filebrowser_upload_url', $form->getAttribute('filebrowser_upload_url'))
-            ->set('filebrowser_image_browse_url', $form->getAttribute('filebrowser_image_browse_url'))
-            ->set('filebrowser_image_upload_url', $form->getAttribute('filebrowser_image_upload_url'))
-            ->set('filebrowser_flash_browse_url', $form->getAttribute('filebrowser_flash_browse_url'))
-            ->set('filebrowser_flash_upload_url', $form->getAttribute('filebrowser_flash_upload_url'))
-			->set('skin', $form->getAttribute('skin'))
+            ->setVar('toolbar', $toolbar)
+            ->setVar('startup_outline_blocks', $form->getAttribute('startup_outline_blocks'))
+            ->setVar('ui_color', $form->getAttribute('ui_color'))
+            ->setVar('width', $form->getAttribute('width'))
+            ->setVar('height', $form->getAttribute('height'))
+            ->setVar('language', $form->getAttribute('language'))
+            ->setVar('filebrowser_browse_url', $form->getAttribute('filebrowser_browse_url'))
+            ->setVar('filebrowser_upload_url', $form->getAttribute('filebrowser_upload_url'))
+            ->setVar('filebrowser_image_browse_url', $form->getAttribute('filebrowser_image_browse_url'))
+            ->setVar('filebrowser_image_upload_url', $form->getAttribute('filebrowser_image_upload_url'))
+            ->setVar('filebrowser_flash_browse_url', $form->getAttribute('filebrowser_flash_browse_url'))
+            ->setVar('filebrowser_flash_upload_url', $form->getAttribute('filebrowser_flash_upload_url'))
+            ->setVar('skin', $form->getAttribute('skin'))
         ;
     }
     
@@ -155,7 +155,7 @@ class CkeditorType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getParent(array $options)
+    public function getParent()
     {
         return 'textarea';
     }
