@@ -45,12 +45,12 @@ class CkeditorType extends AbstractType
             }
         }
 
-        $default_toolbar_groups = $this->getDefaultOptions();
-        $default_toolbar_groups = array_merge($default_toolbar_groups['toolbar_groups'], $options['toolbar_groups']);
+        $default_options = $this->getDefaultOptions();
+        $options['toolbar_groups'] = array_merge($default_options['toolbar_groups'], $options['toolbar_groups']);
         
         $builder
             ->setAttribute('toolbar', $options['toolbar'])
-            ->setAttribute('toolbar_groups', $default_toolbar_groups)
+            ->setAttribute('toolbar_groups', $options['toolbar_groups'])
             ->setAttribute('ui_color', $options['ui_color'] ? '#'.ltrim($options['ui_color'], '#') : null)
             ->setAttribute('startup_outline_blocks', $options['startup_outline_blocks'])
             ->setAttribute('width', $options['width'])
