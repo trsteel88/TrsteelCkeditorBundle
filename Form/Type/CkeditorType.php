@@ -62,7 +62,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('filebrowser_image_upload_url', $options['filebrowser_image_upload_url'])
             ->setAttribute('filebrowser_flash_browse_url', $options['filebrowser_flash_browse_url'])
             ->setAttribute('filebrowser_flash_upload_url', $options['filebrowser_flash_upload_url'])
-			->setAttribute('skin', $options['skin'])
+            ->setAttribute('skin', $options['skin'])
         ;
     }
     

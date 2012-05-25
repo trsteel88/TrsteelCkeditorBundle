@@ -120,7 +120,7 @@ class Configuration implements ConfigurationInterface
                     ->setInfo("The location of the script that handles file uploads in the Flash dialog window.")
                 ->end()
             ->end()
-			->children()
+            ->children()
                 ->scalarNode('skin')
                     ->defaultNull()
                     ->setInfo("The skin to load. It may be the name of the skin folder inside the editor installation path, or the name and the path separated by a comma.")
