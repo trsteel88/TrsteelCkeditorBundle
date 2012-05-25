@@ -159,7 +159,7 @@ class CkeditorType extends AbstractType
     {
         return 'textarea';
     }
-
+    
     /**
      * {@inheritdoc}
      */
