@@ -123,7 +123,7 @@ class Configuration implements ConfigurationInterface
 			->children()
                 ->scalarNode('skin')
                     ->defaultNull()
-                    ->setInfo("The location and name of the skin to be used.")
+                    ->setInfo("The skin to load. It may be the name of the skin folder inside the editor installation path, or the name and the path separated by a comma.")
                 ->end()
             ->end()
         ;
