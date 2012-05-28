@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormViewInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 use Symfony\Component\Form\DataTransformerInterface;
@@ -39,14 +40,13 @@ class CkeditorType extends AbstractType
     {
         foreach($options['transformers'] as $transformer_alias) {
             if (isset($this->transformers[$transformer_alias])) {
-                $builder->appendClientTransformer($this->transformers[$transformer_alias]);
+                $builder->addViewTransformer($this->transformers[$transformer_alias]);
             } else {
                 throw new \Exception(sprintf("'%s' is not a valid transformer.", $transformer_alias));
             }
         }
 
-        $default_options = $this->getDefaultOptions();
-        $options['toolbar_groups'] = array_merge($default_options['toolbar_groups'], $options['toolbar_groups']);
+        $options['toolbar_groups'] = array_merge($this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), $options['toolbar_groups']);
         
         $builder
             ->setAttribute('toolbar', $options['toolbar'])
@@ -71,15 +71,15 @@ class CkeditorType extends AbstractType
      */
     public function buildView(FormViewInterface $view, FormInterface $form, array $options)
     {
-        if (!is_array($form->getAttribute('toolbar_groups')) || count($form->getAttribute('toolbar_groups')) < 1) {
+        if (!is_array($options['toolbar_groups']) || count($options['toolbar_groups']) < 1) {
             throw new \Exception('You must supply at least 1 toolbar group.');
         }
         
-        $toolbar_groups = $form->getAttribute('toolbar_groups');
+        $toolbar_groups = $options['toolbar_groups'];
         $toolbar_groups_keys = array_keys($toolbar_groups);
         
         $toolbar = array();
-        foreach($form->getAttribute('toolbar') as $toolbar_id) {
+        foreach($options['toolbar'] as $toolbar_id) {
             if ("/" == $toolbar_id) {
                 $toolbar[] = $toolbar_id;
             }
@@ -94,30 +94,30 @@ class CkeditorType extends AbstractType
                 );
             }
         }
-    
+
         $view
             ->setVar('toolbar', $toolbar)
-            ->setVar('startup_outline_blocks', $form->getAttribute('startup_outline_blocks'))
-            ->setVar('ui_color', $form->getAttribute('ui_color'))
-            ->setVar('width', $form->getAttribute('width'))
-            ->setVar('height', $form->getAttribute('height'))
-            ->setVar('language', $form->getAttribute('language'))
-            ->setVar('filebrowser_browse_url', $form->getAttribute('filebrowser_browse_url'))
-            ->setVar('filebrowser_upload_url', $form->getAttribute('filebrowser_upload_url'))
-            ->setVar('filebrowser_image_browse_url', $form->getAttribute('filebrowser_image_browse_url'))
-            ->setVar('filebrowser_image_upload_url', $form->getAttribute('filebrowser_image_upload_url'))
-            ->setVar('filebrowser_flash_browse_url', $form->getAttribute('filebrowser_flash_browse_url'))
-            ->setVar('filebrowser_flash_upload_url', $form->getAttribute('filebrowser_flash_upload_url'))
-            ->setVar('skin', $form->getAttribute('skin'))
+            ->setVar('startup_outline_blocks', $options['startup_outline_blocks'])
+            ->setVar('ui_color', $options['ui_color'])
+            ->setVar('width', $options['width'])
+            ->setVar('height', $options['height'])
+            ->setVar('language', $options['language'])
+            ->setVar('filebrowser_browse_url', $options['filebrowser_browse_url'])
+            ->setVar('filebrowser_upload_url', $options['filebrowser_upload_url'])
+            ->setVar('filebrowser_image_browse_url', $options['filebrowser_image_browse_url'])
+            ->setVar('filebrowser_image_upload_url', $options['filebrowser_image_upload_url'])
+            ->setVar('filebrowser_flash_browse_url', $options['filebrowser_flash_browse_url'])
+            ->setVar('filebrowser_flash_upload_url', $options['filebrowser_flash_upload_url'])
+            ->setVar('skin', $options['skin'])
         ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions()
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'required'                     => false,
             'transformers'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.transformers'),
             'toolbar'                      => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
@@ -133,25 +133,15 @@ class CkeditorType extends AbstractType
             'filebrowser_image_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_upload_url'),
             'filebrowser_flash_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'),
             'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),
-			'skin'                         => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'),
-        );
-    }
-    
-    /**
-     * Returns the allowed option values for each option (if any).
-     *
-     * @param array $options
-     *
-     * @return array The allowed option values
-     */
-    public function getAllowedOptionValues()
-    {
-        return array(
+            'skin'                         => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'),
+        ));
+
+        $resolver->setAllowedValues(array(
             'required'               => array(false),
             'startup_outline_blocks' => array(true, false)
-        );
+        ));
     }
-    
+
     /**
      * {@inheritdoc}
      */
