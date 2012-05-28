@@ -75,8 +75,7 @@ class CkeditorType extends AbstractType
             throw new \Exception('You must supply at least 1 toolbar group.');
         }
         
-        $toolbar_groups = $options['toolbar_groups'];
-        $toolbar_groups_keys = array_keys($toolbar_groups);
+        $toolbar_groups_keys = array_keys($options['toolbar_groups']);
         
         $toolbar = array();
         foreach($options['toolbar'] as $toolbar_id) {
@@ -89,8 +88,8 @@ class CkeditorType extends AbstractType
                 }
 
                 $toolbar[] = array(
-                    'name'    => $toolbar_id,
-                    'items'    => $toolbar_groups[$toolbar_id],
+                    'name'  => $toolbar_id,
+                    'items' => $options['toolbar_groups'][$toolbar_id],
                 );
             }
         }
