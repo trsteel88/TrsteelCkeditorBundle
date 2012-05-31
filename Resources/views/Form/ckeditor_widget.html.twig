@@ -44,7 +44,7 @@
 			{% if skin is not null %}
                 skin: '{{ skin }}',
             {% endif %}
-            {% if format_tags is not null %}
+            {% if format_tags|length > 0 %}
                 format_tags: '{{ format_tags | join(';') | raw }}',
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
