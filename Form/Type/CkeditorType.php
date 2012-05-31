@@ -140,7 +140,14 @@ class CkeditorType extends AbstractType
 
         $resolver->setAllowedValues(array(
             'required'               => array(false),
-            'startup_outline_blocks' => array(true, false)
+            'startup_outline_blocks' => array(true, false),
+        ));
+
+        $resolver->setAllowedTypes(array(
+            'transformers'           => 'array',
+            'toolbar'                => 'array',
+            'toolbar_groups'         => 'array',
+            'format_tags'            => 'array',
         ));
     }
 
