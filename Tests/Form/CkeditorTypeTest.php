@@ -437,4 +437,19 @@ class CkeditorTypeTest extends TypeTestCase
         
         $this->assertEquals($skin, 'myskin,/skins/myskin/');
     }
+
+    /**
+     * Checks format_tags property
+     */
+    public function testFormatTags()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'format_tags' => array('p','h2','h3','pre')
+        ));
+
+        $view = $form->createView();
+        $skin = $view->getVar('format_tags');
+
+        $this->assertEquals($skin, array('p','h2','h3','pre'));
+    }
 }

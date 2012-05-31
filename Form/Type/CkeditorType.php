@@ -63,6 +63,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('filebrowser_flash_browse_url', $options['filebrowser_flash_browse_url'])
             ->setAttribute('filebrowser_flash_upload_url', $options['filebrowser_flash_upload_url'])
             ->setAttribute('skin', $options['skin'])
+            ->setAttribute('format_tags', $options['format_tags'])
         ;
     }
     
@@ -108,6 +109,7 @@ class CkeditorType extends AbstractType
             ->setVar('filebrowser_flash_browse_url', $options['filebrowser_flash_browse_url'])
             ->setVar('filebrowser_flash_upload_url', $options['filebrowser_flash_upload_url'])
             ->setVar('skin', $options['skin'])
+            ->setVar('format_tags', $options['format_tags'])
         ;
     }
 
@@ -133,6 +135,7 @@ class CkeditorType extends AbstractType
             'filebrowser_flash_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'),
             'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),
             'skin'                         => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'),
+            'format_tags'                  => $this->container->getParameter('trsteel_ckeditor.ckeditor.format_tags'),
         ));
 
         $resolver->setAllowedValues(array(

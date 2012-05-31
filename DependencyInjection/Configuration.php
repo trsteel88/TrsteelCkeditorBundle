@@ -126,6 +126,13 @@ class Configuration implements ConfigurationInterface
                     ->info("The skin to load. It may be the name of the skin folder inside the editor installation path, or the name and the path separated by a comma.")
                 ->end()
             ->end()
+            ->children()
+                ->variableNode('format_tags')
+                    ->defaultValue(array())
+                    ->info("An array of style names (by default tags) representing the style definition for each entry to be displayed in the Format combo in the toolbar.")
+                    ->example(array('p','h2','h3','pre'))
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;
