@@ -422,8 +422,8 @@ class CkeditorTypeTest extends TypeTestCase
         
         $this->assertEquals($filebrowserFlashUploadUrl, '/myfilebrowser/uploads');
     }
-	
-	/**
+
+    /**
      * Checks skin property
      */
     public function testSkin()
