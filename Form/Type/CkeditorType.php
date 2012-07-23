@@ -4,7 +4,7 @@ namespace Trsteel\CkeditorBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormViewInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -70,7 +70,7 @@ class CkeditorType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildView(FormViewInterface $view, FormInterface $form, array $options)
+    public function buildView(FormView $view, FormInterface $form, array $options)
     {
         if (!is_array($options['toolbar_groups']) || count($options['toolbar_groups']) < 1) {
             throw new \Exception('You must supply at least 1 toolbar group.');
@@ -95,22 +95,20 @@ class CkeditorType extends AbstractType
             }
         }
 
-        $view
-            ->setVar('toolbar', $toolbar)
-            ->setVar('startup_outline_blocks', $options['startup_outline_blocks'])
-            ->setVar('ui_color', $options['ui_color'])
-            ->setVar('width', $options['width'])
-            ->setVar('height', $options['height'])
-            ->setVar('language', $options['language'])
-            ->setVar('filebrowser_browse_url', $options['filebrowser_browse_url'])
-            ->setVar('filebrowser_upload_url', $options['filebrowser_upload_url'])
-            ->setVar('filebrowser_image_browse_url', $options['filebrowser_image_browse_url'])
-            ->setVar('filebrowser_image_upload_url', $options['filebrowser_image_upload_url'])
-            ->setVar('filebrowser_flash_browse_url', $options['filebrowser_flash_browse_url'])
-            ->setVar('filebrowser_flash_upload_url', $options['filebrowser_flash_upload_url'])
-            ->setVar('skin', $options['skin'])
-            ->setVar('format_tags', $options['format_tags'])
-        ;
+        $view->vars['toolbar'] = $toolbar;
+        $view->vars['startup_outline_blocks'] = $options['startup_outline_blocks'];
+        $view->vars['ui_color'] = $options['ui_color'];
+        $view->vars['width'] = $options['width'];
+        $view->vars['height'] = $options['height'];
+        $view->vars['language'] = $options['language'];
+        $view->vars['filebrowser_browse_url'] = $options['filebrowser_browse_url'];
+        $view->vars['filebrowser_upload_url'] = $options['filebrowser_upload_url'];
+        $view->vars['filebrowser_image_browse_url'] = $options['filebrowser_image_browse_url'];
+        $view->vars['filebrowser_image_upload_url'] = $options['filebrowser_image_upload_url'];
+        $view->vars['filebrowser_flash_browse_url'] = $options['filebrowser_flash_browse_url'];
+        $view->vars['filebrowser_flash_upload_url'] = $options['filebrowser_flash_upload_url'];
+        $view->vars['skin'] = $options['skin'];
+        $view->vars['format_tags'] = $options['format_tags'];
     }
 
     /**
