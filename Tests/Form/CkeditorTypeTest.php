@@ -46,7 +46,7 @@ class CkeditorTypeTest extends TypeTestCase
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $required = $view->getVar('required');
+        $required = $view->vars['required'];
 
         $this->assertFalse($required);
     }
@@ -70,7 +70,7 @@ class CkeditorTypeTest extends TypeTestCase
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $toolbar = $view->getVar('toolbar');
+        $toolbar = $view->vars['toolbar'];
 
         $this->assertEquals($toolbar, array(
             array(
@@ -185,7 +185,7 @@ class CkeditorTypeTest extends TypeTestCase
             )
         ));
         $view = $form->createView();
-        $toolbar = $view->getVar('toolbar');
+        $toolbar = $view->vars['toolbar'];
         
         $this->assertEquals($toolbar, array(
             array(
@@ -204,7 +204,7 @@ class CkeditorTypeTest extends TypeTestCase
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $startup_outline_blocks = $view->getVar('startup_outline_blocks');
+        $startup_outline_blocks = $view->vars['startup_outline_blocks'];
         
         $this->assertTrue($startup_outline_blocks);
     }
@@ -219,7 +219,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $startup_outline_blocks = $view->getVar('startup_outline_blocks');
+        $startup_outline_blocks = $view->vars['startup_outline_blocks'];
         
         $this->assertFalse($startup_outline_blocks);
     }
@@ -231,7 +231,7 @@ class CkeditorTypeTest extends TypeTestCase
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $ui_color = $view->getVar('ui_color');
+        $ui_color = $view->vars['ui_color'];
         
         $this->assertNull($ui_color);
     }
@@ -246,7 +246,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $ui_color = $view->getVar('ui_color');
+        $ui_color = $view->vars['ui_color'];
         
         $this->assertEquals($ui_color, '#333333');
     }
@@ -258,7 +258,7 @@ class CkeditorTypeTest extends TypeTestCase
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $width = $view->getVar('width');
+        $width = $view->vars['width'];
         
         $this->assertNull($width);
     }
@@ -273,7 +273,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $width = $view->getVar('width');
+        $width = $view->vars['width'];
         
         $this->assertEquals($width, '100%');
     }
@@ -285,7 +285,7 @@ class CkeditorTypeTest extends TypeTestCase
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $height = $view->getVar('height');
+        $height = $view->vars['height'];
         
         $this->assertNull($height);
     }
@@ -300,7 +300,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $height = $view->getVar('height');
+        $height = $view->vars['height'];
         
         $this->assertEquals($height, '350px');
     }
@@ -312,7 +312,7 @@ class CkeditorTypeTest extends TypeTestCase
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $language = $view->getVar('language');
+        $language = $view->vars['language'];
         
         $this->assertNull($language);
     }
@@ -327,7 +327,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $language = $view->getVar('language');
+        $language = $view->vars['language'];
         
         $this->assertEquals($language, 'en-au');
     }
@@ -343,7 +343,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $filebrowserBrowseUrl = $view->getVar('filebrowser_browse_url');
+        $filebrowserBrowseUrl = $view->vars['filebrowser_browse_url'];
         
         $this->assertEquals($filebrowserBrowseUrl, '/myfilebrowser/browser.html');
     }
@@ -358,7 +358,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $filebrowserUploadUrl = $view->getVar('filebrowser_upload_url');
+        $filebrowserUploadUrl = $view->vars['filebrowser_upload_url'];
         
         $this->assertEquals($filebrowserUploadUrl, '/myfilebrowser/uploads');
     }
@@ -373,7 +373,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $filebrowserImageBrowseUrl = $view->getVar('filebrowser_image_browse_url');
+        $filebrowserImageBrowseUrl = $view->vars['filebrowser_image_browse_url'];
         
         $this->assertEquals($filebrowserImageBrowseUrl, '/myfilebrowser/browser.html');
     }
@@ -388,7 +388,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $filebrowserImageUploadUrl = $view->getVar('filebrowser_image_upload_url');
+        $filebrowserImageUploadUrl = $view->vars['filebrowser_image_upload_url'];
         
         $this->assertEquals($filebrowserImageUploadUrl, '/myfilebrowser/uploads');
     }
@@ -403,7 +403,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $filebrowserFlashBrowseUrl = $view->getVar('filebrowser_flash_browse_url');
+        $filebrowserFlashBrowseUrl = $view->vars['filebrowser_flash_browse_url'];
         
         $this->assertEquals($filebrowserFlashBrowseUrl, '/myfilebrowser/browser.html');
     }
@@ -418,7 +418,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $filebrowserFlashUploadUrl = $view->getVar('filebrowser_flash_upload_url');
+        $filebrowserFlashUploadUrl = $view->vars['filebrowser_flash_upload_url'];
         
         $this->assertEquals($filebrowserFlashUploadUrl, '/myfilebrowser/uploads');
     }
@@ -433,7 +433,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
         
         $view = $form->createView();
-        $skin = $view->getVar('skin');
+        $skin = $view->vars['skin'];
         
         $this->assertEquals($skin, 'myskin,/skins/myskin/');
     }
@@ -448,7 +448,7 @@ class CkeditorTypeTest extends TypeTestCase
         ));
 
         $view = $form->createView();
-        $skin = $view->getVar('format_tags');
+        $skin = $view->vars['format_tags'];
 
         $this->assertEquals($skin, array('p','h2','h3','pre'));
     }
