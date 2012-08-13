@@ -4,6 +4,12 @@
 {% spaceless %}
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
 
+    <script type="text/javascript">
+    {% autoescape true js %}
+        var CKEDITOR_BASEPATH = '/bundles/trsteelckeditor/';
+        {% endautoescape %}
+    </script>
+
     <script type="text/javascript" src="{{ asset('bundles/trsteelckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">
     {% autoescape true js %}
