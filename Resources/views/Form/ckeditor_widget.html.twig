@@ -7,7 +7,7 @@
     <script type="text/javascript">
     {% autoescape true js %}
         var CKEDITOR_BASEPATH = '/bundles/trsteelckeditor/';
-        {% endautoescape %}
+    {% endautoescape %}
     </script>
 
     <script type="text/javascript" src="{{ asset('bundles/trsteelckeditor/ckeditor.js') }}"></script>
@@ -15,19 +15,19 @@
     {% autoescape true js %}
         CKEDITOR.replace("{{ id }}",{
             {% if width is not null %}
-            width: '{{ width }}',
+                width: '{{ width }}',
             {% endif %}
             {% if height is not null %}
-            height: '{{ height }}',
+                height: '{{ height }}',
             {% endif %}
             {% if language is not null %}
-            language: '{{ language }}',            
+                language: '{{ language }}',
             {% endif %}
             {% if ui_color is not null %}
                 uiColor: "{{ ui_color }}",
             {% endif %}
             {% if startup_outline_blocks == true %}
-            startupOutlineBlocks: {{ startup_outline_blocks }},
+                startupOutlineBlocks: {{ startup_outline_blocks }},
             {% endif %}
             {% if filebrowser_browse_url is not null %}
                 filebrowserBrowseUrl: '{{ filebrowser_browse_url }}',
