@@ -482,4 +482,28 @@ class CkeditorTypeTest extends TypeTestCase
 
         $this->assertEquals($bodyClass, 'special_class');
     }
+
+    /**
+     * Checks external_plugins property
+     */
+    public function testExternalPlugins()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'external_plugins' => array(
+                'my_custom_plugin' => array(
+                    'path' => 'js/ckeditor/plugins/my_custom_plugin',
+                    'file' => 'plugin.js',
+                ),
+            ),
+        ));
+        $view = $form->createView();
+        $externalPlugins = $view->vars['external_plugins'];
+
+        $this->assertEquals($externalPlugins, array(
+            'my_custom_plugin' => array(
+                'path' => 'js/ckeditor/plugins/my_custom_plugin',
+                'file' => 'plugin.js',
+            ),
+        ));
+    }
 }
