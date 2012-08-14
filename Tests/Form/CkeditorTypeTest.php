@@ -448,9 +448,9 @@ class CkeditorTypeTest extends TypeTestCase
         ));
 
         $view = $form->createView();
-        $skin = $view->vars['format_tags'];
+        $formatTags = $view->vars['format_tags'];
 
-        $this->assertEquals($skin, array('p','h2','h3','pre'));
+        $this->assertEquals($formatTags, array('p','h2','h3','pre'));
     }
 
     /**
