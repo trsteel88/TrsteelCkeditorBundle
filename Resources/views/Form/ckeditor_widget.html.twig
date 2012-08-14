@@ -6,7 +6,7 @@
 
     <script type="text/javascript">
     {% autoescape true js %}
-        var CKEDITOR_BASEPATH = '../../bundles/trsteelckeditor/';
+        var CKEDITOR_BASEPATH = '{{ app.request.basePath ~ '/bundles/trsteelckeditor/' }}';
     {% endautoescape %}
     </script>
 
