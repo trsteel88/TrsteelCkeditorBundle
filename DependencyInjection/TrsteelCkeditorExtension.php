@@ -32,6 +32,10 @@ class TrsteelCkeditorExtension extends Extension
         
         $config['toolbar_groups'] = array_merge($this->getDefaultGroups(), $config['toolbar_groups']);
 
+        foreach ($config['external_plugins'] as &$plugin) {
+            $plugin['path'] = '/'.rtrim(ltrim($plugin['path'], '/'), '/').'/';
+        }
+
         $container->setParameter('trsteel_ckeditor.form.type.class', $config['class']);
         $container->setParameter('trsteel_ckeditor.ckeditor.transformers', $config['transformers']);
         $container->setParameter('trsteel_ckeditor.ckeditor.toolbar', $config['toolbar']);

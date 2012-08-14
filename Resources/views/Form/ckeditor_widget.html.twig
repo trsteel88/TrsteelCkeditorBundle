@@ -15,7 +15,7 @@
     {% autoescape false %}
         {% set plugins = '' %}
         {% for name, external_plugin in external_plugins %}
-            CKEDITOR.plugins.addExternal('syntaxhighlight', '{{ asset(external_plugin.path) }}/', '{{ external_plugin.file }}');
+            CKEDITOR.plugins.addExternal('syntaxhighlight', '{{ app.request.basePath ~ external_plugin.path }}', '{{ external_plugin.file }}');
             {% if not loop.first %}
                 {% set plugins = plugins ~ ',' %}
             {% endif %}
