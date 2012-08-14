@@ -38,7 +38,7 @@ class CkeditorType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        foreach($options['transformers'] as $transformer_alias) {
+        foreach ($options['transformers'] as $transformer_alias) {
             if (isset($this->transformers[$transformer_alias])) {
                 $builder->addViewTransformer($this->transformers[$transformer_alias]);
             } else {
@@ -81,11 +81,10 @@ class CkeditorType extends AbstractType
         $toolbar_groups_keys = array_keys($options['toolbar_groups']);
         
         $toolbar = array();
-        foreach($options['toolbar'] as $toolbar_id) {
+        foreach ($options['toolbar'] as $toolbar_id) {
             if ("/" == $toolbar_id) {
                 $toolbar[] = $toolbar_id;
-            }
-            else {    
+            } else {
                 if (!in_array($toolbar_id, $toolbar_groups_keys, true)) {
                     throw new \Exception('The toolbar "'.$toolbar_id.'" does not exist. Known options are '. implode(", ", $toolbar_groups_keys));
                 }
