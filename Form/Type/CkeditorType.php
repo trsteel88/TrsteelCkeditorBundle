@@ -47,7 +47,7 @@ class CkeditorType extends AbstractType
         }
 
         $options['toolbar_groups'] = array_merge($this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), $options['toolbar_groups']);
-        
+
         $builder
             ->setAttribute('toolbar', $options['toolbar'])
             ->setAttribute('toolbar_groups', $options['toolbar_groups'])
@@ -64,6 +64,8 @@ class CkeditorType extends AbstractType
             ->setAttribute('filebrowser_flash_upload_url', $options['filebrowser_flash_upload_url'])
             ->setAttribute('skin', $options['skin'])
             ->setAttribute('format_tags', $options['format_tags'])
+            ->setAttribute('base_href', $options['base_href'])
+            ->setAttribute('body_class', $options['body_class'])
         ;
     }
     
@@ -109,6 +111,8 @@ class CkeditorType extends AbstractType
         $view->vars['filebrowser_flash_upload_url'] = $options['filebrowser_flash_upload_url'];
         $view->vars['skin'] = $options['skin'];
         $view->vars['format_tags'] = $options['format_tags'];
+        $view->vars['base_href'] = $options['base_href'];
+        $view->vars['body_class'] = $options['body_class'];
     }
 
     /**
@@ -134,6 +138,8 @@ class CkeditorType extends AbstractType
             'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),
             'skin'                         => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'),
             'format_tags'                  => $this->container->getParameter('trsteel_ckeditor.ckeditor.format_tags'),
+            'base_href'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_href'),
+            'body_class'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.body_class'),
         ));
 
         $resolver->setAllowedValues(array(

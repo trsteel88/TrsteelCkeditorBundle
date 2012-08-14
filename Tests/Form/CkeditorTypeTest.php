@@ -452,4 +452,34 @@ class CkeditorTypeTest extends TypeTestCase
 
         $this->assertEquals($skin, array('p','h2','h3','pre'));
     }
+
+    /**
+     * Checks base_href property
+     */
+    public function testBaseHref()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'base_href' => 'http://domain.com/',
+        ));
+
+        $view = $form->createView();
+        $baseHref = $view->vars['base_href'];
+
+        $this->assertEquals($baseHref, 'http://domain.com/');
+    }
+
+    /**
+     * Checks body_class property
+     */
+    public function testBodyClass()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'body_class' => 'special_class',
+        ));
+
+        $view = $form->createView();
+        $bodyClass = $view->vars['body_class'];
+
+        $this->assertEquals($bodyClass, 'special_class');
+    }
 }

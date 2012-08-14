@@ -133,6 +133,18 @@ class Configuration implements ConfigurationInterface
                     ->example(array('p','h2','h3','pre'))
                 ->end()
             ->end()
+            ->children()
+                ->scalarNode('base_href')
+                    ->defaultNull()
+                    ->info("The base href URL used to resolve relative and absolute URLs in the editor content.")
+                ->end()
+            ->end()
+            ->children()
+                ->scalarNode('body_class')
+                    ->defaultNull()
+                    ->info("Sets the class attribute to be used on the body element of the editing area.")
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;
