@@ -145,6 +145,17 @@ class Configuration implements ConfigurationInterface
                     ->info("Sets the class attribute to be used on the body element of the editing area.")
                 ->end()
             ->end()
+            ->children()
+                ->arrayNode('external_plugins')
+                    ->useAttributeAsKey(true)
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('path')->isRequired()->end()
+                            ->scalarNode('file')->defaultValue('plugin.js')->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;

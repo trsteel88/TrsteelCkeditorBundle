@@ -12,7 +12,15 @@
 
     <script type="text/javascript" src="{{ asset('bundles/trsteelckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">
-    {% autoescape true js %}
+    {% autoescape false %}
+        {% set plugins = '' %}
+        {% for name, external_plugin in external_plugins %}
+            CKEDITOR.plugins.addExternal('syntaxhighlight', '{{ asset(external_plugin.path) }}/', '{{ external_plugin.file }}');
+            {% if not loop.first %}
+                {% set plugins = plugins ~ ',' %}
+            {% endif %}
+            {% set plugins = plugins ~ name %}
+        {% endfor %}
         CKEDITOR.replace("{{ id }}",{
             {% if width is not null %}
                 width: '{{ width }}',
@@ -58,6 +66,9 @@
             {% endif %}
             {% if body_class is not null %}
                 bodyClass: '{{ body_class }}',
+            {% endif %}
+            {% if plugins %}
+                extraPlugins: '{{ plugins }}',
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
         });

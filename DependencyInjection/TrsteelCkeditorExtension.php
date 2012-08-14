@@ -51,6 +51,7 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.format_tags', $config['format_tags']);
         $container->setParameter('trsteel_ckeditor.ckeditor.base_href', $config['base_href']);
         $container->setParameter('trsteel_ckeditor.ckeditor.body_class', $config['body_class']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.external_plugins', $config['external_plugins']);
     }
 
     private function getDefaultGroups()
