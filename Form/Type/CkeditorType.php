@@ -97,23 +97,23 @@ class CkeditorType extends AbstractType
             }
         }
 
-        $view->vars['toolbar'] = $toolbar;
-        $view->vars['startup_outline_blocks'] = $options['startup_outline_blocks'];
-        $view->vars['ui_color'] = $options['ui_color'];
-        $view->vars['width'] = $options['width'];
-        $view->vars['height'] = $options['height'];
-        $view->vars['language'] = $options['language'];
-        $view->vars['filebrowser_browse_url'] = $options['filebrowser_browse_url'];
-        $view->vars['filebrowser_upload_url'] = $options['filebrowser_upload_url'];
+        $view->vars['toolbar']                      = $toolbar;
+        $view->vars['startup_outline_blocks']       = $options['startup_outline_blocks'];
+        $view->vars['ui_color']                     = $options['ui_color'];
+        $view->vars['width']                        = $options['width'];
+        $view->vars['height']                       = $options['height'];
+        $view->vars['language']                     = $options['language'];
+        $view->vars['filebrowser_browse_url']       = $options['filebrowser_browse_url'];
+        $view->vars['filebrowser_upload_url']       = $options['filebrowser_upload_url'];
         $view->vars['filebrowser_image_browse_url'] = $options['filebrowser_image_browse_url'];
         $view->vars['filebrowser_image_upload_url'] = $options['filebrowser_image_upload_url'];
         $view->vars['filebrowser_flash_browse_url'] = $options['filebrowser_flash_browse_url'];
         $view->vars['filebrowser_flash_upload_url'] = $options['filebrowser_flash_upload_url'];
-        $view->vars['skin'] = $options['skin'];
-        $view->vars['format_tags'] = $options['format_tags'];
-        $view->vars['base_href'] = $options['base_href'];
-        $view->vars['body_class'] = $options['body_class'];
-        $view->vars['external_plugins'] = $options['external_plugins'];
+        $view->vars['skin']                         = $options['skin'];
+        $view->vars['format_tags']                  = $options['format_tags'];
+        $view->vars['base_href']                    = $options['base_href'];
+        $view->vars['body_class']                   = $options['body_class'];
+        $view->vars['external_plugins']             = $options['external_plugins'];
     }
 
     /**
@@ -150,10 +150,10 @@ class CkeditorType extends AbstractType
         ));
 
         $resolver->setAllowedTypes(array(
-            'transformers'           => 'array',
-            'toolbar'                => 'array',
-            'toolbar_groups'         => 'array',
-            'format_tags'            => 'array',
+            'transformers'   => 'array',
+            'toolbar'        => 'array',
+            'toolbar_groups' => 'array',
+            'format_tags'    => 'array',
         ));
     }
 
