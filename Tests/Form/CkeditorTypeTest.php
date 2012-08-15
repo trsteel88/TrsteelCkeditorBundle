@@ -484,6 +484,21 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
+     * Checks contents_css property
+     */
+    public function testContentsCss()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'contents_css' => '/css/ckeditor/contents.css',
+        ));
+
+        $view = $form->createView();
+        $contentsCss = $view->vars['contents_css'];
+
+        $this->assertEquals($contentsCss, '/css/ckeditor/contents.css');
+    }
+
+    /**
      * Checks external_plugins property
      */
     public function testExternalPlugins()

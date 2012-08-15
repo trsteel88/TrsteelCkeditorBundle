@@ -67,6 +67,9 @@
             {% if body_class is not null %}
                 bodyClass: '{{ body_class }}',
             {% endif %}
+            {% if contents_css is not null %}
+                contentsCss: '{{ asset(contents_css) }}',
+            {% endif %}
             {% if plugins %}
                 extraPlugins: '{{ plugins }}',
             {% endif %}

@@ -66,6 +66,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('format_tags', $options['format_tags'])
             ->setAttribute('base_href', $options['base_href'])
             ->setAttribute('body_class', $options['body_class'])
+            ->setAttribute('contents_css', $options['contents_css'])
         ;
     }
     
@@ -112,6 +113,7 @@ class CkeditorType extends AbstractType
         $view->vars['format_tags']                  = $options['format_tags'];
         $view->vars['base_href']                    = $options['base_href'];
         $view->vars['body_class']                   = $options['body_class'];
+        $view->vars['contents_css']                 = $options['contents_css'];
         $view->vars['external_plugins']             = $options['external_plugins'];
     }
 
@@ -140,6 +142,7 @@ class CkeditorType extends AbstractType
             'format_tags'                  => $this->container->getParameter('trsteel_ckeditor.ckeditor.format_tags'),
             'base_href'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_href'),
             'body_class'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.body_class'),
+            'contents_css'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.contents_css'),
             'external_plugins'             => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
         ));
 
