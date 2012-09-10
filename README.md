@@ -4,14 +4,17 @@
 
 ## Installation
 
-1. Add TrsteelCkeditorBundle to your composer.json
+1. Add TrsteelCkeditorBundle using composer
 2. Enable the bundle
 3. Install bundle assets
 4. Configure the bundle (optional)
 5. Add the editor to a form
 6. Configure data transformers
 
-### Step 1: Add TrsteelCkeditorBundle to your composer.json
+### Step 1: Add TrsteelCkeditorBundle using composer
+
+Add TrsteelCkeditorBundle to your composer.json:
+
 ```js
 {
     "require": {
@@ -19,6 +22,12 @@
     }
 }
 ```
+
+Now tell composer to download the bundle by running the command:
+
+```bash
+$ ./composer.phar update Trsteel/ckeditor-bundle
+
 
 ### Step 2: Enable the bundle
 ``` php
