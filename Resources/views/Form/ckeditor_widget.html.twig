@@ -73,6 +73,9 @@
             {% if plugins %}
                 extraPlugins: '{{ plugins }}',
             {% endif %}
+            {% if basic_entities is not null %}
+                basicEntities: '{{ basic_entities }}',
+            {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
         });
     {% endautoescape %}
