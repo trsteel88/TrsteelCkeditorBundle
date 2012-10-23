@@ -20,6 +20,12 @@
 }
 ```
 
+and update your project dependencies:
+
+```bash
+php composer.phar update Trsteel/ckeditor-bundle
+```
+
 ### Step 2: Enable the bundle
 ``` php
 <?php
