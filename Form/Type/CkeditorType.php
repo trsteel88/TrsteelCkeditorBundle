@@ -67,6 +67,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('base_href', $options['base_href'])
             ->setAttribute('body_class', $options['body_class'])
             ->setAttribute('contents_css', $options['contents_css'])
+            ->setAttribute('basic_entities', $options['basic_entities'])
         ;
     }
     
@@ -114,6 +115,7 @@ class CkeditorType extends AbstractType
         $view->vars['base_href']                    = $options['base_href'];
         $view->vars['body_class']                   = $options['body_class'];
         $view->vars['contents_css']                 = $options['contents_css'];
+        $view->vars['basic_entities']               = $options['basic_entities'];
         $view->vars['external_plugins']             = $options['external_plugins'];
     }
 
@@ -143,12 +145,14 @@ class CkeditorType extends AbstractType
             'base_href'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_href'),
             'body_class'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.body_class'),
             'contents_css'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.contents_css'),
+            'basic_entities'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.basic_entities'),
             'external_plugins'             => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
         ));
 
         $resolver->setAllowedValues(array(
             'required'               => array(false),
             'startup_outline_blocks' => array(true, false),
+            'basic_entities'         => array(true, false),
         ));
 
         $resolver->setAllowedTypes(array(
