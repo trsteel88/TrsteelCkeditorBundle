@@ -499,6 +499,21 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
+     * Checks basic_entities property
+     */
+    public function testBasicEntities()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'basic_entities' => false,
+        ));
+
+        $view = $form->createView();
+        $basicEntities = $view->vars['basic_entities'];
+
+        $this->assertEquals($basicEntities, false);
+    }
+
+    /**
      * Checks external_plugins property
      */
     public function testExternalPlugins()
