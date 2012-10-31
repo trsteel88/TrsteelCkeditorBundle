@@ -70,11 +70,11 @@
             {% if contents_css is not null %}
                 contentsCss: '{{ asset(contents_css) }}',
             {% endif %}
-            {% if plugins %}
-                extraPlugins: '{{ plugins }}',
-            {% endif %}
             {% if basic_entities is not null %}
                 basicEntities: '{{ basic_entities }}',
+            {% endif %}
+            {% if plugins %}
+                extraPlugins: '{{ plugins }}',
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
         });
