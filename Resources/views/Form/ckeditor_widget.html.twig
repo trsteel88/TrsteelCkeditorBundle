@@ -37,23 +37,36 @@
             {% if startup_outline_blocks == true %}
                 startupOutlineBlocks: {{ startup_outline_blocks }},
             {% endif %}
-            {% if filebrowser_browse_url is not null %}
-                filebrowserBrowseUrl: '{{ filebrowser_browse_url }}',
+            {% if filebrowser_browse_url.route is defined and filebrowser_browse_url.route is not null %}
+                filebrowserBrowseUrl: '{{ path(filebrowser_browse_url.route, filebrowser_browse_url.route_parameters) }}',
+            {% elseif filebrowser_browse_url.route is defined and filebrowser_browse_url.route is not null  %}
+                filebrowserBrowseUrl: '{{ filebrowser_browse_url.url }}',
             {% endif %}
-            {% if filebrowser_upload_url is not null %}
-                filebrowserUploadUrl: '{{ filebrowser_upload_url }}',
+            {% if filebrowser_upload_url.route is defined and filebrowser_upload_url.route is not null %}
+                filebrowserUploadUrl: '{{ path(filebrowser_upload_url.route, filebrowser_upload_url.route_parameters) }}',
+            {% elseif filebrowser_upload_url.route is defined and filebrowser_upload_url.route is not null  %}
+                filebrowserUploadUrl: '{{ filebrowser_upload_url.url }}',
             {% endif %}
-            {% if filebrowser_image_browse_url is not null %}
-                filebrowserImageBrowseUrl: '{{ filebrowser_image_browse_url }}',
+            {% if filebrowser_image_browse_url.route is defined and filebrowser_image_browse_url.route is not null %}
+                filebrowserImageBrowseUrl: '{{ path(filebrowser_image_browse_url.route, filebrowser_image_browse_url.route_parameters) }}',
+            {% elseif filebrowser_image_browse_url.route is defined and filebrowser_image_browse_url.route is not null  %}
+                filebrowserImageBrowseUrl: '{{ filebrowser_image_browse_url.url }}',
             {% endif %}
-            {% if filebrowser_image_upload_url is not null %}
-                filebrowserImageUploadUrl: '{{ filebrowser_image_upload_url }}',
+
+            {% if filebrowser_image_upload_url.route is defined and filebrowser_image_upload_url.route is not null %}
+                filebrowserImageUploadUrl: '{{ path(filebrowser_image_upload_url.route, filebrowser_image_upload_url.route_parameters) }}',
+            {% elseif filebrowser_image_upload_url.route is defined and filebrowser_image_upload_url.route is not null  %}
+                filebrowserImageUploadUrl: '{{ filebrowser_image_upload_url.url }}',
             {% endif %}
-            {% if filebrowser_flash_browse_url is not null %}
-                filebrowserFlashBrowseUrl: '{{ filebrowser_flash_browse_url }}',
+            {% if filebrowser_flash_browse_url.route is defined and filebrowser_flash_browse_url.route is not null %}
+                filebrowserFlashBrowseUrl: '{{ path(filebrowser_flash_browse_url.route, filebrowser_flash_browse_url.route_parameters) }}',
+            {% elseif filebrowser_flash_browse_url.route is defined and filebrowser_flash_browse_url.route is not null  %}
+                filebrowserFlashBrowseUrl: '{{ filebrowser_flash_browse_url.url }}',
             {% endif %}
-            {% if filebrowser_flash_upload_url is not null %}
-                filebrowserFlashUploadUrl: '{{ filebrowser_flash_upload_url }}',
+            {% if filebrowser_flash_upload_url.route is defined and filebrowser_flash_upload_url.route is not null %}
+                filebrowserFlashUploadUrl: '{{ path(filebrowser_flash_upload_url.route, filebrowser_flash_upload_url.route_parameters) }}',
+            {% elseif filebrowser_flash_upload_url.route is defined and filebrowser_flash_upload_url.route is not null  %}
+                filebrowserFlashUploadUrl: '{{ filebrowser_flash_upload_url.url }}',
             {% endif %}
             {% if skin is not null %}
                 skin: '{{ skin }}',

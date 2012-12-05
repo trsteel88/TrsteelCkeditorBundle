@@ -76,7 +76,12 @@ trsteel_ckeditor:
     width: 800 #Integer or %
     height: 300 #Integer or %
     language: 'en-au'
-
+    filebrowser_upload_url:
+        url: relative-url.php?type=file
+    filebrowser_image_browse_url:
+        route: route_name
+        route_parameters:
+            type: image
 ```
 
 Or even overwrite the 'document' toolbar group in your application completely.
@@ -101,16 +106,25 @@ Example form:
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
             ->add('content', 'ckeditor', array(
-                'transformers'           => array('strip_js', 'strip_css', 'strip_comments'),
-                'toolbar'                => array('document','basicstyles'),
-                'toolbar_groups'         => array(
+                'transformers'                 => array('strip_js', 'strip_css', 'strip_comments'),
+                'toolbar'                      => array('document','basicstyles'),
+                'toolbar_groups'               => array(
                     'document' => array('Source')
                 ),
-                'ui_color'               => '#fff',
-                'startup_outline_blocks' => false,
-                'width'                  => '100%',
-                'height'                 => '320',
-                'language'               => 'en-au',
+                'ui_color'                     => '#fff',
+                'startup_outline_blocks'       => false,
+                'width'                        => '100%',
+                'height'                       => '320',
+                'language'                     => 'en-au',
+                'filebrowser_image_browse_url' => array(
+                    'url' => 'relative-url.php?type=file',
+                ),
+                'filebrowser_image_browse_url' => array(
+                    'route'            => 'route_name',
+                    'route_parameters' => array(
+                        'type' => 'image',
+                    ),
+                ),
             ))
             ->getForm()
 ;
