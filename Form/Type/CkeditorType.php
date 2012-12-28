@@ -19,10 +19,10 @@ class CkeditorType extends AbstractType
 {
     protected $container;
     protected $transformers;
-    
+
     public function __construct(ContainerInterface $container)
     {
-        $this->container = $container;       
+        $this->container = $container;
     }
 
     public function addTransformer(DataTransformerInterface $transformer, $alias)
@@ -32,7 +32,7 @@ class CkeditorType extends AbstractType
         }
         $this->transformers[$alias] = $transformer;
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -68,9 +68,12 @@ class CkeditorType extends AbstractType
             ->setAttribute('body_class', $options['body_class'])
             ->setAttribute('contents_css', $options['contents_css'])
             ->setAttribute('basic_entities', $options['basic_entities'])
+            ->setAttribute('entities', $options['entities'])
+            ->setAttribute('entities_latin', $options['entities_latin'])
+            ->setAttribute('startup_mode', $options['startup_mode'])
         ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -79,9 +82,9 @@ class CkeditorType extends AbstractType
         if (!is_array($options['toolbar_groups']) || count($options['toolbar_groups']) < 1) {
             throw new \Exception('You must supply at least 1 toolbar group.');
         }
-        
+
         $toolbar_groups_keys = array_keys($options['toolbar_groups']);
-        
+
         $toolbar = array();
         foreach ($options['toolbar'] as $toolbar_id) {
             if ("/" == $toolbar_id) {
@@ -116,6 +119,9 @@ class CkeditorType extends AbstractType
         $view->vars['body_class']                   = $options['body_class'];
         $view->vars['contents_css']                 = $options['contents_css'];
         $view->vars['basic_entities']               = $options['basic_entities'];
+        $view->vars['entities']                     = $options['entities'];
+        $view->vars['entities_latin']               = $options['entities_latin'];
+        $view->vars['startup_mode']                 = $options['startup_mode'];
         $view->vars['external_plugins']             = $options['external_plugins'];
     }
 
@@ -146,6 +152,9 @@ class CkeditorType extends AbstractType
             'body_class'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.body_class'),
             'contents_css'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.contents_css'),
             'basic_entities'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.basic_entities'),
+            'entities'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities'),
+            'entities_latin'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities_latin'),
+            'startup_mode'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_mode'),
             'external_plugins'             => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
         ));
 
@@ -169,7 +178,7 @@ class CkeditorType extends AbstractType
     {
         return 'textarea';
     }
-    
+
     /**
      * {@inheritdoc}
      */
