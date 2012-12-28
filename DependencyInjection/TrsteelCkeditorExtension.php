@@ -29,7 +29,7 @@ class TrsteelCkeditorExtension extends Extension
             $container->getParameter('twig.form.resources'),
             array('TrsteelCkeditorBundle:Form:ckeditor_widget.html.twig')
         ));
-        
+
         $config['toolbar_groups'] = array_merge($this->getDefaultGroups(), $config['toolbar_groups']);
 
         foreach ($config['external_plugins'] as &$plugin) {
@@ -57,6 +57,9 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.body_class', $config['body_class']);
         $container->setParameter('trsteel_ckeditor.ckeditor.contents_css', $config['contents_css']);
         $container->setParameter('trsteel_ckeditor.ckeditor.basic_entities', $config['basic_entities']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.entities', $config['entities']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.entities_latin', $config['entities_latin']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.startup_mode', $config['startup_mode']);
         $container->setParameter('trsteel_ckeditor.ckeditor.external_plugins', $config['external_plugins']);
     }
 
