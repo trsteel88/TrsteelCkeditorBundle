@@ -13,7 +13,7 @@
     "require": {
         "php": ">=5.3.0",
         "symfony/framework-bundle": "2.*,<2.3",
-        "symfony/form": "2.1.*",
+        "symfony/form": ">=2.1,<2.3-dev",
         "twig/twig": ">=1.1,<2.0-dev"
         
     },
