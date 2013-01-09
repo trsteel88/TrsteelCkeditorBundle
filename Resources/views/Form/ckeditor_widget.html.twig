@@ -6,11 +6,11 @@
 
     <script type="text/javascript">
     {% autoescape true js %}
-        var CKEDITOR_BASEPATH = '{{ app.request.basePath ~ '/bundles/trsteelckeditor/' }}';
+        var CKEDITOR_BASEPATH = '{{ app.request.basePath ~ base_path }}';
     {% endautoescape %}
     </script>
 
-    <script type="text/javascript" src="{{ asset('bundles/trsteelckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset(base_path ~ 'ckeditor.js') }}"></script>
     <script type="text/javascript">
     {% autoescape false %}
         {% set plugins = '' %}

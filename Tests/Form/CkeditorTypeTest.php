@@ -604,6 +604,21 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
+     * Checks base_path property
+     */
+    public function testBasePath()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'base_path' => '/lib/ckeditor/',
+        ));
+
+        $view = $form->createView();
+        $basePath = $view->vars['base_path'];
+
+        $this->assertEquals($basePath, '/lib/ckeditor/');
+    }
+
+    /**
      * Checks base_href property
      */
     public function testBaseHref()
