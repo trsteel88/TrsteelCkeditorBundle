@@ -64,6 +64,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('filebrowser_flash_upload_url', $options['filebrowser_flash_upload_url'])
             ->setAttribute('skin', $options['skin'])
             ->setAttribute('format_tags', $options['format_tags'])
+            ->setAttribute('base_path', $options['base_path'])
             ->setAttribute('base_href', $options['base_href'])
             ->setAttribute('body_class', $options['body_class'])
             ->setAttribute('contents_css', $options['contents_css'])
@@ -115,6 +116,7 @@ class CkeditorType extends AbstractType
         $view->vars['filebrowser_flash_upload_url'] = $options['filebrowser_flash_upload_url'];
         $view->vars['skin']                         = $options['skin'];
         $view->vars['format_tags']                  = $options['format_tags'];
+        $view->vars['base_path']                    = $options['base_path'];
         $view->vars['base_href']                    = $options['base_href'];
         $view->vars['body_class']                   = $options['body_class'];
         $view->vars['contents_css']                 = $options['contents_css'];
@@ -148,6 +150,7 @@ class CkeditorType extends AbstractType
             'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),
             'skin'                         => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'),
             'format_tags'                  => $this->container->getParameter('trsteel_ckeditor.ckeditor.format_tags'),
+            'base_path'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_path'),
             'base_href'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_href'),
             'body_class'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.body_class'),
             'contents_css'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.contents_css'),
