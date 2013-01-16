@@ -36,6 +36,9 @@ class TrsteelCkeditorExtension extends Extension
             $plugin['path'] = '/'.rtrim(ltrim($plugin['path'], '/'), '/').'/';
         }
 
+        // Ensure no leading slash on base path
+        $config['base_path'] = ltrim($config['base_path'], '/');
+
         $container->setParameter('trsteel_ckeditor.form.type.class', $config['class']);
         $container->setParameter('trsteel_ckeditor.ckeditor.transformers', $config['transformers']);
         $container->setParameter('trsteel_ckeditor.ckeditor.toolbar', $config['toolbar']);
