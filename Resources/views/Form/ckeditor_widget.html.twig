@@ -6,7 +6,7 @@
 
     <script type="text/javascript">
     {% autoescape true js %}
-        var CKEDITOR_BASEPATH = '{{ app.request.basePath ~ '/' ~ base_path }}';
+        var CKEDITOR_BASEPATH = '{{ asset(base_path) }}';
     {% endautoescape %}
     </script>
 
