@@ -71,6 +71,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('basic_entities', $options['basic_entities'])
             ->setAttribute('entities', $options['entities'])
             ->setAttribute('entities_latin', $options['entities_latin'])
+            ->setAttribute('additional_options', $options['additional_options'])
             ->setAttribute('startup_mode', $options['startup_mode'])
         ;
     }
@@ -124,6 +125,7 @@ class CkeditorType extends AbstractType
         $view->vars['entities']                     = $options['entities'];
         $view->vars['entities_latin']               = $options['entities_latin'];
         $view->vars['startup_mode']                 = $options['startup_mode'];
+        $view->vars['additional_options']           = $options['additional_options'];
         $view->vars['external_plugins']             = $options['external_plugins'];
     }
 
@@ -158,6 +160,7 @@ class CkeditorType extends AbstractType
             'entities'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities'),
             'entities_latin'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities_latin'),
             'startup_mode'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_mode'),
+            'additional_options'           => $this->container->getParameter('trsteel_ckeditor.ckeditor.additional_options'),
             'external_plugins'             => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
         ));
 

@@ -724,6 +724,21 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
+     * Checks additional_options property
+     */
+    public function testAdditionalOptions()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'additional_options' => array('testOption' => true),
+        ));
+
+        $view = $form->createView();
+        $additionalOptions = $view->vars['additional_options'];
+
+        $this->assertEquals($additionalOptions, array('testOption' => true));
+    }
+
+    /**
      * Checks external_plugins property
      */
     public function testExternalPlugins()

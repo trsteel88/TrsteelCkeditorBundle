@@ -95,6 +95,11 @@
             {% if startup_mode is not null %}
                 startupMode: '{{ startup_mode }}',
             {% endif %}
+            {% if additional_options %}
+                {% for option_key, option_val in additional_options %}
+                    {{ option_key }}: {{ option_val }},
+                {% endfor %}
+            {% endif %}
             {% if plugins %}
                 extraPlugins: '{{ plugins }}',
             {% endif %}
