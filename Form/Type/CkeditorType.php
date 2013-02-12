@@ -55,6 +55,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('startup_outline_blocks', $options['startup_outline_blocks'])
             ->setAttribute('width', $options['width'])
             ->setAttribute('height', $options['height'])
+            ->setAttribute('force_paste_as_plaintext', $options['force_paste_as_plaintext'])
             ->setAttribute('language', $options['language'])
             ->setAttribute('filebrowser_browse_url', $options['filebrowser_browse_url'])
             ->setAttribute('filebrowser_upload_url', $options['filebrowser_upload_url'])
@@ -107,6 +108,7 @@ class CkeditorType extends AbstractType
         $view->vars['ui_color']                     = $options['ui_color'];
         $view->vars['width']                        = $options['width'];
         $view->vars['height']                       = $options['height'];
+        $view->vars['force_paste_as_plaintext']     = $options['force_paste_as_plaintext'];
         $view->vars['language']                     = $options['language'];
         $view->vars['filebrowser_browse_url']       = $options['filebrowser_browse_url'];
         $view->vars['filebrowser_upload_url']       = $options['filebrowser_upload_url'];
@@ -141,6 +143,7 @@ class CkeditorType extends AbstractType
             'ui_color'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_color'),
             'width'                        => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
             'height'                       => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
+            'force_paste_as_plaintext'     => $this->container->getParameter('trsteel_ckeditor.ckeditor.force_paste_as_plaintext'),
             'language'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.language'),
             'filebrowser_browse_url'       => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url'),
             'filebrowser_upload_url'       => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_upload_url'),
