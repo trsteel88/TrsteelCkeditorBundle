@@ -28,6 +28,9 @@
             {% if height is not null %}
                 height: '{{ height }}',
             {% endif %}
+            {% if force_paste_as_plaintext is not null %}
+                forcePasteAsPlainText: {{ force_paste_as_plaintext }},
+            {% endif %}
             {% if language is not null %}
                 language: '{{ language }}',
             {% endif %}
