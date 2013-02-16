@@ -19,6 +19,6 @@ class StripComments implements DataTransformerInterface
      */
     public function reverseTransform($data)
     {
-        return preg_replace('/<!--(.*?)-->/is', '', $data);
+        return preg_replace('/<!--(.*?)-->/is', '', $data) ?: null;
     }
 }

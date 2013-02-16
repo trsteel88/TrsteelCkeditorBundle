@@ -19,6 +19,6 @@ class StripJS implements DataTransformerInterface
      */
     public function reverseTransform($data)
     {
-        return preg_replace('/<script[^>]*>(.*?)<\/script>/is', '', $data);
+        return preg_replace('/<script[^>]*>(.*?)<\/script>/is', '', $data) ?: null;
     }
 }

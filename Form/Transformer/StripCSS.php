@@ -19,6 +19,6 @@ class StripCSS implements DataTransformerInterface
      */
     public function reverseTransform($data)
     {
-        return preg_replace('/<style[^>]*>(.*?)<\/style>/is', '', $data);
+        return preg_replace('/<style[^>]*>(.*?)<\/style>/is', '', $data) ?: null;
     }
 }
