@@ -171,5 +171,5 @@ $form = $this->createFormBuilder($post)
 
 ## Next Steps
 
-- [Creating your own transformers](/trsteel88/TrsteelCkeditorBundle/blob/master/Resources/doc/transformers.md)
-- [Adding additional CKEditor Javascript plugins](/trsteel88/TrsteelCkeditorBundle/blob/master/Resources/doc/ckeditor-plugins.md)
+- [Creating your own transformers](https://github.com/trsteel88/TrsteelCkeditorBundle/blob/master/Resources/doc/transformers.md)
+- [Adding additional CKEditor Javascript plugins](https://github.com/trsteel88/TrsteelCkeditorBundle/blob/master/Resources/doc/ckeditor-plugins.md)
