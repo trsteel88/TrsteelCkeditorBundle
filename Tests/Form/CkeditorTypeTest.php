@@ -749,4 +749,31 @@ class CkeditorTypeTest extends TypeTestCase
             ),
         ));
     }
+
+    /**
+     * Check default customConfig property
+     */
+    public function testDefaultCustomConfig()
+    {
+        $form = $this->factory->create('ckeditor');
+        $view = $form->createView();
+        $customConfig = $view->vars['customConfig'];
+
+        $this->assertNull($customConfig);
+    }
+
+    /**
+     * Checks customConfig property
+     */
+    public function testCustomConfig()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'customConfig' => 'someconfig.js'
+        ));
+
+        $view = $form->createView();
+        $customConfig = $view->vars['customConfig'];
+
+        $this->assertEquals($customConfig, 'someconfig.js');
+    }
 }
