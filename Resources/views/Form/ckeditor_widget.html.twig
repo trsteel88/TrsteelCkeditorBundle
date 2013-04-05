@@ -101,6 +101,9 @@
             {% if plugins %}
                 extraPlugins: '{{ plugins }}',
             {% endif %}
+            {% if customConfig %}
+                customConfig: '{{ asset(customConfig) }}',
+            {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
         });
     {% endautoescape %}
