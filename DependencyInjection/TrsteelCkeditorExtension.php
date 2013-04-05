@@ -66,6 +66,7 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.entities_latin', $config['entities_latin']);
         $container->setParameter('trsteel_ckeditor.ckeditor.startup_mode', $config['startup_mode']);
         $container->setParameter('trsteel_ckeditor.ckeditor.external_plugins', $config['external_plugins']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.customConfig', $config['customConfig']);
     }
 
     private function getDefaultGroups()
