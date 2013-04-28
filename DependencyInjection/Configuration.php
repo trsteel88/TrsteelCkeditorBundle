@@ -190,7 +190,7 @@ class Configuration implements ConfigurationInterface
                 ->variableNode('format_tags')
                     ->defaultValue(array())
                     ->info("An array of style names (by default tags) representing the style definition for each entry to be displayed in the Format combo in the toolbar.")
-                    ->example(array('p','h2','h3','pre'))
+                    ->example('[\'p\',\'h2\',\'h3\',\'pre\']')
                 ->end()
             ->end()
             ->children()
