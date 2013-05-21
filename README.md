@@ -17,7 +17,7 @@
 ```js
 {
     "require": {
-        "Trsteel/ckeditor-bundle": "dev-master"
+        "Trsteel/ckeditor-bundle": "1.1.*@dev"
     }
 }
 ```
