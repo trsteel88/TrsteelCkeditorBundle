@@ -82,7 +82,15 @@
                 bodyClass: '{{ body_class }}',
             {% endif %}
             {% if contents_css is not null %}
-                contentsCss: '{{ asset(contents_css) }}',
+                {% if contents_css is iterable %}
+                    {% set contents_css_array = [] %}
+                    {% for file in contents_css %}
+                        {% set contents_css_array = contents_css_array|merge([asset(file)]) %}
+                    {% endfor %}
+                    contentsCss: {{ contents_css_array|json_encode }},
+                {% else %}
+                    contentsCss: '{{ asset(contents_css) }}',
+                {% endif %}
             {% endif %}
             {% if basic_entities is not null %}
                 basicEntities: '{{ basic_entities }}',
