@@ -167,15 +167,19 @@ class CkeditorType extends AbstractType
         ));
 
         $resolver->setAllowedValues(array(
-            'required'               => array(false),
-            'startup_outline_blocks' => array(true, false),
+            'required'                 => array(false),
+            'startup_outline_blocks'   => array(true, false),
+            'force_paste_as_plaintext' => array(true, false),
+            'basic_entities'           => array(true, false),
+            'startup_mode'             => array('wysiwyg', 'source'),
         ));
 
         $resolver->setAllowedTypes(array(
-            'transformers'   => 'array',
-            'toolbar'        => 'array',
-            'toolbar_groups' => 'array',
-            'format_tags'    => 'array',
+            'transformers'     => 'array',
+            'toolbar'          => 'array',
+            'toolbar_groups'   => 'array',
+            'format_tags'      => 'array',
+            'external_plugins' => 'array',
         ));
     }
 
