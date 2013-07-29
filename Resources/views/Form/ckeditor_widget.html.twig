@@ -107,8 +107,8 @@
             {% if plugins %}
                 extraPlugins: '{{ plugins }}',
             {% endif %}
-            {% if customConfig %}
-                customConfig: '{{ asset(customConfig) }}',
+            {% if custom_config %}
+                customConfig: '{{ asset(custom_config) }}',
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
         });

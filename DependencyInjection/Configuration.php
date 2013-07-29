@@ -246,7 +246,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
             ->children()
-                ->scalarNode('customConfig')
+                ->scalarNode('custom_config')
                     ->defaultNull()
                     ->info("The path of the custom config.js to use for the editor setup.")
                 ->end()

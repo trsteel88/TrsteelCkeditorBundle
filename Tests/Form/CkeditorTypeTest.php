@@ -778,7 +778,7 @@ class CkeditorTypeTest extends TypeTestCase
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
-        $customConfig = $view->vars['customConfig'];
+        $customConfig = $view->vars['custom_config'];
 
         $this->assertNull($customConfig);
     }
@@ -789,11 +789,11 @@ class CkeditorTypeTest extends TypeTestCase
     public function testCustomConfig()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'customConfig' => 'someconfig.js'
+            'custom_config' => 'someconfig.js'
         ));
 
         $view = $form->createView();
-        $customConfig = $view->vars['customConfig'];
+        $customConfig = $view->vars['custom_config'];
 
         $this->assertEquals($customConfig, 'someconfig.js');
     }
