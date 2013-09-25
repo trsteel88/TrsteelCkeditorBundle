@@ -67,6 +67,12 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.startup_mode', $config['startup_mode']);
         $container->setParameter('trsteel_ckeditor.ckeditor.external_plugins', $config['external_plugins']);
         $container->setParameter('trsteel_ckeditor.ckeditor.custom_config', $config['custom_config']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.fontsize_sizes', $config['fontsize_sizes']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.extra_allowed_content', $config['extra_allowed_content']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.styles_set', $config['styles_set']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.templates', $config['templates']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.templates_files', $config['templates_files']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.templates_replace_content', $config['templates_replace_content']);
     }
 
     private function getDefaultGroups()
