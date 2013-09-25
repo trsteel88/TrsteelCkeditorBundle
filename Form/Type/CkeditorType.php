@@ -128,6 +128,12 @@ class CkeditorType extends AbstractType
         $view->vars['startup_mode']                 = $options['startup_mode'];
         $view->vars['external_plugins']             = $options['external_plugins'];
         $view->vars['custom_config']                = $options['custom_config'];
+        $view->vars['extra_allowed_content']        = $options['extra_allowed_content'];
+        $view->vars['fontsize_sizes']               = $options['fontsize_sizes'];
+        $view->vars['styles_set']                   = $options['styles_set'];
+        $view->vars['templates']                    = $options['templates'];
+        $view->vars['templates_files']              = $options['templates_files'];
+        $view->vars['templates_replace_content']    = $options['templates_replace_content'];
     }
 
     /**
@@ -164,6 +170,12 @@ class CkeditorType extends AbstractType
             'startup_mode'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_mode'),
             'external_plugins'             => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
             'custom_config'                => $this->container->getParameter('trsteel_ckeditor.ckeditor.custom_config'),
+            'extra_allowed_content'        => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'),
+            'fontsize_sizes'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.fontsize_sizes'),
+            'styles_set'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.styles_set'),
+            'templates'                    => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates'),
+            'templates_files'              => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_files'),
+            'templates_replace_content'    => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_replace_content'),
         ));
 
         $resolver->setAllowedValues(array(
