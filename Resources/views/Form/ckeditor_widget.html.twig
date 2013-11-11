@@ -19,7 +19,8 @@
             {% endif %}
             {% set plugins = plugins ~ name %}
         {% endfor %}
-        CKEDITOR.replace("{{ id }}",{
+
+        var trsteelConfig = {
             {% if width is not null %}
                 width: '{{ width }}',
             {% endif %}
@@ -111,7 +112,11 @@
                 customConfig: '{{ asset(custom_config) }}',
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
-        });
+        };
+
+        CKEDITOR.replace("{{ id }}", trsteelConfig);
+        CKEDITOR.instances["{{ id }}"].rawConfig = trsteelConfig;
+
     {% endautoescape %}
     </script>
 {% endspaceless %}
