@@ -1,5 +1,5 @@
 {
-    "name": "Trsteel/ckeditor-bundle",
+    "name": "github-scott/ckeditor-bundle",
     "type": "symfony-bundle",
     "description": "Symfony2 bundle for easy integration of the CKEditor WYSIWYG",
     "keywords": ["ckeditor", "wysiwyg", "editor"],
