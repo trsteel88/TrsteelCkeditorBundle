@@ -1,7 +1,5 @@
 ## Symfony2 CKEditor Bundle
 
-Forked in order to add custom templates
-
 [![Build Status](https://secure.travis-ci.org/trsteel88/TrsteelCkeditorBundle.png?branch=master)](http://travis-ci.org/trsteel88/TrsteelCkeditorBundle)
 
 [![KnpBundles Badge](http://knpbundles.com/trsteel88/TrsteelCkeditorBundle/badge)](http://knpbundles.com/trsteel88/TrsteelCkeditorBundle)
