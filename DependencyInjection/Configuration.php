@@ -266,6 +266,19 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end()
+            ->children()
+                ->variableNode('templates_files')
+                    ->defaultValue(array(
+                    ))
+                    ->info("The file used for custom templates.")
+                ->end()
+            ->end()
+            ->children()
+                ->variableNode('extra_allowed_content')
+                    ->defaultValue('*(*)')
+                    ->info("Extra allowed tags.")
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;
