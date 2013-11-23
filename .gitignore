@@ -1,3 +1,5 @@
-Tests/vendor/*
-Tests/cache/*
-Tests/logs/*
+/composer.phar
+/composer.lock
+/vendor
+/Tests/Resources/cache
+/Tests/Resources/logs

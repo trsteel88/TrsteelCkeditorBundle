@@ -14,8 +14,12 @@
         "php": ">=5.3.0",
         "symfony/framework-bundle": "2.*,<2.4",
         "symfony/form": ">=2.1,<2.4-dev",
-        "twig/twig": ">=1.1,<2.0-dev"
-        
+        "twig/twig": ">=1.1,<2.0-dev",
+        "exercise/htmlpurifier-bundle": "dev-master"
+    },
+    "require-dev": {
+        "symfony/twig-bundle": "2.*,<2.4",
+        "symfony/yaml": "~2.0"
     },
     "autoload": {
         "psr-0": { "Trsteel\\CkeditorBundle": "" }

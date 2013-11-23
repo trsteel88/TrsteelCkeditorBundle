@@ -2,12 +2,10 @@
 
 namespace Trsteel\CkeditorBundle\Tests\Form;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Form\Forms;
 use Trsteel\CkeditorBundle\Form\Type\CkeditorType;
-use Trsteel\CkeditorBundle\Form\Transformer\StripJS;
-use Trsteel\CkeditorBundle\Form\Transformer\StripCSS;
-use Trsteel\CkeditorBundle\Form\Transformer\StripComments;
+use Trsteel\CkeditorBundle\Tests\AppKernel;
 
 class CkeditorTypeTest extends TypeTestCase
 {
@@ -16,7 +14,7 @@ class CkeditorTypeTest extends TypeTestCase
 
     public static function setUpBeforeClass()
     {
-        self::$kernel = new \AppKernel('dev', true);
+        self::$kernel = new AppKernel('dev', true);
         self::$kernel->boot();
 
         self::$container = self::$kernel->getContainer();
@@ -32,10 +30,6 @@ class CkeditorTypeTest extends TypeTestCase
         parent::setUp();
 
         $ckeditorType = new CkeditorType($this->get('service_container'));
-
-        $ckeditorType->addTransformer(new StripJS(), 'strip_js');
-        $ckeditorType->addTransformer(new StripCSS(), 'strip_css');
-        $ckeditorType->addTransformer(new StripComments(), 'strip_comments');
 
         $this->factory = Forms::createFormFactoryBuilder()
             ->addType($ckeditorType)

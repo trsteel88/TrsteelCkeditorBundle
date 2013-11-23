@@ -8,7 +8,6 @@
     <testsuites>
         <testsuite name="TrsteelCkeditorBundle Test Suite">
             <directory suffix="Test.php">./Tests</directory>
-            <exclude>./Tests/vendor</exclude>
         </testsuite>
     </testsuites>
 
@@ -18,8 +17,8 @@
             <exclude>
                 <directory>./Resources</directory>
                 <directory>./Tests</directory>
+                <directory>./vendor</directory>
             </exclude>
         </whitelist>
     </filter>
-
 </phpunit>

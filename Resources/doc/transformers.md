@@ -71,4 +71,4 @@ $form = $this->createFormBuilder($post)
 ;
 ```
 
-Note: If you override the transformers value none of the default transformers will be including (eg strip_js, strip_css etc)
+Note: If you override the transformers value none of the default transformers will be including (eg html_purifier)

@@ -29,7 +29,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->variableNode('transformers')
                     ->defaultValue(array(
-                        'strip_js', 'strip_css', 'strip_comments'
+                        //'html_purifier'
                     ))
                     ->info("Default data transformers for the submitted html.")
                 ->end()

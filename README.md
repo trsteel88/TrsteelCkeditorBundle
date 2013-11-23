@@ -14,18 +14,9 @@
 6. Configure data transformers
 
 ### Step 1: Add TrsteelCkeditorBundle to your composer.json
-```js
-{
-    "require": {
-        "Trsteel/ckeditor-bundle": "1.1.*@dev"
-    }
-}
-```
-
-and update your project dependencies:
 
 ```bash
-php composer.phar update Trsteel/ckeditor-bundle
+php composer.phar require Trsteel/ckeditor-bundle 1.3.*
 ```
 
 ### Step 2: Enable the bundle
@@ -38,6 +29,7 @@ public function registerBundles()
     $bundles = array(
         // ...
         new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
+        new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
     );
 }
 ```
@@ -61,7 +53,7 @@ An example configuration:
 ```yaml
 trsteel_ckeditor:
     class: Trsteel\CkeditorBundle\Form\Type\CkeditorType
-    transformers: ['strip_js', 'strip_css', 'strip_comments']
+    transformers: ['html_purifier']
     toolbar: ['document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
     toolbar_groups:
         document: ['Source','-','Save','-','Templates']
@@ -108,7 +100,7 @@ Example form:
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
             ->add('content', 'ckeditor', array(
-                'transformers'                 => array('strip_js', 'strip_css', 'strip_comments'),
+                'transformers'                 => array('html_purifier'),
                 'toolbar'                      => array('document','basicstyles'),
                 'toolbar_groups'               => array(
                     'document' => array('Source')
@@ -138,13 +130,7 @@ Note: All parameters from config.yml can be overwritten in a form (excluding 'cl
 
 Data transformers will automatically update the html content when the form is processed.
 
-This bundle comes with several built-in transformers.
-
-**strip_js:** Strips all javascript from the posted data
-
-**strip_css:** Strips all css from the posted data
-
-**strip_comments:** Strips all comments from html eg. <!-- This is a comment -->
+The bundle comes with a html purifier transformer thanks to https://github.com/Exercise/HTMLPurifierBundle
 
 If you do not want any transformers enabled you should disable them by:
 
