@@ -15,7 +15,7 @@
         "symfony/framework-bundle": "2.*,<2.5",
         "symfony/form": ">=2.1,<2.5-dev",
         "twig/twig": ">=1.1,<2.0-dev",
-        "exercise/htmlpurifier-bundle": "dev-master"
+        "ezyang/htmlpurifier": "~4.0"
     },
     "require-dev": {
         "symfony/twig-bundle": "2.*,<2.5",

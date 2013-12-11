@@ -6,7 +6,7 @@ services:
             - { name: form.type, alias: ckeditor }
 
     trsteel_ckeditor.transformer.html_purifier:
-        class: Exercise\HTMLPurifierBundle\Form\HTMLPurifierTransformer
+        class: Trsteel\CkeditorBundle\Form\DataTransformer\HTMLPurifierTransformer
         public: false
         arguments: [@exercise_html_purifier.default]
         tags:

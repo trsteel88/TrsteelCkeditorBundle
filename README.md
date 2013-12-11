@@ -29,7 +29,6 @@ public function registerBundles()
     $bundles = array(
         // ...
         new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
-        new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
     );
 }
 ```
@@ -130,7 +129,7 @@ Note: All parameters from config.yml can be overwritten in a form (excluding 'cl
 
 Data transformers will automatically update the html content when the form is processed.
 
-The bundle comes with a html purifier transformer thanks to https://github.com/Exercise/HTMLPurifierBundle
+The bundle comes with a html purifier transformer thanks to https://github.com/ezyang/htmlpurifier
 
 If you do not want any transformers enabled you should disable them by:
 
