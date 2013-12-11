@@ -28,9 +28,7 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->children()
                 ->variableNode('transformers')
-                    ->defaultValue(array(
-                        //'html_purifier'
-                    ))
+                    ->defaultValue(array('html_purifier'))
                     ->info("Default data transformers for the submitted html.")
                 ->end()
             ->end()
