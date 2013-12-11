@@ -329,7 +329,6 @@ class CkeditorTypeTest extends TypeTestCase
         $this->assertEquals($language, 'en-au');
     }
 
-
     /**
      * Checks filebrowserBrowseUrl property
      */
