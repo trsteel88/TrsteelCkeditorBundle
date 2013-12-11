@@ -12,16 +12,6 @@ class HTMLPurifierTransformer implements DataTransformerInterface
     private $purifier;
 
     /**
-     * Constructor.
-     *
-     * @param \HTMLPurifier $purifier
-     */
-    public function __construct(\HTMLPurifier $purifier)
-    {
-        $this->purifier = $purifier;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function transform($value)
@@ -34,6 +24,18 @@ class HTMLPurifierTransformer implements DataTransformerInterface
      */
     public function reverseTransform($value)
     {
-        return $this->purifier->purify($value);
+        return $this->getPurifier()->purify($value);
+    }
+
+    /**
+     * @return \HTMLPurifier
+     */
+    protected function getPurifier()
+    {
+        if (null === $this->purifier) {
+            $this->purifier = new \HTMLPurifier();
+        }
+
+        return $this->purifier;
     }
 }

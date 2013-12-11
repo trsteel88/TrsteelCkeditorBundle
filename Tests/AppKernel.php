@@ -18,7 +18,6 @@ class AppKernel extends Kernel
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Symfony\Bundle\TwigBundle\TwigBundle(),
             new \Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
-            new \Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
         );
 
         return $bundles;
