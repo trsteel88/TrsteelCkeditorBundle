@@ -16,8 +16,10 @@ class TransformerCompilerPass implements CompilerPassInterface
 
         $definition = $container->getDefinition('trsteel_ckeditor.form.type');
 
-        foreach ($container->findTaggedServiceIds('trsteel_ckeditor.transformer') as $id => $attributes) {
-            $definition->addMethodCall('addTransformer', array(new Reference($id), $attributes[0]['alias']));
+        foreach ($container->findTaggedServiceIds('trsteel_ckeditor.transformer') as $id => $tags) {
+            foreach ($tags as $tag) {
+                $definition->addMethodCall('addTransformer', array(new Reference($id), $tag['alias']));
+            }
         }
     }
 }
