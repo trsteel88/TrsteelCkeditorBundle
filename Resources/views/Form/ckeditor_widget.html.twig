@@ -105,6 +105,9 @@
             {% if startup_mode is not null %}
                 startupMode: '{{ startup_mode }}',
             {% endif %}
+            {% if enter_mode is not null %}
+                enterMode: CKEDITOR.{{ enter_mode }},
+            {% endif %}
             {% if plugins %}
                 extraPlugins: '{{ plugins }}',
             {% endif %}

@@ -741,6 +741,21 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
+     * Checks enter_mode property
+     */
+    public function testEnterMode()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'enter_mode' => 'ENTER_BR',
+        ));
+
+        $view = $form->createView();
+        $startupMode = $view->vars['enter_mode'];
+
+        $this->assertEquals($startupMode, 'ENTER_BR');
+    }
+
+    /**
      * Checks external_plugins property
      */
     public function testExternalPlugins()
