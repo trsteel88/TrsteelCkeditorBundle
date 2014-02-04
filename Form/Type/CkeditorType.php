@@ -73,6 +73,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('entities', $options['entities'])
             ->setAttribute('entities_latin', $options['entities_latin'])
             ->setAttribute('startup_mode', $options['startup_mode'])
+            ->setAttribute('enter_mode', $options['enter_mode'])
         ;
     }
 
@@ -126,6 +127,7 @@ class CkeditorType extends AbstractType
         $view->vars['entities']                     = $options['entities'];
         $view->vars['entities_latin']               = $options['entities_latin'];
         $view->vars['startup_mode']                 = $options['startup_mode'];
+        $view->vars['enter_mode']                   = $options['enter_mode'];
         $view->vars['external_plugins']             = $options['external_plugins'];
         $view->vars['custom_config']                = $options['custom_config'];
     }
@@ -162,6 +164,7 @@ class CkeditorType extends AbstractType
             'entities'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities'),
             'entities_latin'               => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities_latin'),
             'startup_mode'                 => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_mode'),
+            'enter_mode'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.enter_mode'),
             'external_plugins'             => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
             'custom_config'                => $this->container->getParameter('trsteel_ckeditor.ckeditor.custom_config'),
         ));
@@ -172,6 +175,7 @@ class CkeditorType extends AbstractType
             'force_paste_as_plaintext' => array(true, false),
             'basic_entities'           => array(true, false),
             'startup_mode'             => array('wysiwyg', 'source'),
+            'enter_mode'               => array('ENTER_P', 'ENTER_BR', 'ENTER_DIV'),
         ));
 
         $resolver->setAllowedTypes(array(
