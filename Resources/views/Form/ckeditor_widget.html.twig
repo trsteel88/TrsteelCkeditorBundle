@@ -24,8 +24,8 @@
             {% if width is not null %}
                 width: '{{ width }}',
             {% endif %}
-            {% if templates_files is not null %}
-                templates_files: [ {% for template in templates_files %}'{{ template }}',{% endfor %}],
+			{% if templates_files|length > 0 %}
+				templates_files: ['{{ templates_files|join(',')|raw }}'],
             {% endif %}
             extraAllowedContent: '{{ extra_allowed_content }}',
             {% if height is not null %}
