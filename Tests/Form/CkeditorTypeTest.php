@@ -805,4 +805,40 @@ class CkeditorTypeTest extends TypeTestCase
 
         $this->assertEquals($customConfig, 'someconfig.js');
     }
+
+    /**
+     * Checks templateFiles property
+     */
+    public function testTemplateFiles()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'templates_files' => array(
+                '/editor_templates/site_default.js',
+                'http://www.example.com/user_templates.js',
+            )
+        ));
+
+        $view = $form->createView();
+        $templateFiles = $view->vars['templates_files'];
+
+        $this->assertEquals($templateFiles, array(
+            '/editor_templates/site_default.js',
+            'http://www.example.com/user_templates.js',
+        ));
+    }
+
+    /**
+     * Checks extraAllowedContent property
+     */
+    public function testExtraAllowedContent()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'extra_allowed_content' => 'b i',
+        ));
+
+        $view = $form->createView();
+        $extraAllowedContent = $view->vars['extra_allowed_content'];
+
+        $this->assertEquals($extraAllowedContent, 'b i');
+    }
 }

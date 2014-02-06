@@ -24,6 +24,12 @@
             {% if width is not null %}
                 width: '{{ width }}',
             {% endif %}
+			{% if templates_files|length > 0 %}
+				templates_files: ['{{ templates_files|join(',')|raw }}'],
+            {% endif %}
+            {% if height is not null %}
+                extraAllowedContent: '{{ extra_allowed_content }}',
+            {% endif %}
             {% if height is not null %}
                 height: '{{ height }}',
             {% endif %}
@@ -115,6 +121,7 @@
                 customConfig: '{{ asset(custom_config) }}',
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
+            
         };
 
         CKEDITOR.replace("{{ id }}", trsteelConfig);

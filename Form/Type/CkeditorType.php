@@ -49,6 +49,7 @@ class CkeditorType extends AbstractType
         $options['toolbar_groups'] = array_merge($this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), $options['toolbar_groups']);
 
         $builder
+            
             ->setAttribute('toolbar', $options['toolbar'])
             ->setAttribute('toolbar_groups', $options['toolbar_groups'])
             ->setAttribute('ui_color', $options['ui_color'] ? '#'.ltrim($options['ui_color'], '#') : null)
@@ -74,6 +75,8 @@ class CkeditorType extends AbstractType
             ->setAttribute('entities_latin', $options['entities_latin'])
             ->setAttribute('startup_mode', $options['startup_mode'])
             ->setAttribute('enter_mode', $options['enter_mode'])
+            ->setAttribute('templates_files', $options['templates_files'])
+            ->setAttribute('extra_allowed_content', $options['extra_allowed_content'])
         ;
     }
 
@@ -103,7 +106,7 @@ class CkeditorType extends AbstractType
                 );
             }
         }
-
+        
         $view->vars['toolbar']                      = $toolbar;
         $view->vars['startup_outline_blocks']       = $options['startup_outline_blocks'];
         $view->vars['ui_color']                     = $options['ui_color'];
@@ -130,6 +133,8 @@ class CkeditorType extends AbstractType
         $view->vars['enter_mode']                   = $options['enter_mode'];
         $view->vars['external_plugins']             = $options['external_plugins'];
         $view->vars['custom_config']                = $options['custom_config'];
+        $view->vars['templates_files']              = $options['templates_files'];
+        $view->vars['extra_allowed_content']        = $options['extra_allowed_content'];
     }
 
     /**
@@ -167,6 +172,8 @@ class CkeditorType extends AbstractType
             'enter_mode'                   => $this->container->getParameter('trsteel_ckeditor.ckeditor.enter_mode'),
             'external_plugins'             => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
             'custom_config'                => $this->container->getParameter('trsteel_ckeditor.ckeditor.custom_config'),
+            'templates_files'              => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_files'),
+            'extra_allowed_content'        => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'),
         ));
 
         $resolver->setAllowedValues(array(

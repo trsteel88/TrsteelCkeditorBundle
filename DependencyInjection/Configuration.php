@@ -270,6 +270,18 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end()
+            ->children()
+                ->variableNode('templates_files')
+                    ->defaultValue(array())
+                    ->info("The list of templates definition files to load.")
+                ->end()
+            ->end()
+            ->children()
+                ->scalarNode('extra_allowed_content')
+                    ->defaultNull()
+                    ->info("This option makes it possible to set additional allowed content rules for CKEDITOR.editor.filter.")
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;
