@@ -197,7 +197,7 @@ class CkeditorTypeTest extends TypeTestCase
     /**
      * Check default startup_outline_blocks property
      */
-    public function testDefaultstartupOutlineBlocks()
+    public function testDefaultStartupOutlineBlocks()
     {
         $form = $this->factory->create('ckeditor');
         $view = $form->createView();
@@ -209,7 +209,7 @@ class CkeditorTypeTest extends TypeTestCase
     /**
      * Checks startup_outline_blocks property
      */
-    public function teststartupOutlineBlocks()
+    public function testStartupOutlineBlocks()
     {
         $form = $this->factory->create('ckeditor', null, array(
             'startup_outline_blocks' => false
