@@ -49,7 +49,6 @@ class CkeditorType extends AbstractType
         $options['toolbar_groups'] = array_merge($this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), $options['toolbar_groups']);
 
         $builder
-            
             ->setAttribute('toolbar', $options['toolbar'])
             ->setAttribute('toolbar_groups', $options['toolbar_groups'])
             ->setAttribute('ui_color', $options['ui_color'] ? '#'.ltrim($options['ui_color'], '#') : null)
@@ -106,7 +105,7 @@ class CkeditorType extends AbstractType
                 );
             }
         }
-        
+
         $view->vars['toolbar']                      = $toolbar;
         $view->vars['startup_outline_blocks']       = $options['startup_outline_blocks'];
         $view->vars['ui_color']                     = $options['ui_color'];

@@ -121,7 +121,6 @@
                 customConfig: '{{ asset(custom_config) }}',
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }}
-            
         };
 
         CKEDITOR.replace("{{ id }}", trsteelConfig);
