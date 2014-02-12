@@ -82,9 +82,6 @@
             {% if format_tags|length > 0 %}
                 format_tags: '{{ format_tags | join(';') | raw }}',
             {% endif %}
-            {% if base_href is not null %}
-                baseHref: '{{ base_href }}',
-            {% endif %}
             {% if body_class is not null %}
                 bodyClass: '{{ body_class }}',
             {% endif %}
@@ -120,7 +117,8 @@
             {% if custom_config %}
                 customConfig: '{{ asset(custom_config) }}',
             {% endif %}
-            toolbar: {{ toolbar | json_encode | raw }}
+            toolbar: {{ toolbar | json_encode | raw }},
+            baseHref: '{{ base_href ? base_href : app.request.schemeAndHttpHost ~ app.request.baseUrl ~ '/' }}'
         };
 
         CKEDITOR.replace("{{ id }}", trsteelConfig);
