@@ -27,7 +27,7 @@
 			{% if templates_files|length > 0 %}
 				templates_files: ['{{ templates_files|join(',')|raw }}'],
             {% endif %}
-            {% if height is not null %}
+            {% if extra_allowed_content is not null %}
                 extraAllowedContent: '{{ extra_allowed_content }}',
             {% endif %}
             {% if height is not null %}
