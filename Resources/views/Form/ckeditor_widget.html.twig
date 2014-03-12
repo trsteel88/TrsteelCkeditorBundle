@@ -114,8 +114,16 @@
             {% if plugins %}
                 extraPlugins: '{{ plugins }}',
             {% endif %}
-            {% if custom_config %}
-                customConfig: '{{ asset(custom_config) }}',
+            {% if custom_config and custom_config is iterable %}
+                {% for custom_config_name, custom_config_definition in custom_config %}
+                    {% if custom_config_definition.type == "route" %}
+                        {{ custom_config_name }}: '{{ path(custom_config_definition.value, custom_config_definition.route_parameters) }}',
+                    {% elseif custom_config_definition.type == "file" %}
+                        {{ custom_config_name }}: '{{ asset(custom_config_definition.value) }}',
+                    {% elseif custom_config_definition.type == "scalar" %}
+                        {{ custom_config_name }}: '{{ custom_config_definition.value }}',
+                    {% endif %}
+                {% endfor %}
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }},
             baseHref: '{{ base_href ? base_href : app.request.schemeAndHttpHost ~ app.request.baseUrl ~ '/' }}'
