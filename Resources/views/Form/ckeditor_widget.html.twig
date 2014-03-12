@@ -117,6 +117,9 @@
             {% if custom_config %}
                 customConfig: '{{ asset(custom_config) }}',
             {% endif %}
+            {% if styleset %}
+                styleSet: 'default:{{ asset(styleset) }}',
+            {% endif %}
             toolbar: {{ toolbar | json_encode | raw }},
             baseHref: '{{ base_href ? base_href : app.request.schemeAndHttpHost ~ app.request.baseUrl ~ '/' }}'
         };

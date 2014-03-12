@@ -1047,6 +1047,33 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
+     * Check default styleset property
+     */
+    public function testDefaultStyleset()
+    {
+        $form = $this->factory->create('ckeditor');
+        $view = $form->createView();
+        $customStyleset = $view->vars['styleset'];
+
+        $this->assertNull($customStyleset);
+    }
+
+    /**
+     * Checks styleset property
+     */
+    public function testStyleset()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'styleset' => 'bundles/example/js/somestyleset.js'
+        ));
+
+        $view = $form->createView();
+        $customStyleset = $view->vars['styleset'];
+
+        $this->assertEquals($customStyleset, 'bundles/example/js/somestyleset.js');
+    }
+
+    /**
      * Check default templates_files property
      */
     public function testDefaultTemplateFiles()
