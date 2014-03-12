@@ -8,5 +8,6 @@ services:
     trsteel_ckeditor.transformer.html_purifier:
         class: Trsteel\CkeditorBundle\Form\DataTransformer\HTMLPurifierTransformer
         public: false
+        arguments: [%trsteel_ckeditor.html_purifier.config%]
         tags:
             - { name: trsteel_ckeditor.transformer, alias: html_purifier }

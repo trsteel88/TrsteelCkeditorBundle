@@ -22,8 +22,15 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('class')
-                    ->defaultValue('Trsteel\CkeditorBundle\Form\Type\CkeditorType')
+                ->scalarNode('class')->defaultValue('Trsteel\CkeditorBundle\Form\Type\CkeditorType')->end()
+                ->arrayNode('html_purifier')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->variableNode('config')
+                            ->defaultValue(array())
+                            ->info("The default html purifer config. See http://htmlpurifier.org/live/configdoc/plain.html for more information.")
+                        ->end()
+                    ->end()
                 ->end()
                 ->variableNode('transformers')
                     ->defaultValue(array('html_purifier'))
