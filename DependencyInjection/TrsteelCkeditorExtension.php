@@ -40,6 +40,7 @@ class TrsteelCkeditorExtension extends Extension
         $config['base_path'] = ltrim($config['base_path'], '/');
 
         $container->setParameter('trsteel_ckeditor.form.type.class', $config['class']);
+        $container->setParameter('trsteel_ckeditor.html_purifier.config', $config['html_purifier']['config']);
         $container->setParameter('trsteel_ckeditor.ckeditor.transformers', $config['transformers']);
         $container->setParameter('trsteel_ckeditor.ckeditor.toolbar', $config['toolbar']);
         $container->setParameter('trsteel_ckeditor.ckeditor.toolbar_groups', $config['toolbar_groups']);

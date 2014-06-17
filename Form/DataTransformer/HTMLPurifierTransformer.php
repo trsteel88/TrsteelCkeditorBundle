@@ -12,6 +12,19 @@ class HTMLPurifierTransformer implements DataTransformerInterface
     private $purifier;
 
     /**
+     * @var array
+     */
+    private $config;
+
+    /**
+     * @param array $config
+     */
+    public function __construct(array $config)
+    {
+        $this->config = $config;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function transform($value)
@@ -33,7 +46,7 @@ class HTMLPurifierTransformer implements DataTransformerInterface
     protected function getPurifier()
     {
         if (null === $this->purifier) {
-            $this->purifier = new \HTMLPurifier();
+            $this->purifier = new \HTMLPurifier($this->config);
         }
 
         return $this->purifier;
