@@ -53,6 +53,8 @@ An example configuration:
 trsteel_ckeditor:
     class: Trsteel\CkeditorBundle\Form\Type\CkeditorType
     transformers: ['html_purifier']
+    html_purifier:
+        config: { Cache.SerializerPath: %kernel.cache_dir% }
     toolbar: ['document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
     toolbar_groups:
         document: ['Source','-','Save','-','Templates']
