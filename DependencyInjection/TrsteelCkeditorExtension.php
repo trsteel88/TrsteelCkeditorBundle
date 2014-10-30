@@ -39,6 +39,10 @@ class TrsteelCkeditorExtension extends Extension
         // Ensure no leading slash on base path
         $config['base_path'] = ltrim($config['base_path'], '/');
 
+        $config['html_purifier']['config'] = array_merge(array(
+            'Cache.SerializerPath' => '%kernel.cache_dir%',
+        ), $config['html_purifier']['config']);
+
         $container->setParameter('trsteel_ckeditor.form.type.class', $config['class']);
         $container->setParameter('trsteel_ckeditor.html_purifier.config', $config['html_purifier']['config']);
         $container->setParameter('trsteel_ckeditor.ckeditor.transformers', $config['transformers']);
