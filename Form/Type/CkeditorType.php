@@ -84,6 +84,8 @@ class CkeditorType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
+        $options['toolbar_groups'] = array_merge($this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), $options['toolbar_groups']);
+
         if (!is_array($options['toolbar_groups']) || count($options['toolbar_groups']) < 1) {
             throw new \Exception('You must supply at least 1 toolbar group.');
         }
