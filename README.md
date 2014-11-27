@@ -16,7 +16,7 @@
 ### Step 1: Add TrsteelCkeditorBundle to your composer.json
 
 ```bash
-php composer.phar require Trsteel/ckeditor-bundle ~1.5
+php composer.phar require Trsteel/ckeditor-bundle ~1.6
 ```
 
 ### Step 2: Enable the bundle
