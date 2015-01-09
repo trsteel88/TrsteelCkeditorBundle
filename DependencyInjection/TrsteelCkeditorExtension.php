@@ -41,6 +41,7 @@ class TrsteelCkeditorExtension extends Extension
 
         $config['html_purifier']['config'] = array_merge(array(
             'Cache.SerializerPath' => '%kernel.cache_dir%',
+            'Cache.SerializerPermissions' => 0775,
         ), $config['html_purifier']['config']);
 
         $container->setParameter('trsteel_ckeditor.form.type.class', $config['class']);
