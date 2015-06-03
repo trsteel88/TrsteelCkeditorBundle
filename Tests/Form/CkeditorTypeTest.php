@@ -1028,22 +1028,70 @@ class CkeditorTypeTest extends TypeTestCase
         $view = $form->createView();
         $customConfig = $view->vars['custom_config'];
 
-        $this->assertNull($customConfig);
+        $this->assertEquals($customConfig, array());
     }
 
     /**
-     * Checks customConfig property
+     * Checks customConfig file property
      */
-    public function testCustomConfig()
+    public function testCustomConfigFile()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'custom_config' => 'someconfig.js'
+            'custom_config' => array(
+                'type'  => 'file',
+                'value' => 'someconfig.js'
+            )
         ));
 
         $view = $form->createView();
         $customConfig = $view->vars['custom_config'];
 
-        $this->assertEquals($customConfig, 'someconfig.js');
+        $this->assertEquals($customConfig, array(
+                'type'  => 'file',
+                'value' => 'someconfig.js'
+        ));
+    }
+
+    /**
+     * Checks customConfig scalar property
+     */
+    public function testCustomConfigScalar()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'custom_config' => array(
+                'type'  => 'scalar',
+                'value' => '12'
+            )
+        ));
+
+        $view = $form->createView();
+        $customConfig = $view->vars['custom_config'];
+
+        $this->assertEquals($customConfig, array(
+                'type'  => 'scalar',
+                'value' => '12'
+        ));
+    }
+
+    /**
+     * Checks customConfig route property
+     */
+    public function testCustomConfigRoute()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'custom_config' => array(
+                'type'  => 'route',
+                'value' => 'homepage'
+            )
+        ));
+
+        $view = $form->createView();
+        $customConfig = $view->vars['custom_config'];
+
+        $this->assertEquals($customConfig, array(
+                'type'  => 'route',
+                'value' => 'homepage'
+        ));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Trsteel\CkeditorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
@@ -203,9 +204,31 @@ class Configuration implements ConfigurationInterface
                     ->defaultNull()
                     ->info("Sets the behavior of the Enter key. By default the `ENTER_P`, `ENTER_BR` and `ENTER_DIV` modes available.")
                 ->end()
-                ->scalarNode('custom_config')
-                    ->defaultNull()
-                    ->info("The path of the custom config.js to use for the editor setup.")
+            ->end()
+            ->children()
+                ->arrayNode('custom_config')
+                    ->beforeNormalization()
+                    ->ifString()
+                        ->then(function($v) { return array("customConfig" => array('type' => 'file', 'value' => $v)); })
+                    ->end()
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('type')
+                                ->isRequired()
+                                ->validate()
+                                ->ifNotInArray(array('file', 'route', 'scalar'))
+                                    ->thenInvalid('Invalid custom config type "%s"')
+                                ->end()
+                            ->end()
+                            ->scalarNode('value')
+                                ->isRequired()
+                            ->end()
+                            ->variableNode('route_parameters')
+                                ->defaultValue(array())
+                            ->end()
+                        ->end()
+                    ->end()
+                    ->info("The path of the custom config.js, or the list of custom config definitions to use for the editor setup.")
                 ->end()
                 ->arrayNode('external_plugins')
                     ->useAttributeAsKey(true)
