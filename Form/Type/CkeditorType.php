@@ -57,6 +57,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('height', $options['height'])
             ->setAttribute('force_paste_as_plaintext', $options['force_paste_as_plaintext'])
             ->setAttribute('language', $options['language'])
+            ->setAttribute('disable_native_spell_checker', $options['disable_native_spell_checker'])
             ->setAttribute('filebrowser_browse_url', $options['filebrowser_browse_url'])
             ->setAttribute('filebrowser_upload_url', $options['filebrowser_upload_url'])
             ->setAttribute('filebrowser_image_browse_url', $options['filebrowser_image_browse_url'])
@@ -154,6 +155,7 @@ class CkeditorType extends AbstractType
             'height'                       => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
             'force_paste_as_plaintext'     => $this->container->getParameter('trsteel_ckeditor.ckeditor.force_paste_as_plaintext'),
             'language'                     => $this->container->getParameter('trsteel_ckeditor.ckeditor.language'),
+            'disable_native_spell_checker' => $this->container->getParameter('trsteel_ckeditor.ckeditor.disable_native_spell_checker'),
             'filebrowser_browse_url'       => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url'),
             'filebrowser_upload_url'       => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_upload_url'),
             'filebrowser_image_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_browse_url'),
