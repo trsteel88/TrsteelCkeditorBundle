@@ -116,6 +116,7 @@ class CkeditorType extends AbstractType
         $view->vars['height']                       = $options['height'];
         $view->vars['force_paste_as_plaintext']     = $options['force_paste_as_plaintext'];
         $view->vars['language']                     = $options['language'];
+        $view->vars['disable_native_spell_checker'] = $options['disable_native_spell_checker'];
         $view->vars['filebrowser_browse_url']       = $options['filebrowser_browse_url'];
         $view->vars['filebrowser_upload_url']       = $options['filebrowser_upload_url'];
         $view->vars['filebrowser_image_browse_url'] = $options['filebrowser_image_browse_url'];

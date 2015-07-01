@@ -40,7 +40,7 @@
                 language: '{{ language }}',
             {% endif %}
             {% if disable_native_spell_checker is not null %}
-                disableNativeSpellChecker: {{ disable_native_spell_checker }},
+                disableNativeSpellChecker: {% if disable_native_spell_checker %}true{% else %}false{% endif %},
             {% endif %}
             {% if ui_color is not null %}
                 uiColor: "{{ ui_color }}",

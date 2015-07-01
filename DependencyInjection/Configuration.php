@@ -79,7 +79,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('disable_native_spell_checker')
                     ->defaultNull()
                     ->info("Disabled the browser's spell checker.")
-                    ->example(true)
+                    ->example('true')
                 ->end()
                 ->arrayNode('filebrowser_browse_url')
                     ->addDefaultsIfNotSet()
