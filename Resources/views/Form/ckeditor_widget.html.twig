@@ -39,9 +39,7 @@
             {% if language is not null %}
                 language: '{{ language }}',
             {% endif %}
-            {% if disable_native_spell_checker is not null %}
-                disableNativeSpellChecker: {% if disable_native_spell_checker %}true{% else %}false{% endif %},
-            {% endif %}
+            disableNativeSpellChecker: {% if disable_native_spell_checker %}true{% else %}false{% endif %},
             {% if ui_color is not null %}
                 uiColor: "{{ ui_color }}",
             {% endif %}
