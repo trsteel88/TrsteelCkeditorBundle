@@ -37,7 +37,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check the default required property
+     * Check the default required property.
      */
     public function testDefaultRequired()
     {
@@ -49,19 +49,19 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check the required property
+     * Check the required property.
      */
     public function testRequired()
     {
         $this->setExpectedException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
 
         $form = $this->factory->create('ckeditor', null, array(
-            'required' => true
+            'required' => true,
         ));
     }
 
     /**
-     * Check the default toolbar property
+     * Check the default toolbar property.
      */
     public function testDefaultToolbar()
     {
@@ -78,7 +78,7 @@ class CkeditorTypeTest extends TypeTestCase
                     'Save',
                     '-',
                     'Templates',
-                )
+                ),
             ),
             array(
                 'name' => 'clipboard',
@@ -91,7 +91,7 @@ class CkeditorTypeTest extends TypeTestCase
                     '-',
                     'Undo',
                     'Redo',
-                )
+                ),
             ),
             array(
                 'name' => 'editing',
@@ -100,7 +100,7 @@ class CkeditorTypeTest extends TypeTestCase
                     'Replace',
                     '-',
                     'SelectAll',
-                )
+                ),
             ),
             '/',
             array(
@@ -114,7 +114,7 @@ class CkeditorTypeTest extends TypeTestCase
                     'Superscript',
                     '-',
                     'RemoveFormat',
-                )
+                ),
             ),
             array(
                 'name' => 'paragraph',
@@ -129,7 +129,7 @@ class CkeditorTypeTest extends TypeTestCase
                     'JustifyCenter',
                     'JustifyRight',
                     'JustifyBlock',
-                )
+                ),
             ),
             array(
                 'name' => 'links',
@@ -137,7 +137,7 @@ class CkeditorTypeTest extends TypeTestCase
                     'Link',
                     'Unlink',
                     'Anchor',
-                )
+                ),
             ),
             '/',
             array(
@@ -147,27 +147,27 @@ class CkeditorTypeTest extends TypeTestCase
                     'Flash',
                     'Table',
                     'HorizontalRule',
-                )
+                ),
             ),
             array(
                 'name' => 'styles',
                 'items' => array(
                     'Styles',
                     'Format',
-                )
+                ),
             ),
             array(
                 'name' => 'tools',
                 'items' => array(
                     'Maximize',
                     'ShowBlocks',
-                )
-            )
+                ),
+            ),
         ));
     }
 
     /**
-     * Check the toolbar property
+     * Check the toolbar property.
      */
     public function testToolbar()
     {
@@ -177,25 +177,25 @@ class CkeditorTypeTest extends TypeTestCase
             ),
             'toolbar_groups' => array(
                 'document' => array(
-                    'Source'
-                )
-            )
+                    'Source',
+                ),
+            ),
         ));
         $view = $form->createView();
         $toolbar = $view->vars['toolbar'];
 
         $this->assertEquals($toolbar, array(
             array(
-                'name'  => 'document',
+                'name' => 'document',
                 'items' => array(
-                    'Source'
-                )
-            )
+                    'Source',
+                ),
+            ),
         ));
     }
 
     /**
-     * Check default startup_outline_blocks property
+     * Check default startup_outline_blocks property.
      */
     public function testDefaultStartupOutlineBlocks()
     {
@@ -207,12 +207,12 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks startup_outline_blocks property
+     * Checks startup_outline_blocks property.
      */
     public function testStartupOutlineBlocks()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'startup_outline_blocks' => false
+            'startup_outline_blocks' => false,
         ));
 
         $view = $form->createView();
@@ -222,7 +222,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default ui_color property
+     * Check default ui_color property.
      */
     public function testDefaultUiColor()
     {
@@ -234,12 +234,12 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks ui_color property
+     * Checks ui_color property.
      */
     public function testUiColor()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'ui_color' => '#333333'
+            'ui_color' => '#333333',
         ));
 
         $view = $form->createView();
@@ -249,7 +249,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default width property
+     * Check default width property.
      */
     public function testDefaultWidth()
     {
@@ -261,12 +261,12 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks width property
+     * Checks width property.
      */
     public function testWidth()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'width' => '100%'
+            'width' => '100%',
         ));
 
         $view = $form->createView();
@@ -276,7 +276,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default height property
+     * Check default height property.
      */
     public function testDefaultHeight()
     {
@@ -288,12 +288,12 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks height property
+     * Checks height property.
      */
     public function testHeight()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'height' => '350px'
+            'height' => '350px',
         ));
 
         $view = $form->createView();
@@ -303,7 +303,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default language property
+     * Check default language property.
      */
     public function testDefaultLanguage()
     {
@@ -315,12 +315,12 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks language property
+     * Checks language property.
      */
     public function testLanguage()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'language' => 'en-au'
+            'language' => 'en-au',
         ));
 
         $view = $form->createView();
@@ -330,7 +330,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default disable_native_spell_checker property
+     * Check default disable_native_spell_checker property.
      */
     public function testDefaultDisableNativeSpellChecker()
     {
@@ -341,12 +341,12 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check startup_outline_blocks property
+     * Check startup_outline_blocks property.
      */
     public function testDisableNativeSpellChecker()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'disable_native_spell_checker' => false
+            'disable_native_spell_checker' => false,
         ));
         $view = $form->createView();
         $disable_native_spell_checker = $view->vars['disable_native_spell_checker'];
@@ -354,7 +354,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check the default filebrowserBrowseUrl property
+     * Check the default filebrowserBrowseUrl property.
      */
     public function testDefaultFileBrowserBrowseUrl()
     {
@@ -363,19 +363,19 @@ class CkeditorTypeTest extends TypeTestCase
         $filebrowserBrowseUrl = $view->vars['filebrowser_browse_url'];
 
         $this->assertEquals($filebrowserBrowseUrl, array(
-            'url'              => null,
-            'route'            => null,
+            'url' => null,
+            'route' => null,
             'route_parameters' => array(),
         ));
     }
 
     /**
-     * Checks filebrowserBrowseUrl property
+     * Checks filebrowserBrowseUrl property.
      */
     public function testFileBrowserBrowseUrl()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'filebrowser_browse_url' => '/myfilebrowser/browser.html'
+            'filebrowser_browse_url' => '/myfilebrowser/browser.html',
         ));
 
         $view = $form->createView();
@@ -385,7 +385,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks filebrowserBrowseUrl property
+     * Checks filebrowserBrowseUrl property.
      */
     public function testFileBrowserBrowseUrlRoute()
     {
@@ -395,7 +395,7 @@ class CkeditorTypeTest extends TypeTestCase
                 'route_parameters' => array(
                     'type' => 'file',
                 ),
-            )
+            ),
         ));
 
         $view = $form->createView();
@@ -410,7 +410,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check the default filebrowserUploadUrl property
+     * Check the default filebrowserUploadUrl property.
      */
     public function testDefaultFileBrowserUploadUrl()
     {
@@ -419,19 +419,19 @@ class CkeditorTypeTest extends TypeTestCase
         $filebrowserBrowseUrl = $view->vars['filebrowser_upload_url'];
 
         $this->assertEquals($filebrowserBrowseUrl, array(
-            'url'              => null,
-            'route'            => null,
+            'url' => null,
+            'route' => null,
             'route_parameters' => array(),
         ));
     }
 
     /**
-     * Checks filebrowserUploadUrl property
+     * Checks filebrowserUploadUrl property.
      */
     public function testFileBrowserUploadUrl()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'filebrowser_upload_url' => '/myfilebrowser/uploads'
+            'filebrowser_upload_url' => '/myfilebrowser/uploads',
         ));
 
         $view = $form->createView();
@@ -441,7 +441,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks filebrowserUploadUrl property
+     * Checks filebrowserUploadUrl property.
      */
     public function testFileBrowserUploadUrlRoute()
     {
@@ -451,7 +451,7 @@ class CkeditorTypeTest extends TypeTestCase
                 'route_parameters' => array(
                     'type' => 'file',
                 ),
-            )
+            ),
         ));
 
         $view = $form->createView();
@@ -466,7 +466,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check the default filebrowserImageBrowseUrl property
+     * Check the default filebrowserImageBrowseUrl property.
      */
     public function testDefaultFileBrowserImageBrowseUrl()
     {
@@ -475,19 +475,19 @@ class CkeditorTypeTest extends TypeTestCase
         $filebrowserBrowseUrl = $view->vars['filebrowser_image_browse_url'];
 
         $this->assertEquals($filebrowserBrowseUrl, array(
-            'url'              => null,
-            'route'            => null,
+            'url' => null,
+            'route' => null,
             'route_parameters' => array(),
         ));
     }
 
     /**
-     * Checks filebrowserImageBrowseUrl property
+     * Checks filebrowserImageBrowseUrl property.
      */
     public function testFileBrowserImageBrowseUrl()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'filebrowser_image_browse_url' => '/myfilebrowser/browser.html'
+            'filebrowser_image_browse_url' => '/myfilebrowser/browser.html',
         ));
 
         $view = $form->createView();
@@ -497,7 +497,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks filebrowserImageBrowseUrl property
+     * Checks filebrowserImageBrowseUrl property.
      */
     public function testFileBrowserImageBrowseUrlRoute()
     {
@@ -507,7 +507,7 @@ class CkeditorTypeTest extends TypeTestCase
                 'route_parameters' => array(
                     'type' => 'image',
                 ),
-            )
+            ),
         ));
 
         $view = $form->createView();
@@ -522,7 +522,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check the default filebrowserImageUploadUrl property
+     * Check the default filebrowserImageUploadUrl property.
      */
     public function testDefaultFileBrowserImageUploadUrl()
     {
@@ -531,19 +531,19 @@ class CkeditorTypeTest extends TypeTestCase
         $filebrowserBrowseUrl = $view->vars['filebrowser_image_upload_url'];
 
         $this->assertEquals($filebrowserBrowseUrl, array(
-            'url'              => null,
-            'route'            => null,
+            'url' => null,
+            'route' => null,
             'route_parameters' => array(),
         ));
     }
 
     /**
-     * Checks filebrowserImageUploadUrl property
+     * Checks filebrowserImageUploadUrl property.
      */
     public function testFileBrowserImageUploadUrl()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'filebrowser_image_upload_url' => '/myfilebrowser/uploads'
+            'filebrowser_image_upload_url' => '/myfilebrowser/uploads',
         ));
 
         $view = $form->createView();
@@ -553,7 +553,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks filebrowserImageUploadUrl property
+     * Checks filebrowserImageUploadUrl property.
      */
     public function testFileBrowserImageUploadUrlRoute()
     {
@@ -563,7 +563,7 @@ class CkeditorTypeTest extends TypeTestCase
                 'route_parameters' => array(
                     'type' => 'image',
                 ),
-            )
+            ),
         ));
 
         $view = $form->createView();
@@ -578,7 +578,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check the default filebrowserFlashBrowseUrl property
+     * Check the default filebrowserFlashBrowseUrl property.
      */
     public function testDefaultFileBrowserFlashBrowseUrl()
     {
@@ -587,19 +587,19 @@ class CkeditorTypeTest extends TypeTestCase
         $filebrowserBrowseUrl = $view->vars['filebrowser_flash_browse_url'];
 
         $this->assertEquals($filebrowserBrowseUrl, array(
-            'url'              => null,
-            'route'            => null,
+            'url' => null,
+            'route' => null,
             'route_parameters' => array(),
         ));
     }
 
     /**
-     * Checks filebrowserFlashBrowseUrl property
+     * Checks filebrowserFlashBrowseUrl property.
      */
     public function testFileBrowserFlashBrowseUrl()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'filebrowser_flash_browse_url' => '/myfilebrowser/browser.html'
+            'filebrowser_flash_browse_url' => '/myfilebrowser/browser.html',
         ));
 
         $view = $form->createView();
@@ -609,7 +609,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks filebrowserFlashBrowseUrl property
+     * Checks filebrowserFlashBrowseUrl property.
      */
     public function testFileBrowserFlashBrowseUrlRoute()
     {
@@ -619,7 +619,7 @@ class CkeditorTypeTest extends TypeTestCase
                 'route_parameters' => array(
                     'type' => 'flash',
                 ),
-            )
+            ),
         ));
 
         $view = $form->createView();
@@ -634,7 +634,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check the default filebrowserFlashUploadUrl property
+     * Check the default filebrowserFlashUploadUrl property.
      */
     public function testDefaultFileBrowserFlashUploadUrl()
     {
@@ -643,14 +643,14 @@ class CkeditorTypeTest extends TypeTestCase
         $filebrowserBrowseUrl = $view->vars['filebrowser_flash_upload_url'];
 
         $this->assertEquals($filebrowserBrowseUrl, array(
-            'url'              => null,
-            'route'            => null,
+            'url' => null,
+            'route' => null,
             'route_parameters' => array(),
         ));
     }
 
     /**
-     * Checks filebrowserFlashUploadUrl property
+     * Checks filebrowserFlashUploadUrl property.
      */
     public function testFileBrowserFlashUploadUrl()
     {
@@ -665,7 +665,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks filebrowserFlashUploadUrl property
+     * Checks filebrowserFlashUploadUrl property.
      */
     public function testFileBrowserFlashUploadUrlRoute()
     {
@@ -690,7 +690,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default skin property
+     * Check default skin property.
      */
     public function testDefaultSkin()
     {
@@ -702,7 +702,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks skin property
+     * Checks skin property.
      */
     public function testSkin()
     {
@@ -717,7 +717,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default format_tags property
+     * Check default format_tags property.
      */
     public function testDefaultFormatTags()
     {
@@ -729,22 +729,22 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks format_tags property
+     * Checks format_tags property.
      */
     public function testFormatTags()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'format_tags' => array('p','h2','h3','pre')
+            'format_tags' => array('p', 'h2', 'h3', 'pre'),
         ));
 
         $view = $form->createView();
         $formatTags = $view->vars['format_tags'];
 
-        $this->assertEquals($formatTags, array('p','h2','h3','pre'));
+        $this->assertEquals($formatTags, array('p', 'h2', 'h3', 'pre'));
     }
 
     /**
-     * Check default base_path property
+     * Check default base_path property.
      */
     public function testDefaultBasePath()
     {
@@ -756,7 +756,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks base_path property
+     * Checks base_path property.
      */
     public function testBasePath()
     {
@@ -771,7 +771,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default base_href property
+     * Check default base_href property.
      */
     public function testDefaultBaseHref()
     {
@@ -783,7 +783,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks base_href property
+     * Checks base_href property.
      */
     public function testBaseHref()
     {
@@ -798,7 +798,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default body_class property
+     * Check default body_class property.
      */
     public function testDefaultBodyClass()
     {
@@ -810,7 +810,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks body_class property
+     * Checks body_class property.
      */
     public function testBodyClass()
     {
@@ -825,7 +825,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default contents_css property
+     * Check default contents_css property.
      */
     public function testDefaultContentsCss()
     {
@@ -837,7 +837,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks contents_css property
+     * Checks contents_css property.
      */
     public function testContentsCssAsArray()
     {
@@ -858,7 +858,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks contents_css property as a string
+     * Checks contents_css property as a string.
      */
     public function testContentsCssAsString()
     {
@@ -873,7 +873,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default basic_entities property
+     * Check default basic_entities property.
      */
     public function testDefaultBasicEntities()
     {
@@ -885,7 +885,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks basic_entities property
+     * Checks basic_entities property.
      */
     public function testBasicEntities()
     {
@@ -900,7 +900,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default entities property
+     * Check default entities property.
      */
     public function testDefaultEntities()
     {
@@ -912,7 +912,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks entities property
+     * Checks entities property.
      */
     public function testEntities()
     {
@@ -927,7 +927,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default entities_latin property
+     * Check default entities_latin property.
      */
     public function testDefaultEntitiesLatin()
     {
@@ -939,7 +939,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks entities_latin property
+     * Checks entities_latin property.
      */
     public function testEntitiesLatin()
     {
@@ -954,7 +954,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default startup_mode property
+     * Check default startup_mode property.
      */
     public function testDefaultStartupMode()
     {
@@ -966,7 +966,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks startup_mode property
+     * Checks startup_mode property.
      */
     public function testStartupMode()
     {
@@ -981,7 +981,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default enter_mode property
+     * Check default enter_mode property.
      */
     public function testDefaultEnterMode()
     {
@@ -993,7 +993,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks enter_mode property
+     * Checks enter_mode property.
      */
     public function testEnterMode()
     {
@@ -1008,7 +1008,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default external_plugins property
+     * Check default external_plugins property.
      */
     public function testDefaultExternalPlugins()
     {
@@ -1020,7 +1020,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks external_plugins property
+     * Checks external_plugins property.
      */
     public function testExternalPlugins()
     {
@@ -1044,7 +1044,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default customConfig property
+     * Check default customConfig property.
      */
     public function testDefaultCustomConfig()
     {
@@ -1056,12 +1056,12 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks customConfig property
+     * Checks customConfig property.
      */
     public function testCustomConfig()
     {
         $form = $this->factory->create('ckeditor', null, array(
-            'custom_config' => 'someconfig.js'
+            'custom_config' => 'someconfig.js',
         ));
 
         $view = $form->createView();
@@ -1071,7 +1071,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default templates_files property
+     * Check default templates_files property.
      */
     public function testDefaultTemplateFiles()
     {
@@ -1083,7 +1083,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks templateFiles property
+     * Checks templateFiles property.
      */
     public function testTemplateFiles()
     {
@@ -1091,7 +1091,7 @@ class CkeditorTypeTest extends TypeTestCase
             'templates_files' => array(
                 '/editor_templates/site_default.js',
                 'http://www.example.com/user_templates.js',
-            )
+            ),
         ));
 
         $view = $form->createView();
@@ -1104,7 +1104,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Check default extra_allowed_content property
+     * Check default extra_allowed_content property.
      */
     public function testDefaultExtraAllowedContent()
     {
@@ -1116,7 +1116,7 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
-     * Checks extraAllowedContent property
+     * Checks extraAllowedContent property.
      */
     public function testExtraAllowedContent()
     {

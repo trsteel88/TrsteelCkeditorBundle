@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
@@ -76,39 +76,38 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.custom_config', $config['custom_config']);
         $container->setParameter('trsteel_ckeditor.ckeditor.templates_files', $config['templates_files']);
         $container->setParameter('trsteel_ckeditor.ckeditor.extra_allowed_content', $config['extra_allowed_content']);
-
     }
 
     private function getDefaultGroups()
     {
         return array(
-            'document'    => array(
-                'Source', '-', 'Save', '-', 'Templates'
+            'document' => array(
+                'Source', '-', 'Save', '-', 'Templates',
             ),
-            'clipboard'   => array(
+            'clipboard' => array(
                 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',
             ),
-            'editing'     => array(
+            'editing' => array(
                 'Find', 'Replace', '-', 'SelectAll',
             ),
             'basicstyles' => array(
                 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-',
                 'RemoveFormat',
             ),
-            'paragraph'   => array(
+            'paragraph' => array(
                 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft',
                 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
             ),
-            'links'       => array(
+            'links' => array(
                 'Link', 'Unlink', 'Anchor',
             ),
-            'insert'      => array(
+            'insert' => array(
                 'Image', 'Flash', 'Table', 'HorizontalRule',
             ),
-            'styles'      => array(
+            'styles' => array(
                 'Styles', 'Format',
             ),
-            'tools'       => array(
+            'tools' => array(
                 'Maximize', 'ShowBlocks',
             ),
         );
