@@ -62,6 +62,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('filebrowser_flash_browse_url', $options['filebrowser_flash_browse_url'])
             ->setAttribute('filebrowser_flash_upload_url', $options['filebrowser_flash_upload_url'])
             ->setAttribute('skin', $options['skin'])
+            ->setAttribute('disable_native_spell_checker', $options['disable_native_spell_checker'])
             ->setAttribute('format_tags', $options['format_tags'])
             ->setAttribute('base_path', $options['base_path'])
             ->setAttribute('base_href', $options['base_href'])
@@ -120,6 +121,7 @@ class CkeditorType extends AbstractType
         $view->vars['filebrowser_flash_browse_url'] = $options['filebrowser_flash_browse_url'];
         $view->vars['filebrowser_flash_upload_url'] = $options['filebrowser_flash_upload_url'];
         $view->vars['skin'] = $options['skin'];
+        $view->vars['disable_native_spell_checker'] = $options['disable_native_spell_checker'];
         $view->vars['format_tags'] = $options['format_tags'];
         $view->vars['base_path'] = $options['base_path'];
         $view->vars['base_href'] = $options['base_href'];
@@ -159,6 +161,7 @@ class CkeditorType extends AbstractType
             'filebrowser_flash_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'),
             'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),
             'skin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'),
+            'disable_native_spell_checker' => $this->container->getParameter('trsteel_ckeditor.ckeditor.disable_native_spell_checker'),
             'format_tags' => $this->container->getParameter('trsteel_ckeditor.ckeditor.format_tags'),
             'base_path' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_path'),
             'base_href' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_href'),
@@ -179,6 +182,7 @@ class CkeditorType extends AbstractType
             'required' => array(false),
             'startup_outline_blocks' => array(null, true, false),
             'force_paste_as_plaintext' => array(null, true, false),
+            'disable_native_spell_checker' => array(null, true, false),
             'basic_entities' => array(null, true, false),
             'startup_mode' => array(null, 'wysiwyg', 'source'),
             'enter_mode' => array(null, 'ENTER_P', 'ENTER_BR', 'ENTER_DIV'),

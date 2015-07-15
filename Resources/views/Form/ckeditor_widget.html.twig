@@ -79,6 +79,9 @@
             {% if skin is not null %}
                 skin: '{{ skin }}',
             {% endif %}
+            {% if disable_native_spell_checker is not null %}
+                disableNativeSpellChecker: {{ disable_native_spell_checker ? 'true' : 'false' }},
+            {% endif %}
             {% if format_tags|length > 0 %}
                 format_tags: '{{ format_tags | join(';') | raw }}',
             {% endif %}

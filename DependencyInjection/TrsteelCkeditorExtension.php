@@ -61,6 +61,7 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url', $config['filebrowser_flash_browse_url']);
         $container->setParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url', $config['filebrowser_flash_upload_url']);
         $container->setParameter('trsteel_ckeditor.ckeditor.skin', $config['skin']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.disable_native_spell_checker', $config['disable_native_spell_checker']);
         $container->setParameter('trsteel_ckeditor.ckeditor.format_tags', $config['format_tags']);
         $container->setParameter('trsteel_ckeditor.ckeditor.base_path', $config['base_path']);
         $container->setParameter('trsteel_ckeditor.ckeditor.base_href', $config['base_href']);
