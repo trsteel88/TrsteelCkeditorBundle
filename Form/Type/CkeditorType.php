@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\DataTransformerInterface;
@@ -141,7 +142,12 @@ class CkeditorType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    /**
+     * Configures the options for this type.
+     *
+     * @param OptionsResolver $resolver The resolver for the options.
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'required' => false,
@@ -178,23 +184,19 @@ class CkeditorType extends AbstractType
             'extra_allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'),
         ));
 
-        $resolver->setAllowedValues(array(
-            'required' => array(false),
-            'startup_outline_blocks' => array(null, true, false),
-            'force_paste_as_plaintext' => array(null, true, false),
-            'disable_native_spell_checker' => array(null, true, false),
-            'basic_entities' => array(null, true, false),
-            'startup_mode' => array(null, 'wysiwyg', 'source'),
-            'enter_mode' => array(null, 'ENTER_P', 'ENTER_BR', 'ENTER_DIV'),
-        ));
+        $resolver->setAllowedValues('required', false);
+        $resolver->setAllowedValues('startup_outline_blocks', array(null, true, false));
+        $resolver->setAllowedValues('force_paste_as_plaintext', array(null, true, false));
+        $resolver->setAllowedValues('disable_native_spell_checker', array(null, true, false));
+        $resolver->setAllowedValues('basic_entities', array(null, true, false));
+        $resolver->setAllowedValues('startup_mode', array(null, 'wysiwyg', 'source'));
+        $resolver->setAllowedValues('enter_mode', array(null, 'ENTER_P', 'ENTER_BR', 'ENTER_DIV'));
 
-        $resolver->setAllowedTypes(array(
-            'transformers' => 'array',
-            'toolbar' => 'array',
-            'toolbar_groups' => 'array',
-            'format_tags' => 'array',
-            'external_plugins' => 'array',
-        ));
+        $resolver->setAllowedTypes('transformers', 'array');
+        $resolver->setAllowedTypes('toolbar', 'array');
+        $resolver->setAllowedTypes('toolbar_groups', 'array');
+        $resolver->setAllowedTypes('format_tags', 'array');
+        $resolver->setAllowedTypes('external_plugins', 'array');
     }
 
     /**
