@@ -18,6 +18,7 @@
         "ezyang/htmlpurifier": "~4.0"
     },
     "require-dev": {
+        "symfony/phpunit-bridge": "~2.7",
         "symfony/twig-bundle": "2.*,<2.8",
         "symfony/yaml": "~2.0"
     },
