@@ -179,7 +179,7 @@ class CkeditorType extends AbstractType
         ));
 
         $resolver->setAllowedValues(array(
-            'required' => array(false),
+            'required' => array(true, false),
             'startup_outline_blocks' => array(null, true, false),
             'force_paste_as_plaintext' => array(null, true, false),
             'disable_native_spell_checker' => array(null, true, false),
