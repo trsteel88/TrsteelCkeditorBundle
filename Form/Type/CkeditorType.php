@@ -144,7 +144,6 @@ class CkeditorType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'required' => false,
             'transformers' => $this->container->getParameter('trsteel_ckeditor.ckeditor.transformers'),
             'toolbar' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
             'toolbar_groups' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
