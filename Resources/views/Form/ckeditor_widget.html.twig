@@ -28,7 +28,7 @@
 				templates_files: ['{{ templates_files|join(',')|raw }}'],
             {% endif %}
             {% if extra_allowed_content is not null %}
-                extraAllowedContent: '{{ extra_allowed_content }}',
+                extraAllowedContent: {% if extra_allowed_content != true %}'{{ extra_allowed_content }}'{% else %}true{% endif %},
             {% endif %}
             {% if height is not null %}
                 height: '{{ height }}',
