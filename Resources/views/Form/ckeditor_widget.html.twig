@@ -24,8 +24,12 @@
             {% if width is not null %}
                 width: '{{ width }}',
             {% endif %}
-			{% if templates_files|length > 0 %}
-				templates_files: ['{{ templates_files|join(',')|raw }}'],
+            {% if templates_files|length > 0 %}
+                {% set templates_files_array = [] %}
+                {% for file in templates_files %}
+                    {% set templates_files_array = templates_files_array|merge([asset(file)]) %}
+                {% endfor %}
+                templates_files: {{ templates_files_array|json_encode }},
             {% endif %}
             {% if extra_allowed_content is not null %}
                 extraAllowedContent: '{{ extra_allowed_content }}',
