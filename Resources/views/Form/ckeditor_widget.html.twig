@@ -86,7 +86,7 @@
                 disableNativeSpellChecker: {{ disable_native_spell_checker ? 'true' : 'false' }},
             {% endif %}
             {% if format_tags|length > 0 %}
-                format_tags: '{{ format_tags | join(';') | raw }}',
+                format_tags: '{{ format_tags|join(';')|raw }}',
             {% endif %}
             {% if body_class is not null %}
                 bodyClass: '{{ body_class }}',
