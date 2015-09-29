@@ -64,7 +64,6 @@
             {% elseif filebrowser_image_browse_url.url is defined and filebrowser_image_browse_url.url is not null  %}
                 filebrowserImageBrowseUrl: '{{ filebrowser_image_browse_url.url }}',
             {% endif %}
-
             {% if filebrowser_image_upload_url.route is defined and filebrowser_image_upload_url.route is not null %}
                 filebrowserImageUploadUrl: '{{ path(filebrowser_image_upload_url.route, filebrowser_image_upload_url.route_parameters) }}',
             {% elseif filebrowser_image_upload_url.url is defined and filebrowser_image_upload_url.url is not null  %}
