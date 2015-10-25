@@ -15,12 +15,12 @@ use Symfony\Component\Form\DataTransformerInterface;
  */
 class CkeditorType extends AbstractType
 {
-    protected $container;
+    protected $parameters;
     protected $transformers;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct($parameters)
     {
-        $this->container = $container;
+        $this->parameters = $parameters;
     }
 
     public function addTransformer(DataTransformerInterface $transformer, $alias)
@@ -44,7 +44,7 @@ class CkeditorType extends AbstractType
             }
         }
 
-        $options['toolbar_groups'] = array_merge($this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), $options['toolbar_groups']);
+        $options['toolbar_groups'] = array_merge($this->parameters['toolbar_groups'], $options['toolbar_groups']);
 
         $builder
             ->setAttribute('toolbar', $options['toolbar'])
@@ -83,7 +83,7 @@ class CkeditorType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $options['toolbar_groups'] = array_merge($this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), $options['toolbar_groups']);
+        $options['toolbar_groups'] = array_merge($this->parameters['toolbar_groups'], $options['toolbar_groups']);
 
         if (!is_array($options['toolbar_groups']) || count($options['toolbar_groups']) < 1) {
             throw new \Exception('You must supply at least 1 toolbar group.');
@@ -145,37 +145,37 @@ class CkeditorType extends AbstractType
     {
         $resolver->setDefaults(array(
             'required' => false,
-            'transformers' => $this->container->getParameter('trsteel_ckeditor.ckeditor.transformers'),
-            'toolbar' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
-            'toolbar_groups' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
-            'startup_outline_blocks' => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks'),
-            'ui_color' => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_color'),
-            'width' => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
-            'height' => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
-            'force_paste_as_plaintext' => $this->container->getParameter('trsteel_ckeditor.ckeditor.force_paste_as_plaintext'),
-            'language' => $this->container->getParameter('trsteel_ckeditor.ckeditor.language'),
-            'filebrowser_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url'),
-            'filebrowser_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_upload_url'),
-            'filebrowser_image_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_browse_url'),
-            'filebrowser_image_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_upload_url'),
-            'filebrowser_flash_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'),
-            'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),
-            'skin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'),
-            'disable_native_spell_checker' => $this->container->getParameter('trsteel_ckeditor.ckeditor.disable_native_spell_checker'),
-            'format_tags' => $this->container->getParameter('trsteel_ckeditor.ckeditor.format_tags'),
-            'base_path' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_path'),
-            'base_href' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_href'),
-            'body_class' => $this->container->getParameter('trsteel_ckeditor.ckeditor.body_class'),
-            'contents_css' => $this->container->getParameter('trsteel_ckeditor.ckeditor.contents_css'),
-            'basic_entities' => $this->container->getParameter('trsteel_ckeditor.ckeditor.basic_entities'),
-            'entities' => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities'),
-            'entities_latin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities_latin'),
-            'startup_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_mode'),
-            'enter_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.enter_mode'),
-            'external_plugins' => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
-            'custom_config' => $this->container->getParameter('trsteel_ckeditor.ckeditor.custom_config'),
-            'templates_files' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_files'),
-            'extra_allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'),
+            'transformers' => $this->parameters['transformers'],
+            'toolbar' => $this->parameters['toolbar'],
+            'toolbar_groups' => $this->parameters['toolbar_groups'],
+            'startup_outline_blocks' => $this->parameters['startup_outline_blocks'],
+            'ui_color' => $this->parameters['ui_color'],
+            'width' => $this->parameters['width'],
+            'height' => $this->parameters['height'],
+            'force_paste_as_plaintext' => $this->parameters['force_paste_as_plaintext'],
+            'language' => $this->parameters['language'],
+            'filebrowser_browse_url' => $this->parameters['filebrowser_browse_url'],
+            'filebrowser_upload_url' => $this->parameters['filebrowser_upload_url'],
+            'filebrowser_image_browse_url' => $this->parameters['filebrowser_image_browse_url'],
+            'filebrowser_image_upload_url' => $this->parameters['filebrowser_image_upload_url'],
+            'filebrowser_flash_browse_url' => $this->parameters['filebrowser_flash_browse_url'],
+            'filebrowser_flash_upload_url' => $this->parameters['filebrowser_flash_upload_url'],
+            'skin' => $this->parameters['skin'],
+            'disable_native_spell_checker' => $this->parameters['disable_native_spell_checker'],
+            'format_tags' => $this->parameters['format_tags'],
+            'base_path' => $this->parameters['base_path'],
+            'base_href' => $this->parameters['base_href'],
+            'body_class' => $this->parameters['body_class'],
+            'contents_css' => $this->parameters['contents_css'],
+            'basic_entities' => $this->parameters['basic_entities'],
+            'entities' => $this->parameters['entities'],
+            'entities_latin' => $this->parameters['entities_latin'],
+            'startup_mode' => $this->parameters['startup_mode'],
+            'enter_mode' => $this->parameters['enter_mode'],
+            'external_plugins' => $this->parameters['external_plugins'],
+            'custom_config' => $this->parameters['custom_config'],
+            'templates_files' => $this->parameters['templates_files'],
+            'extra_allowed_content' => $this->parameters['extra_allowed_content'],
         ));
 
         $resolver->setAllowedValues(array(

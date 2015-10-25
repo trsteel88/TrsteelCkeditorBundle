@@ -29,7 +29,8 @@ class CkeditorTypeTest extends TypeTestCase
     {
         parent::setUp();
 
-        $ckeditorType = new CkeditorType($this->get('service_container'));
+        $params = $this->get('service_container')->getParameter('trsteel_ckeditor.ckeditor');
+        $ckeditorType = new CkeditorType($params);
 
         $this->factory = Forms::createFormFactoryBuilder()
             ->addType($ckeditorType)

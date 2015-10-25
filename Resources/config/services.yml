@@ -1,7 +1,7 @@
 services:
     trsteel_ckeditor.form.type:
         class: %trsteel_ckeditor.form.type.class%
-        arguments: [@service_container]
+        arguments: [%trsteel_ckeditor.ckeditor%]
         tags:
             - { name: form.type, alias: ckeditor }
 
