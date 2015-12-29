@@ -19,6 +19,7 @@ install:
     - composer self-update
     - composer require --no-update symfony/framework-bundle:${SYMFONY_VERSION}
     - composer require --no-update symfony/form:${SYMFONY_VERSION}
+    - composer require --no-update symfony/twig-bundle:${SYMFONY_VERSION}
     - composer require --dev --no-update symfony/phpunit-bridge:${SYMFONY_PHPUNIT_BRIDGE_VERSION}
     - if [[ "$SYMFONY_VERSION" = *dev* ]]; then sed -i "s/\"MIT\"/\"MIT\",\"minimum-stability\":\"dev\"/g" composer.json; fi
     - composer update --prefer-source `if [[ $COMPOSER_PREFER_LOWEST = true ]]; then echo "--prefer-lowest --prefer-stable"; fi`
