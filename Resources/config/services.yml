@@ -1,13 +1,13 @@
 services:
     trsteel_ckeditor.form.type:
-        class: %trsteel_ckeditor.form.type.class%
-        arguments: [@service_container]
+        class: "%trsteel_ckeditor.form.type.class%"
+        arguments: ["@service_container"]
         tags:
             - { name: form.type, alias: ckeditor }
 
     trsteel_ckeditor.transformer.html_purifier:
         class: Trsteel\CkeditorBundle\Form\DataTransformer\HTMLPurifierTransformer
         public: false
-        arguments: [%trsteel_ckeditor.html_purifier.config%]
+        arguments: ["%trsteel_ckeditor.html_purifier.config%"]
         tags:
             - { name: trsteel_ckeditor.transformer, alias: html_purifier }
