@@ -5,25 +5,48 @@ php:
     - 5.4
     - 5.5
     - 5.6
+    - 7.0
     - hhvm
 
 env:
-    - SYMFONY_VERSION="2.3.*" SYMFONY_DEPRECATIONS_HELPER=weak
-    - SYMFONY_VERSION="2.4.*" SYMFONY_DEPRECATIONS_HELPER=weak
-    - SYMFONY_VERSION="2.5.*" SYMFONY_DEPRECATIONS_HELPER=weak
-    - SYMFONY_VERSION="2.6.*" SYMFONY_DEPRECATIONS_HELPER=weak
-    - SYMFONY_VERSION="2.7.*" SYMFONY_DEPRECATIONS_HELPER=weak
-    - SYMFONY_VERSION="2.8.*" SYMFONY_DEPRECATIONS_HELPER=strict
-    - SYMFONY_VERSION="3.0.*" SYMFONY_DEPRECATIONS_HELPER=strict
+    global:
+        - COMPOSER_PREFER_LOWEST=false
+        - SYMFONY_DEPRECATIONS_HELPER=weak
+        - SYMFONY_VERSION=2.3.*
+        - SYMFONY_PHPUNIT_BRIDGE_VERSION=2.7.*
 
-before_script:
+install:
+    - composer self-update
     - composer require --no-update symfony/framework-bundle:${SYMFONY_VERSION}
     - composer require --no-update symfony/form:${SYMFONY_VERSION}
-    - composer require --no-update symfony/twig-bundle:${SYMFONY_VERSION}
-    - composer install --prefer-source
+    - composer require --dev --no-update symfony/phpunit-bridge:${SYMFONY_PHPUNIT_BRIDGE_VERSION}
+    - if [[ "$SYMFONY_VERSION" = *dev* ]]; then sed -i "s/\"MIT\"/\"MIT\",\"minimum-stability\":\"dev\"/g" composer.json; fi
+    - composer update --prefer-source `if [[ $COMPOSER_PREFER_LOWEST = true ]]; then echo "--prefer-lowest --prefer-stable"; fi`
 
 script: phpunit
 
+matrix:
+    include:
+        - php: 5.6
+          env: SYMFONY_VERSION=2.3.*
+        - php: 5.6
+          env: SYMFONY_VERSION=2.4.*
+        - php: 5.6
+          env: SYMFONY_VERSION=2.5.*
+        - php: 5.6
+          env: SYMFONY_VERSION=2.6.*
+        - php: 5.6
+          env: SYMFONY_VERSION=2.7.*
+        - php: 5.6
+          env: SYMFONY_VERSION=2.8.* SYMFONY_PHPUNIT_BRIDGE_VERSION=2.8.* SYMFONY_DEPRECATIONS_HELPER=strict
+        - php: 5.6
+          env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.* COMPOSER_PREFER_LOWEST=true
+        - php: 5.6
+          env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.* SYMFONY_DEPRECATIONS_HELPER=strict
+        - php: 5.6
+          env: SYMFONY_VERSION=3.0.*@dev SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.*@dev SYMFONY_DEPRECATIONS_HELPER=strict
+    allow_failures:
+        - env: SYMFONY_VERSION=3.0.*@dev SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.*@dev SYMFONY_DEPRECATIONS_HELPER=strict
+
 notifications:
-  email:
-    - trsteel88@gmail.com
+    email: trsteel88@gmail.com
