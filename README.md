@@ -93,6 +93,9 @@ You can create additional toolbar groups. Just create the group and specify the 
 
 Example form:
 
+Note: As of Symfony 2.8, you should use the fully qualified class name. (e.g. Trsteel\CkeditorBundle\Form\Type\CkeditorType). Support
+for the form alias 'ckeditor' has been dropped since Symfony 3.0.
+
 ```php
 <?php
 

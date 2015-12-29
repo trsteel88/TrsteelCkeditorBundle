@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\DataTransformerInterface;
@@ -143,6 +145,14 @@ class CkeditorType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $this->configureOptions($resolver);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
         $resolver->setDefaults(array(
             'required' => false,
             'transformers' => $this->container->getParameter('trsteel_ckeditor.ckeditor.transformers'),
@@ -178,7 +188,7 @@ class CkeditorType extends AbstractType
             'extra_allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'),
         ));
 
-        $resolver->setAllowedValues(array(
+        $allowedValues = array(
             'required' => array(true, false),
             'startup_outline_blocks' => array(null, true, false),
             'force_paste_as_plaintext' => array(null, true, false),
@@ -186,15 +196,29 @@ class CkeditorType extends AbstractType
             'basic_entities' => array(null, true, false),
             'startup_mode' => array(null, 'wysiwyg', 'source'),
             'enter_mode' => array(null, 'ENTER_P', 'ENTER_BR', 'ENTER_DIV'),
-        ));
+        );
 
-        $resolver->setAllowedTypes(array(
+        $allowedTypes = array(
             'transformers' => 'array',
             'toolbar' => 'array',
             'toolbar_groups' => 'array',
             'format_tags' => 'array',
             'external_plugins' => 'array',
-        ));
+        );
+
+        // BC: Remove version check when support for Symfony <2.6 is dropped.
+        if (Kernel::VERSION_ID >= 20600) {
+            foreach ($allowedValues as $option => $values) {
+                $resolver->setAllowedValues($option, $values);
+            }
+
+            foreach ($allowedTypes as $option => $types) {
+                $resolver->setAllowedTypes($option, $types);
+            }
+        } else {
+            $resolver->setAllowedValues($allowedValues);
+            $resolver->setAllowedTypes($allowedTypes);
+        }
     }
 
     /**
@@ -202,6 +226,12 @@ class CkeditorType extends AbstractType
      */
     public function getParent()
     {
+        // Use the Fully Qualified Class Name if the method getBlockPrefix exists.
+        if (method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')) {
+            return 'Symfony\Component\Form\Extension\Core\Type\TextareaType';
+        }
+
+        // BC - Remove this when support for Symfony <2.8 is dropped.
         return 'textarea';
     }
 
@@ -209,6 +239,14 @@ class CkeditorType extends AbstractType
      * {@inheritdoc}
      */
     public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
     {
         return 'ckeditor';
     }

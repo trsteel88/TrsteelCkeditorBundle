@@ -4,6 +4,7 @@ namespace Trsteel\CkeditorBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Trsteel\CkeditorBundle\DependencyInjection\Compiler\FormTypeCompilerPass;
 use Trsteel\CkeditorBundle\DependencyInjection\Compiler\TransformerCompilerPass;
 
 class TrsteelCkeditorBundle extends Bundle
@@ -12,6 +13,7 @@ class TrsteelCkeditorBundle extends Bundle
     {
         parent::build($container);
 
+        $container->addCompilerPass(new FormTypeCompilerPass());
         $container->addCompilerPass(new TransformerCompilerPass());
     }
 }

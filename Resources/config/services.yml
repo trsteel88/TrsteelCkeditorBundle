@@ -3,7 +3,7 @@ services:
         class: "%trsteel_ckeditor.form.type.class%"
         arguments: ["@service_container"]
         tags:
-            - { name: form.type, alias: ckeditor }
+            - { name: form.type }
 
     trsteel_ckeditor.transformer.html_purifier:
         class: Trsteel\CkeditorBundle\Form\DataTransformer\HTMLPurifierTransformer
