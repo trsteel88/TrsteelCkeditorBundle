@@ -13,7 +13,7 @@ env:
     - SYMFONY_VERSION="2.5.*" SYMFONY_DEPRECATIONS_HELPER=weak
     - SYMFONY_VERSION="2.6.*" SYMFONY_DEPRECATIONS_HELPER=weak
     - SYMFONY_VERSION="2.7.*" SYMFONY_DEPRECATIONS_HELPER=weak
-    - SYMFONY_VERSION="2.8.*"
+    - SYMFONY_VERSION="2.8.*" SYMFONY_DEPRECATIONS_HELPER=strict
 
 before_script:
     - composer require --no-update symfony/framework-bundle:${SYMFONY_VERSION}
