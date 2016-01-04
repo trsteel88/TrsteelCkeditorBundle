@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * This is the class that loads and manages your bundle configuration.
@@ -76,6 +77,13 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.custom_config', $config['custom_config']);
         $container->setParameter('trsteel_ckeditor.ckeditor.templates_files', $config['templates_files']);
         $container->setParameter('trsteel_ckeditor.ckeditor.extra_allowed_content', $config['extra_allowed_content']);
+
+        if (Kernel::VERSION_ID < 30000) {
+            // BC - Add alias if Symfony < 3.0
+            $container->getDefinition('trsteel_ckeditor.form.type')
+                ->clearTag('form.type')
+                ->addTag('form.type', array('alias' => 'ckeditor'));
+        }
     }
 
     private function getDefaultGroups()
