@@ -32,7 +32,7 @@
                 templates_files: {{ templates_files_array|json_encode }},
             {% endif %}
             {% if extra_allowed_content is not null %}
-                extraAllowedContent: {% if extra_allowed_content is not same as(true) %}'{{ extra_allowed_content }}'{% else %}true{% endif %},
+                extraAllowedContent: {% if extra_allowed_content == 'true' %}true{% else %}'{{ extra_allowed_content }}'{% endif %},
             {% endif %}
             {% if height is not null %}
                 height: '{{ height }}',
