@@ -232,6 +232,10 @@ class Configuration implements ConfigurationInterface
                     ->defaultNull()
                     ->info('This option makes it possible to set additional allowed content rules for CKEDITOR.editor.filter.')
                 ->end()
+                ->booleanNode('templates_replace_content')
+                    ->defaultNull()
+                    ->info('Whether the "Replace actual contents" checkbox is checked by default in the Templates dialog..')
+                ->end()
             ->end()
         ;
 

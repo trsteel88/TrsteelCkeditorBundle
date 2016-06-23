@@ -34,6 +34,9 @@
             {% if extra_allowed_content is not null %}
                 extraAllowedContent: {% if extra_allowed_content == 'true' %}true{% else %}'{{ extra_allowed_content }}'{% endif %},
             {% endif %}
+            {% if templates_replace_content is not null %}
+                templates_replaceContent: {{ templates_replace_content ? 'true' : 'false' }},
+            {% endif %}
             {% if height is not null %}
                 height: '{{ height }}',
             {% endif %}

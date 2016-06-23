@@ -1160,4 +1160,31 @@ class CkeditorTypeTest extends TypeTestCase
 
         $this->assertEquals($extraAllowedContent, 'b i');
     }
+
+    /**
+     * Check default templates_replace_content property.
+     */
+    public function testDefaultTemplatesReplaceContent()
+    {
+        $form = $this->factory->create($this->formType);
+        $view = $form->createView();
+        $templatesReplaceContent = $view->vars['templates_replace_content'];
+
+        $this->assertNull($templatesReplaceContent);
+    }
+
+    /**
+     * Checks extraAllowedContent property.
+     */
+    public function testTemplatesReplaceContent()
+    {
+        $form = $this->factory->create($this->formType, null, array(
+            'templates_replace_content' => false,
+        ));
+
+        $view = $form->createView();
+        $templatesReplaceContent = $view->vars['templates_replace_content'];
+
+        $this->assertFalse($templatesReplaceContent);
+    }
 }

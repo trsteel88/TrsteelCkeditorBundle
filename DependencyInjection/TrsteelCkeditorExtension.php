@@ -77,6 +77,7 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.custom_config', $config['custom_config']);
         $container->setParameter('trsteel_ckeditor.ckeditor.templates_files', $config['templates_files']);
         $container->setParameter('trsteel_ckeditor.ckeditor.extra_allowed_content', $config['extra_allowed_content']);
+        $container->setParameter('trsteel_ckeditor.ckeditor.templates_replace_content', $config['templates_replace_content']);
 
         if (Kernel::VERSION_ID < 30000) {
             // BC - Add alias if Symfony < 3.0
