@@ -358,6 +358,30 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
+     * Check default disable_native_spell_checker property.
+     */
+    public function testDefaultDisableNativeSpellChecker()
+    {
+        $form = $this->factory->create('ckeditor');
+        $view = $form->createView();
+        $disable_native_spell_checker = $view->vars['disable_native_spell_checker'];
+        $this->assertTrue($disable_native_spell_checker);
+    }
+
+    /**
+     * Check startup_outline_blocks property.
+     */
+    public function testDisableNativeSpellChecker()
+    {
+        $form = $this->factory->create('ckeditor', null, array(
+            'disable_native_spell_checker' => false,
+        ));
+        $view = $form->createView();
+        $disable_native_spell_checker = $view->vars['disable_native_spell_checker'];
+        $this->assertFalse($disable_native_spell_checker);
+    }
+
+    /**
      * Check the default filebrowserBrowseUrl property.
      */
     public function testDefaultFileBrowserBrowseUrl()
