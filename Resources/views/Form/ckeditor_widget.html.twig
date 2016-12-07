@@ -2,14 +2,11 @@
 {% spaceless %}
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
 
-    <script type="text/javascript">
-    {% autoescape true js %}
-        var CKEDITOR_BASEPATH = '{{ app.request.basePath ~ '/' ~ base_path }}';
-    {% endautoescape %}
-    </script>
-
     <script type="text/javascript" src="{{ asset(base_path ~ 'ckeditor.js') }}"></script>
     <script type="text/javascript">
+     {% autoescape true js %}
+        var CKEDITOR_BASEPATH = '{{ app.request.basePath ~ '/' ~ base_path }}';
+    {% endautoescape %}
     {% autoescape false %}
         {% set plugins = '' %}
         {% for name, external_plugin in external_plugins %}
