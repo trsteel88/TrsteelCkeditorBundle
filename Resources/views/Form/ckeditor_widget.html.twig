@@ -3,7 +3,7 @@
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
 
     <script type="text/javascript">
-    {% autoescape true js %}
+    {% autoescape 'js' %}
         var CKEDITOR_BASEPATH = '{{ app.request.basePath ~ '/' ~ base_path }}';
     {% endautoescape %}
     </script>
