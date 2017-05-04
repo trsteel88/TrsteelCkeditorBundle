@@ -3,5 +3,8 @@ framework:
     router:     { resource: null }
     templating: { engines: ['twig'] }
 
+twig:
+    autoescape: name
+
 trsteel_ckeditor:
     transformers: []
