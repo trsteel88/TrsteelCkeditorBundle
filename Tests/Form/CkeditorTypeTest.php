@@ -1135,6 +1135,33 @@ class CkeditorTypeTest extends TypeTestCase
     }
 
     /**
+     * Check default allowed_content property.
+     */
+    public function testDefaultAllowedContent()
+    {
+        $form = $this->factory->create($this->formType);
+        $view = $form->createView();
+        $allowedContent = $view->vars['allowed_content'];
+
+        $this->assertNull($allowedContent);
+    }
+
+    /**
+     * Checks allowedContent property.
+     */
+    public function testAllowedContent()
+    {
+        $form = $this->factory->create($this->formType, null, array(
+            'allowed_content' => 'h1',
+        ));
+
+        $view = $form->createView();
+        $allowedContent = $view->vars['allowed_content'];
+
+        $this->assertEquals($allowedContent, 'h1');
+    }
+
+    /**
      * Check default extra_allowed_content property.
      */
     public function testDefaultExtraAllowedContent()

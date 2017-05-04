@@ -76,6 +76,7 @@ class CkeditorType extends AbstractType
             ->setAttribute('startup_mode', $options['startup_mode'])
             ->setAttribute('enter_mode', $options['enter_mode'])
             ->setAttribute('templates_files', $options['templates_files'])
+            ->setAttribute('allowed_content', $options['allowed_content'])
             ->setAttribute('extra_allowed_content', $options['extra_allowed_content'])
             ->setAttribute('templates_replace_content', $options['templates_replace_content'])
         ;
@@ -138,6 +139,7 @@ class CkeditorType extends AbstractType
         $view->vars['external_plugins'] = $options['external_plugins'];
         $view->vars['custom_config'] = $options['custom_config'];
         $view->vars['templates_files'] = $options['templates_files'];
+        $view->vars['allowed_content'] = $options['allowed_content'];
         $view->vars['extra_allowed_content'] = $options['extra_allowed_content'];
         $view->vars['templates_replace_content'] = $options['templates_replace_content'];
     }
@@ -187,6 +189,7 @@ class CkeditorType extends AbstractType
             'external_plugins' => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
             'custom_config' => $this->container->getParameter('trsteel_ckeditor.ckeditor.custom_config'),
             'templates_files' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_files'),
+            'allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.allowed_content'),
             'extra_allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'),
             'templates_replace_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_replace_content'),
         ));

@@ -31,6 +31,9 @@
                 {% endfor %}
                 templates_files: {{ templates_files_array|json_encode }},
             {% endif %}
+            {% if allowed_content is not null %}
+                allowedContent: {% if allowed_content == 'true' %}true{% else %}'{{ allowed_content }}'{% endif %},
+            {% endif %}
             {% if extra_allowed_content is not null %}
                 extraAllowedContent: {% if extra_allowed_content == 'true' %}true{% else %}'{{ extra_allowed_content }}'{% endif %},
             {% endif %}
