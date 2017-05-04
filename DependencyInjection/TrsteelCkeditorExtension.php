@@ -28,7 +28,7 @@ class TrsteelCkeditorExtension extends Extension
 
         $container->setParameter('twig.form.resources', array_merge(
             $container->getParameter('twig.form.resources'),
-            array('TrsteelCkeditorBundle:Form:ckeditor_widget.html.twig')
+            array('@TrsteelCkeditor/Form/ckeditor_widget.html.twig')
         ));
 
         $config['toolbar_groups'] = array_merge($this->getDefaultGroups(), $config['toolbar_groups']);
