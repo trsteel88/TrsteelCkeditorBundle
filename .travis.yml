@@ -20,6 +20,7 @@ install:
     - composer require --no-update symfony/framework-bundle:${SYMFONY_VERSION}
     - composer require --no-update symfony/form:${SYMFONY_VERSION}
     - composer require --no-update symfony/twig-bundle:${SYMFONY_VERSION}
+    - composer require --no-update symfony/yaml:${SYMFONY_VERSION}
     - composer require --dev --no-update symfony/phpunit-bridge:${SYMFONY_PHPUNIT_BRIDGE_VERSION}
     - if [[ "$SYMFONY_VERSION" = *dev* ]]; then sed -i "s/\"MIT\"/\"MIT\",\"minimum-stability\":\"dev\"/g" composer.json; fi
     - composer update --prefer-source `if [[ $COMPOSER_PREFER_LOWEST = true ]]; then echo "--prefer-lowest --prefer-stable"; fi`
@@ -29,11 +30,11 @@ script: phpunit
 matrix:
     include:
         - php: 5.6
-          env: SYMFONY_VERSION=2.7.* COMPOSER_PREFER_LOWEST=true
-        - php: 5.6
-          env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.* COMPOSER_PREFER_LOWEST=true
+          env: SYMFONY_VERSION=2.7.*
         - php: 5.6
           env: SYMFONY_VERSION=2.8.* SYMFONY_PHPUNIT_BRIDGE_VERSION=2.8.*
+        - php: 5.6
+          env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.* COMPOSER_PREFER_LOWEST=true
         - php: 5.6
           env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.*
         - php: 5.6
