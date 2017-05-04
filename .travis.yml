@@ -36,8 +36,6 @@ matrix:
         - php: 5.6
           env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.* COMPOSER_PREFER_LOWEST=true
         - php: 5.6
-          env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.*
-        - php: 5.6
           env: SYMFONY_VERSION=3.1.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.1.*
         - php: 5.6
           env: SYMFONY_VERSION=3.2.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.2.*
