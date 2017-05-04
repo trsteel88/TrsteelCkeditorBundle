@@ -21,6 +21,8 @@
         "phpunit/phpunit": "~4.0",
         "symfony/phpunit-bridge": "~2.7|~3.0",
         "symfony/twig-bundle": "~2.7|~3.0",
+        "symfony/asset": "~2.7|~3.0",
+        "symfony/templating": "~2.7|~3.0",
         "symfony/yaml": "~2.7|~3.0"
     },
     "autoload": {
