@@ -11,8 +11,8 @@ php:
 env:
     global:
         - COMPOSER_PREFER_LOWEST=false
-        - SYMFONY_DEPRECATIONS_HELPER=weak
-        - SYMFONY_VERSION=2.3.*
+        - SYMFONY_DEPRECATIONS_HELPER=strict
+        - SYMFONY_VERSION=2.7.*
         - SYMFONY_PHPUNIT_BRIDGE_VERSION=2.7.*
 
 install:
@@ -29,25 +29,21 @@ script: phpunit
 matrix:
     include:
         - php: 5.6
-          env: SYMFONY_VERSION=2.3.*
-        - php: 5.6
-          env: SYMFONY_VERSION=2.4.*
-        - php: 5.6
-          env: SYMFONY_VERSION=2.5.*
-        - php: 5.6
-          env: SYMFONY_VERSION=2.6.*
-        - php: 5.6
-          env: SYMFONY_VERSION=2.7.*
-        - php: 5.6
-          env: SYMFONY_VERSION=2.8.* SYMFONY_PHPUNIT_BRIDGE_VERSION=2.8.* SYMFONY_DEPRECATIONS_HELPER=strict
+          env: SYMFONY_VERSION=2.7.* COMPOSER_PREFER_LOWEST=true
         - php: 5.6
           env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.* COMPOSER_PREFER_LOWEST=true
         - php: 5.6
-          env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.* SYMFONY_DEPRECATIONS_HELPER=strict
+          env: SYMFONY_VERSION=2.8.* SYMFONY_PHPUNIT_BRIDGE_VERSION=2.8.*
         - php: 5.6
-          env: SYMFONY_VERSION=3.0.*@dev SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.*@dev SYMFONY_DEPRECATIONS_HELPER=strict
+          env: SYMFONY_VERSION=3.0.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.*
+        - php: 5.6
+          env: SYMFONY_VERSION=3.1.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.1.*
+        - php: 5.6
+          env: SYMFONY_VERSION=3.2.* SYMFONY_PHPUNIT_BRIDGE_VERSION=3.2.*
+        - php: 5.6
+          env: SYMFONY_VERSION=3.3.*@dev SYMFONY_PHPUNIT_BRIDGE_VERSION=3.3.*@dev
     allow_failures:
-        - env: SYMFONY_VERSION=3.0.*@dev SYMFONY_PHPUNIT_BRIDGE_VERSION=3.0.*@dev SYMFONY_DEPRECATIONS_HELPER=strict
+        - env: SYMFONY_VERSION=3.3.*@dev SYMFONY_PHPUNIT_BRIDGE_VERSION=3.3.*@dev
 
 notifications:
     email: trsteel88@gmail.com
