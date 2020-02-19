@@ -130,7 +130,8 @@
                 customConfig: '{{ asset(custom_config) }}',
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }},
-            baseHref: '{{ base_href ? base_href : app.request.schemeAndHttpHost ~ app.request.baseUrl ~ '/' }}'
+            baseHref: '{{ base_href ? base_href : app.request.schemeAndHttpHost ~ app.request.baseUrl ~ '/' }}',
+            filebrowserUploadMethod: 'form'
         };
 
         CKEDITOR.replace("{{ id }}", trsteelConfig);
