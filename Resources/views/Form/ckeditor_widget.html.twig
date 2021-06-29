@@ -1,5 +1,4 @@
-{% block ckeditor_widget %}
-{% spaceless %}
+{% block ckeditor_widget -%}
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
 
     <script type="text/javascript">
@@ -139,5 +138,4 @@
 
     {% endautoescape %}
     </script>
-{% endspaceless %}
-{% endblock %}
+{%- endblock %}
