@@ -19,11 +19,11 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
-        "symfony/phpunit-bridge": "~2.7|~3.0",
-        "symfony/twig-bundle": "~2.7|~3.0",
-        "symfony/asset": "~2.7|~3.0",
-        "symfony/templating": "~2.7|~3.0",
-        "symfony/yaml": "~2.7|~3.0"
+        "symfony/phpunit-bridge": ">=3.0,<6.0",
+        "symfony/twig-bundle": ">=3.0,<6.0",
+        "symfony/asset": ">=3.0,<6.0",
+        "symfony/templating": ">=3.0,<6.0",
+        "symfony/yaml": ">=3.0,<6.0"
     },
     "autoload": {
         "psr-4": { "Trsteel\\CkeditorBundle\\": "" }

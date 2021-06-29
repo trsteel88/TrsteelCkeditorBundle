@@ -1,4 +1,4 @@
-## Symfony2 CKEditor Bundle
+## Symfony CKEditor Bundle
 
 [![Build Status](https://secure.travis-ci.org/trsteel88/TrsteelCkeditorBundle.png?branch=master)](http://travis-ci.org/trsteel88/TrsteelCkeditorBundle)
 
@@ -93,15 +93,12 @@ You can create additional toolbar groups. Just create the group and specify the 
 
 Example form:
 
-Note: As of Symfony 2.8, you should use the fully qualified class name. (e.g. Trsteel\CkeditorBundle\Form\Type\CkeditorType). Support
-for the form alias 'ckeditor' has been dropped since Symfony 3.0.
-
 ```php
 <?php
 
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
-            ->add('content', 'ckeditor', array(
+            ->add('content', \Trsteel\CkeditorBundle\Form\Type\CkeditorType::class, array(
                 'transformers'                 => array('html_purifier'),
                 'toolbar'                      => array('document','basicstyles'),
                 'toolbar_groups'               => array(
@@ -150,7 +147,7 @@ trsteel_ckeditor:
 
 $form = $this->createFormBuilder($post)
             ->add('title', 'text')
-            ->add('content', 'ckeditor', array(
+            ->add('content', \Trsteel\CkeditorBundle\Form\Type\CkeditorType::class, array(
                 'transformers' => array(),
             ))
             ->getForm()
