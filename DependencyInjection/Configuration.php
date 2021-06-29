@@ -16,9 +16,11 @@ class Configuration implements ConfigurationInterface
      * {@inheritdoc}
      */
     public function getConfigTreeBuilder()
-    {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('trsteel_ckeditor');
+    {        
+        $treeBuilder = new TreeBuilder('trsteel_ckeditor');
+        $rootNode = method_exists(TreeBuilder::class, 'getRootNode')
+            ? $treeBuilder->getRootNode()
+            : $treeBuilder->root('trsteel_ckeditor');
 
         $rootNode
             ->children()
