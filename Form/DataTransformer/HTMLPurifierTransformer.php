@@ -6,44 +6,26 @@ use Symfony\Component\Form\DataTransformerInterface;
 
 class HTMLPurifierTransformer implements DataTransformerInterface
 {
-    /**
-     * @var \HTMLPurifier
-     */
-    private $purifier;
+    private ?\HTMLPurifier $purifier = null;
 
     /**
-     * @var array
+     * @param mixed[] $config
      */
-    private $config;
-
-    /**
-     * @param array $config
-     */
-    public function __construct(array $config)
+    public function __construct(private readonly array $config)
     {
-        $this->config = $config;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function transform($value)
+    public function transform(mixed $value): mixed
     {
         return $value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function reverseTransform($value)
+    public function reverseTransform(mixed $value): mixed
     {
         return $this->getPurifier()->purify($value);
     }
 
-    /**
-     * @return \HTMLPurifier
-     */
-    protected function getPurifier()
+    protected function getPurifier(): \HTMLPurifier
     {
         if (null === $this->purifier) {
             $this->purifier = new \HTMLPurifier($this->config);

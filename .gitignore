@@ -3,3 +3,7 @@
 /vendor
 /Tests/Resources/cache
 /Tests/Resources/logs
+/.idea
+/var
+.phpunit.result.cache
+.php-cs-fixer.cache

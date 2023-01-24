@@ -1,0 +1,28 @@
+name: Test
+
+on: [ push, pull_request ]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.1
+                    coverage: none
+
+            -   name: Update project dependencies
+                uses: ramsey/composer-install@v2
+
+            -   name: Run PHP CS Fixer
+                run: vendor/bin/php-cs-fixer fix -v --dry-run
+
+            -   name: Run PHPStan
+                run: vendor/bin/phpstan analyse --ansi
+
+            -   name: Run Rector
+                run: vendor/bin/rector process --dry-run --no-progress-bar

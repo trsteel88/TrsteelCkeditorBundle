@@ -4,6 +4,7 @@ namespace Trsteel\CkeditorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Trsteel\CkeditorBundle\Form\Type\CkeditorType;
 
 /**
  * This is the class that validates and merges configuration from your app/config files.
@@ -12,42 +13,37 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder()
-    {        
+    public function getConfigTreeBuilder(): TreeBuilder
+    {
         $treeBuilder = new TreeBuilder('trsteel_ckeditor');
-        $rootNode = method_exists(TreeBuilder::class, 'getRootNode')
-            ? $treeBuilder->getRootNode()
-            : $treeBuilder->root('trsteel_ckeditor');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
-                ->scalarNode('class')->defaultValue('Trsteel\CkeditorBundle\Form\Type\CkeditorType')->end()
+                ->scalarNode('class')->defaultValue(CkeditorType::class)->end()
                 ->arrayNode('html_purifier')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->variableNode('config')
-                            ->defaultValue(array())
+                            ->defaultValue([])
                             ->info('The default html purifer config. See http://htmlpurifier.org/live/configdoc/plain.html for more information.')
                         ->end()
                     ->end()
                 ->end()
                 ->variableNode('transformers')
-                    ->defaultValue(array('html_purifier'))
+                    ->defaultValue(['html_purifier'])
                     ->info('Default data transformers for the submitted html.')
                 ->end()
                 ->variableNode('toolbar')
-                    ->defaultValue(array(
+                    ->defaultValue([
                         'document', 'clipboard', 'editing', '/',
                         'basicstyles', 'paragraph', 'links', '/',
                         'insert', 'styles', 'tools',
-                    ))
+                    ])
                     ->info('The default toolbar displayed on the editor.')
                 ->end()
                 ->variableNode('toolbar_groups')
-                    ->defaultValue(array())
+                    ->defaultValue([])
                     ->info('Groups of icons in the editor.')
                 ->end()
                 ->booleanNode('startup_outline_blocks')
@@ -82,12 +78,12 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->beforeNormalization()
                     ->ifString()
-                        ->then(function ($v) { return array('url' => $v); })
+                        ->then(function ($v) { return ['url' => $v]; })
                     ->end()
                     ->children()
                         ->scalarNode('url')->defaultNull()->end()
                         ->scalarNode('route')->defaultNull()->end()
-                        ->variableNode('route_parameters')->defaultValue(array())->end()
+                        ->variableNode('route_parameters')->defaultValue([])->end()
                     ->end()
                     ->info('The location of an external file browser that should be launched when the Browse Server button is pressed.')
                 ->end()
@@ -95,12 +91,12 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->beforeNormalization()
                     ->ifString()
-                        ->then(function ($v) { return array('url' => $v); })
+                        ->then(function ($v) { return ['url' => $v]; })
                     ->end()
                     ->children()
                         ->scalarNode('url')->defaultNull()->end()
                         ->scalarNode('route')->defaultNull()->end()
-                        ->variableNode('route_parameters')->defaultValue(array())->end()
+                        ->variableNode('route_parameters')->defaultValue([])->end()
                     ->end()
                     ->info('The location of the script that handles file uploads.')
                 ->end()
@@ -108,12 +104,12 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->beforeNormalization()
                     ->ifString()
-                        ->then(function ($v) { return array('url' => $v); })
+                        ->then(function ($v) { return ['url' => $v]; })
                     ->end()
                     ->children()
                         ->scalarNode('url')->defaultNull()->end()
                         ->scalarNode('route')->defaultNull()->end()
-                        ->variableNode('route_parameters')->defaultValue(array())->end()
+                        ->variableNode('route_parameters')->defaultValue([])->end()
                     ->end()
                     ->info('The location of an external file browser that should be launched when the Browse Server button is pressed in the Image dialog window.')
                 ->end()
@@ -121,12 +117,12 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->beforeNormalization()
                     ->ifString()
-                        ->then(function ($v) { return array('url' => $v); })
+                        ->then(function ($v) { return ['url' => $v]; })
                     ->end()
                     ->children()
                         ->scalarNode('url')->defaultNull()->end()
                         ->scalarNode('route')->defaultNull()->end()
-                        ->variableNode('route_parameters')->defaultValue(array())->end()
+                        ->variableNode('route_parameters')->defaultValue([])->end()
                     ->end()
                     ->info('The location of the script that handles file uploads in the Image dialog window.')
                 ->end()
@@ -134,12 +130,12 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->beforeNormalization()
                     ->ifString()
-                        ->then(function ($v) { return array('url' => $v); })
+                        ->then(function ($v) { return ['url' => $v]; })
                     ->end()
                     ->children()
                         ->scalarNode('url')->defaultNull()->end()
                         ->scalarNode('route')->defaultNull()->end()
-                        ->variableNode('route_parameters')->defaultValue(array())->end()
+                        ->variableNode('route_parameters')->defaultValue([])->end()
                     ->end()
                     ->info('The location of an external file browser that should be launched when the Browse Server button is pressed in the Flash dialog window.')
                 ->end()
@@ -147,12 +143,12 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->beforeNormalization()
                     ->ifString()
-                        ->then(function ($v) { return array('url' => $v); })
+                        ->then(function ($v) { return ['url' => $v]; })
                     ->end()
                     ->children()
                         ->scalarNode('url')->defaultNull()->end()
                         ->scalarNode('route')->defaultNull()->end()
-                        ->variableNode('route_parameters')->defaultValue(array())->end()
+                        ->variableNode('route_parameters')->defaultValue([])->end()
                     ->end()
                     ->info('The location of the script that handles file uploads in the Flash dialog window.')
                 ->end()
@@ -165,7 +161,7 @@ class Configuration implements ConfigurationInterface
                     ->info('Disables the built-in spell checker if the browser provides one.')
                 ->end()
                 ->variableNode('format_tags')
-                    ->defaultValue(array())
+                    ->defaultValue([])
                     ->info('An array of style names (by default tags) representing the style definition for each entry to be displayed in the Format combo in the toolbar.')
                     ->example('[\'p\',\'h2\',\'h3\',\'pre\']')
                 ->end()
@@ -184,7 +180,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('contents_css')
                     ->beforeNormalization()
                     ->ifString()
-                        ->then(function ($v) { return array($v); })
+                        ->then(function ($v) { return [$v]; })
                     ->end()
                     ->prototype('scalar')->end()
                     ->info('The CSS file(s) to be used to apply style to editor contents.')
@@ -214,11 +210,10 @@ class Configuration implements ConfigurationInterface
                     ->info('The path of the custom config.js to use for the editor setup.')
                 ->end()
                 ->arrayNode('external_plugins')
-                    ->useAttributeAsKey(true)
                     ->prototype('array')
                         ->beforeNormalization()
                         ->ifString()
-                            ->then(function ($v) { return array('path' => $v); })
+                            ->then(function ($v) { return ['path' => $v]; })
                         ->end()
                         ->children()
                             ->scalarNode('path')->isRequired()->end()
@@ -227,7 +222,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->variableNode('templates_files')
-                    ->defaultValue(array())
+                    ->defaultValue([])
                     ->info('The list of templates definition files to load.')
                 ->end()
                 ->scalarNode('allowed_content')
