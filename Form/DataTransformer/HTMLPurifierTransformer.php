@@ -8,14 +8,8 @@ class HTMLPurifierTransformer implements DataTransformerInterface
 {
     private \HTMLPurifier $purifier;
 
-    private array $config;
-
-    /**
-     * @param array $config
-     */
-    public function __construct(array $config)
+    public function __construct(private readonly array $config)
     {
-        $this->config = $config;
     }
 
     public function transform(mixed $value): mixed

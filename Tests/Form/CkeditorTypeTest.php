@@ -4,7 +4,6 @@ namespace Trsteel\CkeditorBundle\Tests\Form;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Form\Forms;
 use Trsteel\CkeditorBundle\Form\Type\CkeditorType;
 use Trsteel\CkeditorBundle\Tests\AppKernel;
@@ -12,6 +11,7 @@ use Trsteel\CkeditorBundle\Tests\AppKernel;
 class CkeditorTypeTest extends TestCase
 {
     protected static $kernel;
+
     protected static $container;
 
     private FormFactoryInterface $factory;
@@ -30,21 +30,9 @@ class CkeditorTypeTest extends TestCase
     }
 
     /**
-     * Get service from container by id.
-     * 
-     * @param string $serviceId
-     *
-     * @return mixed
-     */
-    public function get($serviceId)
-    {
-        return self::$kernel->getContainer()->get($serviceId);
-    }
-
-    /**
      * {@inheritdooc}.
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -55,6 +43,16 @@ class CkeditorTypeTest extends TestCase
             ->getFormFactory();
 
         $this->formType = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix') ? 'Trsteel\CkeditorBundle\Form\Type\CkeditorType' : 'ckeditor';
+    }
+
+    /**
+     * Get service from container by id.
+     *
+     * @param string $serviceId
+     */
+    public function get($serviceId)
+    {
+        return self::$kernel->getContainer()->get($serviceId);
     }
 
     /**
@@ -74,14 +72,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testRequired()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'required' => true,
-        ));
+        ]);
 
         $view = $form->createView();
         $required = $view->vars['required'];
 
-        $this->assertEquals($required, true);
+        $this->assertSame($required, true);
     }
 
     /**
@@ -93,20 +91,20 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $toolbar = $view->vars['toolbar'];
 
-        $this->assertEquals($toolbar, array(
-            array(
+        $this->assertSame($toolbar, [
+            [
                 'name' => 'document',
-                'items' => array(
+                'items' => [
                     'Source',
                     '-',
                     'Save',
                     '-',
                     'Templates',
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 'name' => 'clipboard',
-                'items' => array(
+                'items' => [
                     'Cut',
                     'Copy',
                     'Paste',
@@ -115,21 +113,21 @@ class CkeditorTypeTest extends TestCase
                     '-',
                     'Undo',
                     'Redo',
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 'name' => 'editing',
-                'items' => array(
+                'items' => [
                     'Find',
                     'Replace',
                     '-',
                     'SelectAll',
-                ),
-            ),
+                ],
+            ],
             '/',
-            array(
+            [
                 'name' => 'basicstyles',
-                'items' => array(
+                'items' => [
                     'Bold',
                     'Italic',
                     'Underline',
@@ -138,11 +136,11 @@ class CkeditorTypeTest extends TestCase
                     'Superscript',
                     '-',
                     'RemoveFormat',
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 'name' => 'paragraph',
-                'items' => array(
+                'items' => [
                     'NumberedList',
                     'BulletedList',
                     '-',
@@ -153,41 +151,41 @@ class CkeditorTypeTest extends TestCase
                     'JustifyCenter',
                     'JustifyRight',
                     'JustifyBlock',
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 'name' => 'links',
-                'items' => array(
+                'items' => [
                     'Link',
                     'Unlink',
                     'Anchor',
-                ),
-            ),
+                ],
+            ],
             '/',
-            array(
+            [
                 'name' => 'insert',
-                'items' => array(
+                'items' => [
                     'Image',
                     'Flash',
                     'Table',
                     'HorizontalRule',
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 'name' => 'styles',
-                'items' => array(
+                'items' => [
                     'Styles',
                     'Format',
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 'name' => 'tools',
-                'items' => array(
+                'items' => [
                     'Maximize',
                     'ShowBlocks',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -195,27 +193,27 @@ class CkeditorTypeTest extends TestCase
      */
     public function testToolbar()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'toolbar' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'toolbar' => [
                 'document',
-            ),
-            'toolbar_groups' => array(
-                'document' => array(
+            ],
+            'toolbar_groups' => [
+                'document' => [
                     'Source',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
         $view = $form->createView();
         $toolbar = $view->vars['toolbar'];
 
-        $this->assertEquals($toolbar, array(
-            array(
+        $this->assertSame($toolbar, [
+            [
                 'name' => 'document',
-                'items' => array(
+                'items' => [
                     'Source',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -235,9 +233,9 @@ class CkeditorTypeTest extends TestCase
      */
     public function testStartupOutlineBlocks()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'startup_outline_blocks' => false,
-        ));
+        ]);
 
         $view = $form->createView();
         $startup_outline_blocks = $view->vars['startup_outline_blocks'];
@@ -262,14 +260,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testUiColor()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'ui_color' => '#333333',
-        ));
+        ]);
 
         $view = $form->createView();
         $ui_color = $view->vars['ui_color'];
 
-        $this->assertEquals($ui_color, '#333333');
+        $this->assertSame($ui_color, '#333333');
     }
 
     /**
@@ -289,14 +287,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testWidth()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'width' => '100%',
-        ));
+        ]);
 
         $view = $form->createView();
         $width = $view->vars['width'];
 
-        $this->assertEquals($width, '100%');
+        $this->assertSame($width, '100%');
     }
 
     /**
@@ -316,14 +314,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testHeight()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'height' => '350px',
-        ));
+        ]);
 
         $view = $form->createView();
         $height = $view->vars['height'];
 
-        $this->assertEquals($height, '350px');
+        $this->assertSame($height, '350px');
     }
 
     /**
@@ -343,14 +341,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testLanguage()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'language' => 'en-au',
-        ));
+        ]);
 
         $view = $form->createView();
         $language = $view->vars['language'];
 
-        $this->assertEquals($language, 'en-au');
+        $this->assertSame($language, 'en-au');
     }
 
     /**
@@ -362,11 +360,11 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $filebrowserBrowseUrl = $view->vars['filebrowser_browse_url'];
 
-        $this->assertEquals($filebrowserBrowseUrl, array(
+        $this->assertSame($filebrowserBrowseUrl, [
             'url' => null,
             'route' => null,
-            'route_parameters' => array(),
-        ));
+            'route_parameters' => [],
+        ]);
     }
 
     /**
@@ -374,14 +372,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserBrowseUrl()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'filebrowser_browse_url' => '/myfilebrowser/browser.html',
-        ));
+        ]);
 
         $view = $form->createView();
         $filebrowserBrowseUrl = $view->vars['filebrowser_browse_url'];
 
-        $this->assertEquals($filebrowserBrowseUrl, '/myfilebrowser/browser.html');
+        $this->assertSame($filebrowserBrowseUrl, '/myfilebrowser/browser.html');
     }
 
     /**
@@ -389,24 +387,24 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserBrowseUrlRoute()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'filebrowser_browse_url' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'filebrowser_browse_url' => [
                 'route' => 'file_browser',
-                'route_parameters' => array(
+                'route_parameters' => [
                     'type' => 'file',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
         $view = $form->createView();
         $filebrowserBrowseUrl = $view->vars['filebrowser_browse_url'];
 
-        $this->assertEquals($filebrowserBrowseUrl, array(
+        $this->assertSame($filebrowserBrowseUrl, [
             'route' => 'file_browser',
-            'route_parameters' => array(
+            'route_parameters' => [
                 'type' => 'file',
-            ),
-        ));
+            ],
+        ]);
     }
 
     /**
@@ -418,11 +416,11 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $filebrowserBrowseUrl = $view->vars['filebrowser_upload_url'];
 
-        $this->assertEquals($filebrowserBrowseUrl, array(
+        $this->assertSame($filebrowserBrowseUrl, [
             'url' => null,
             'route' => null,
-            'route_parameters' => array(),
-        ));
+            'route_parameters' => [],
+        ]);
     }
 
     /**
@@ -430,14 +428,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserUploadUrl()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'filebrowser_upload_url' => '/myfilebrowser/uploads',
-        ));
+        ]);
 
         $view = $form->createView();
         $filebrowserUploadUrl = $view->vars['filebrowser_upload_url'];
 
-        $this->assertEquals($filebrowserUploadUrl, '/myfilebrowser/uploads');
+        $this->assertSame($filebrowserUploadUrl, '/myfilebrowser/uploads');
     }
 
     /**
@@ -445,24 +443,24 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserUploadUrlRoute()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'filebrowser_upload_url' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'filebrowser_upload_url' => [
                 'route' => 'file_browser_upload',
-                'route_parameters' => array(
+                'route_parameters' => [
                     'type' => 'file',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
         $view = $form->createView();
         $filebrowserUploadUrl = $view->vars['filebrowser_upload_url'];
 
-        $this->assertEquals($filebrowserUploadUrl, array(
+        $this->assertSame($filebrowserUploadUrl, [
             'route' => 'file_browser_upload',
-            'route_parameters' => array(
+            'route_parameters' => [
                 'type' => 'file',
-            ),
-        ));
+            ],
+        ]);
     }
 
     /**
@@ -474,11 +472,11 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $filebrowserBrowseUrl = $view->vars['filebrowser_image_browse_url'];
 
-        $this->assertEquals($filebrowserBrowseUrl, array(
+        $this->assertSame($filebrowserBrowseUrl, [
             'url' => null,
             'route' => null,
-            'route_parameters' => array(),
-        ));
+            'route_parameters' => [],
+        ]);
     }
 
     /**
@@ -486,14 +484,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserImageBrowseUrl()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'filebrowser_image_browse_url' => '/myfilebrowser/browser.html',
-        ));
+        ]);
 
         $view = $form->createView();
         $filebrowserImageBrowseUrl = $view->vars['filebrowser_image_browse_url'];
 
-        $this->assertEquals($filebrowserImageBrowseUrl, '/myfilebrowser/browser.html');
+        $this->assertSame($filebrowserImageBrowseUrl, '/myfilebrowser/browser.html');
     }
 
     /**
@@ -501,24 +499,24 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserImageBrowseUrlRoute()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'filebrowser_image_browse_url' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'filebrowser_image_browse_url' => [
                 'route' => 'file_browser',
-                'route_parameters' => array(
+                'route_parameters' => [
                     'type' => 'image',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
         $view = $form->createView();
         $filebrowserImageBrowseUrl = $view->vars['filebrowser_image_browse_url'];
 
-        $this->assertEquals($filebrowserImageBrowseUrl, array(
+        $this->assertSame($filebrowserImageBrowseUrl, [
             'route' => 'file_browser',
-            'route_parameters' => array(
+            'route_parameters' => [
                 'type' => 'image',
-            ),
-        ));
+            ],
+        ]);
     }
 
     /**
@@ -530,11 +528,11 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $filebrowserBrowseUrl = $view->vars['filebrowser_image_upload_url'];
 
-        $this->assertEquals($filebrowserBrowseUrl, array(
+        $this->assertSame($filebrowserBrowseUrl, [
             'url' => null,
             'route' => null,
-            'route_parameters' => array(),
-        ));
+            'route_parameters' => [],
+        ]);
     }
 
     /**
@@ -542,14 +540,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserImageUploadUrl()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'filebrowser_image_upload_url' => '/myfilebrowser/uploads',
-        ));
+        ]);
 
         $view = $form->createView();
         $filebrowserImageUploadUrl = $view->vars['filebrowser_image_upload_url'];
 
-        $this->assertEquals($filebrowserImageUploadUrl, '/myfilebrowser/uploads');
+        $this->assertSame($filebrowserImageUploadUrl, '/myfilebrowser/uploads');
     }
 
     /**
@@ -557,24 +555,24 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserImageUploadUrlRoute()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'filebrowser_image_upload_url' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'filebrowser_image_upload_url' => [
                 'route' => 'file_browser_upload',
-                'route_parameters' => array(
+                'route_parameters' => [
                     'type' => 'image',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
         $view = $form->createView();
         $filebrowserImageUploadUrl = $view->vars['filebrowser_image_upload_url'];
 
-        $this->assertEquals($filebrowserImageUploadUrl, array(
+        $this->assertSame($filebrowserImageUploadUrl, [
             'route' => 'file_browser_upload',
-            'route_parameters' => array(
+            'route_parameters' => [
                 'type' => 'image',
-            ),
-        ));
+            ],
+        ]);
     }
 
     /**
@@ -586,11 +584,11 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $filebrowserBrowseUrl = $view->vars['filebrowser_flash_browse_url'];
 
-        $this->assertEquals($filebrowserBrowseUrl, array(
+        $this->assertSame($filebrowserBrowseUrl, [
             'url' => null,
             'route' => null,
-            'route_parameters' => array(),
-        ));
+            'route_parameters' => [],
+        ]);
     }
 
     /**
@@ -598,14 +596,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserFlashBrowseUrl()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'filebrowser_flash_browse_url' => '/myfilebrowser/browser.html',
-        ));
+        ]);
 
         $view = $form->createView();
         $filebrowserFlashBrowseUrl = $view->vars['filebrowser_flash_browse_url'];
 
-        $this->assertEquals($filebrowserFlashBrowseUrl, '/myfilebrowser/browser.html');
+        $this->assertSame($filebrowserFlashBrowseUrl, '/myfilebrowser/browser.html');
     }
 
     /**
@@ -613,24 +611,24 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserFlashBrowseUrlRoute()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'filebrowser_flash_browse_url' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'filebrowser_flash_browse_url' => [
                 'route' => 'file_browser',
-                'route_parameters' => array(
+                'route_parameters' => [
                     'type' => 'flash',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
         $view = $form->createView();
         $filebrowserFlashBrowseUrl = $view->vars['filebrowser_flash_browse_url'];
 
-        $this->assertEquals($filebrowserFlashBrowseUrl, array(
+        $this->assertSame($filebrowserFlashBrowseUrl, [
             'route' => 'file_browser',
-            'route_parameters' => array(
+            'route_parameters' => [
                 'type' => 'flash',
-            ),
-        ));
+            ],
+        ]);
     }
 
     /**
@@ -642,11 +640,11 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $filebrowserBrowseUrl = $view->vars['filebrowser_flash_upload_url'];
 
-        $this->assertEquals($filebrowserBrowseUrl, array(
+        $this->assertSame($filebrowserBrowseUrl, [
             'url' => null,
             'route' => null,
-            'route_parameters' => array(),
-        ));
+            'route_parameters' => [],
+        ]);
     }
 
     /**
@@ -654,14 +652,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserFlashUploadUrl()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'filebrowser_flash_upload_url' => '/myfilebrowser/uploads',
-        ));
+        ]);
 
         $view = $form->createView();
         $filebrowserFlashUploadUrl = $view->vars['filebrowser_flash_upload_url'];
 
-        $this->assertEquals($filebrowserFlashUploadUrl, '/myfilebrowser/uploads');
+        $this->assertSame($filebrowserFlashUploadUrl, '/myfilebrowser/uploads');
     }
 
     /**
@@ -669,24 +667,24 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFileBrowserFlashUploadUrlRoute()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'filebrowser_flash_upload_url' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'filebrowser_flash_upload_url' => [
                 'route' => 'file_browser_upload',
-                'route_parameters' => array(
+                'route_parameters' => [
                     'type' => 'flash',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
         $view = $form->createView();
         $filebrowserFlashUploadUrl = $view->vars['filebrowser_flash_upload_url'];
 
-        $this->assertEquals($filebrowserFlashUploadUrl, array(
+        $this->assertSame($filebrowserFlashUploadUrl, [
             'route' => 'file_browser_upload',
-            'route_parameters' => array(
+            'route_parameters' => [
                 'type' => 'flash',
-            ),
-        ));
+            ],
+        ]);
     }
 
     /**
@@ -706,14 +704,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testSkin()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'skin' => 'myskin,/skins/myskin/',
-        ));
+        ]);
 
         $view = $form->createView();
         $skin = $view->vars['skin'];
 
-        $this->assertEquals($skin, 'myskin,/skins/myskin/');
+        $this->assertSame($skin, 'myskin,/skins/myskin/');
     }
 
     /**
@@ -733,9 +731,9 @@ class CkeditorTypeTest extends TestCase
      */
     public function testDisableNativeSpellChecker()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'disable_native_spell_checker' => true,
-        ));
+        ]);
 
         $view = $form->createView();
         $disableNativeSpellChecker = $view->vars['disable_native_spell_checker'];
@@ -752,7 +750,7 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $formatTags = $view->vars['format_tags'];
 
-        $this->assertEquals($formatTags, array());
+        $this->assertSame($formatTags, []);
     }
 
     /**
@@ -760,14 +758,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testFormatTags()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'format_tags' => array('p', 'h2', 'h3', 'pre'),
-        ));
+        $form = $this->factory->create($this->formType, null, [
+            'format_tags' => ['p', 'h2', 'h3', 'pre'],
+        ]);
 
         $view = $form->createView();
         $formatTags = $view->vars['format_tags'];
 
-        $this->assertEquals($formatTags, array('p', 'h2', 'h3', 'pre'));
+        $this->assertSame($formatTags, ['p', 'h2', 'h3', 'pre']);
     }
 
     /**
@@ -779,7 +777,7 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $basePath = $view->vars['base_path'];
 
-        $this->assertEquals($basePath, 'bundles/trsteelckeditor/');
+        $this->assertSame($basePath, 'bundles/trsteelckeditor/');
     }
 
     /**
@@ -787,14 +785,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testBasePath()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'base_path' => '/lib/ckeditor/',
-        ));
+        ]);
 
         $view = $form->createView();
         $basePath = $view->vars['base_path'];
 
-        $this->assertEquals($basePath, '/lib/ckeditor/');
+        $this->assertSame($basePath, '/lib/ckeditor/');
     }
 
     /**
@@ -814,14 +812,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testBaseHref()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'base_href' => 'http://domain.com/',
-        ));
+        ]);
 
         $view = $form->createView();
         $baseHref = $view->vars['base_href'];
 
-        $this->assertEquals($baseHref, 'http://domain.com/');
+        $this->assertSame($baseHref, 'http://domain.com/');
     }
 
     /**
@@ -841,14 +839,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testBodyClass()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'body_class' => 'special_class',
-        ));
+        ]);
 
         $view = $form->createView();
         $bodyClass = $view->vars['body_class'];
 
-        $this->assertEquals($bodyClass, 'special_class');
+        $this->assertSame($bodyClass, 'special_class');
     }
 
     /**
@@ -860,7 +858,7 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $contentsCss = $view->vars['contents_css'];
 
-        $this->assertEquals($contentsCss, array());
+        $this->assertSame($contentsCss, []);
     }
 
     /**
@@ -868,20 +866,20 @@ class CkeditorTypeTest extends TestCase
      */
     public function testContentsCssAsArray()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'contents_css' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'contents_css' => [
                 '/css/ckeditor/contents1.css',
                 '/css/ckeditor/contents2.css',
-            ),
-        ));
+            ],
+        ]);
 
         $view = $form->createView();
         $contentsCss = $view->vars['contents_css'];
 
-        $this->assertEquals($contentsCss, array(
+        $this->assertSame($contentsCss, [
             '/css/ckeditor/contents1.css',
             '/css/ckeditor/contents2.css',
-        ));
+        ]);
     }
 
     /**
@@ -889,14 +887,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testContentsCssAsString()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'contents_css' => '/css/ckeditor/contents.css',
-        ));
+        ]);
 
         $view = $form->createView();
         $contentsCss = $view->vars['contents_css'];
 
-        $this->assertEquals($contentsCss, '/css/ckeditor/contents.css');
+        $this->assertSame($contentsCss, '/css/ckeditor/contents.css');
     }
 
     /**
@@ -916,14 +914,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testBasicEntities()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'basic_entities' => false,
-        ));
+        ]);
 
         $view = $form->createView();
         $basicEntities = $view->vars['basic_entities'];
 
-        $this->assertEquals($basicEntities, false);
+        $this->assertSame($basicEntities, false);
     }
 
     /**
@@ -943,14 +941,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testEntities()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'entities' => false,
-        ));
+        ]);
 
         $view = $form->createView();
         $entities = $view->vars['entities'];
 
-        $this->assertEquals($entities, false);
+        $this->assertSame($entities, false);
     }
 
     /**
@@ -970,14 +968,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testEntitiesLatin()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'entities_latin' => false,
-        ));
+        ]);
 
         $view = $form->createView();
         $entitiesLatin = $view->vars['entities_latin'];
 
-        $this->assertEquals($entitiesLatin, false);
+        $this->assertSame($entitiesLatin, false);
     }
 
     /**
@@ -997,14 +995,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testStartupMode()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'startup_mode' => 'source',
-        ));
+        ]);
 
         $view = $form->createView();
         $startupMode = $view->vars['startup_mode'];
 
-        $this->assertEquals($startupMode, 'source');
+        $this->assertSame($startupMode, 'source');
     }
 
     /**
@@ -1024,14 +1022,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testEnterMode()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'enter_mode' => 'ENTER_BR',
-        ));
+        ]);
 
         $view = $form->createView();
         $enterMode = $view->vars['enter_mode'];
 
-        $this->assertEquals($enterMode, 'ENTER_BR');
+        $this->assertSame($enterMode, 'ENTER_BR');
     }
 
     /**
@@ -1043,7 +1041,7 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $externalPlugins = $view->vars['external_plugins'];
 
-        $this->assertEquals($externalPlugins, array());
+        $this->assertSame($externalPlugins, []);
     }
 
     /**
@@ -1051,23 +1049,23 @@ class CkeditorTypeTest extends TestCase
      */
     public function testExternalPlugins()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'external_plugins' => array(
-                'my_custom_plugin' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'external_plugins' => [
+                'my_custom_plugin' => [
                     'path' => 'js/ckeditor/plugins/my_custom_plugin',
                     'file' => 'plugin.js',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
         $view = $form->createView();
         $externalPlugins = $view->vars['external_plugins'];
 
-        $this->assertEquals($externalPlugins, array(
-            'my_custom_plugin' => array(
+        $this->assertSame($externalPlugins, [
+            'my_custom_plugin' => [
                 'path' => 'js/ckeditor/plugins/my_custom_plugin',
                 'file' => 'plugin.js',
-            ),
-        ));
+            ],
+        ]);
     }
 
     /**
@@ -1087,14 +1085,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testCustomConfig()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'custom_config' => 'someconfig.js',
-        ));
+        ]);
 
         $view = $form->createView();
         $customConfig = $view->vars['custom_config'];
 
-        $this->assertEquals($customConfig, 'someconfig.js');
+        $this->assertSame($customConfig, 'someconfig.js');
     }
 
     /**
@@ -1106,7 +1104,7 @@ class CkeditorTypeTest extends TestCase
         $view = $form->createView();
         $templateFiles = $view->vars['templates_files'];
 
-        $this->assertEquals($templateFiles, array());
+        $this->assertSame($templateFiles, []);
     }
 
     /**
@@ -1114,20 +1112,20 @@ class CkeditorTypeTest extends TestCase
      */
     public function testTemplateFiles()
     {
-        $form = $this->factory->create($this->formType, null, array(
-            'templates_files' => array(
+        $form = $this->factory->create($this->formType, null, [
+            'templates_files' => [
                 '/editor_templates/site_default.js',
                 'http://www.example.com/user_templates.js',
-            ),
-        ));
+            ],
+        ]);
 
         $view = $form->createView();
         $templateFiles = $view->vars['templates_files'];
 
-        $this->assertEquals($templateFiles, array(
+        $this->assertSame($templateFiles, [
             '/editor_templates/site_default.js',
             'http://www.example.com/user_templates.js',
-        ));
+        ]);
     }
 
     /**
@@ -1147,14 +1145,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testAllowedContent()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'allowed_content' => 'h1',
-        ));
+        ]);
 
         $view = $form->createView();
         $allowedContent = $view->vars['allowed_content'];
 
-        $this->assertEquals($allowedContent, 'h1');
+        $this->assertSame($allowedContent, 'h1');
     }
 
     /**
@@ -1174,14 +1172,14 @@ class CkeditorTypeTest extends TestCase
      */
     public function testExtraAllowedContent()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'extra_allowed_content' => 'b i',
-        ));
+        ]);
 
         $view = $form->createView();
         $extraAllowedContent = $view->vars['extra_allowed_content'];
 
-        $this->assertEquals($extraAllowedContent, 'b i');
+        $this->assertSame($extraAllowedContent, 'b i');
     }
 
     /**
@@ -1201,9 +1199,9 @@ class CkeditorTypeTest extends TestCase
      */
     public function testTemplatesReplaceContent()
     {
-        $form = $this->factory->create($this->formType, null, array(
+        $form = $this->factory->create($this->formType, null, [
             'templates_replace_content' => false,
-        ));
+        ]);
 
         $view = $form->createView();
         $templatesReplaceContent = $view->vars['templates_replace_content'];
