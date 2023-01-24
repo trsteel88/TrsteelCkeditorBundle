@@ -23,7 +23,11 @@
         "symfony/twig-bundle": "^6.0",
         "symfony/asset": "^6.0",
         "symfony/templating": "^6.0",
-        "symfony/yaml": "^6.0"
+        "symfony/yaml": "^6.0",
+        "php-cs-fixer/shim": "^3.13",
+        "phpstan/phpstan": "^1.9",
+        "phpstan/phpstan-symfony": "^1.2",
+        "rector/rector": "^0.15.10"
     },
     "autoload": {
         "psr-4": { "Trsteel\\CkeditorBundle\\": "" }
@@ -32,5 +36,23 @@
         "branch-alias": {
             "dev-master": "1.11.x-dev"
         }
+    },
+    "scripts": {
+        "lint:rector": "rector process",
+        "lint:php-cs-fixer": "php-cs-fixer fix -v",
+        "lint": [
+            "rector process",
+            "php-cs-fixer fix -v"
+        ],
+        "test:php-cs-fixer": "php-cs-fixer fix -v --dry-run",
+        "test:phpstan": "phpstan analyse --ansi --memory-limit=-1",
+        "test:rector": "rector process --dry-run",
+        "test:phpunit": "simple-phpunit",
+        "test": [
+            "php-cs-fixer fix -v --dry-run",
+            "phpstan analyse --ansi --memory-limit=-1",
+            "rector process --dry-run",
+            "simple-phpunit"
+        ]
     }
 }
