@@ -12,7 +12,7 @@ class AppKernel extends Kernel
         return __DIR__.'/Resources';
     }
 
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
         $bundles = array(
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),

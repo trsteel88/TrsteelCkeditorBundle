@@ -25,7 +25,7 @@ class CkeditorTypeTest extends TypeTestCase
     /**
      * {@inheritdooc}.
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$kernel = new AppKernel('dev', true);
         self::$kernel->boot();
@@ -48,7 +48,7 @@ class CkeditorTypeTest extends TypeTestCase
     /**
      * {@inheritdooc}.
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

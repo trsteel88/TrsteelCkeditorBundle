@@ -1,10 +1,11 @@
 framework:
-    secret:     'secret'
-    router:     { resource: null }
-    templating: { engines: ['twig'] }
+    http_method_override: false
+    handle_all_throwables: true
+    secret: 'secret'
+    router: { resource: null }
 
 twig:
-    autoescape: name
+    strict_variables: true
 
 trsteel_ckeditor:
     transformers: []
