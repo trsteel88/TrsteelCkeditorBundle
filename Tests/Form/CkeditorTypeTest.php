@@ -2,25 +2,21 @@
 
 namespace Trsteel\CkeditorBundle\Tests\Form;
 
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Form\Forms;
 use Trsteel\CkeditorBundle\Form\Type\CkeditorType;
 use Trsteel\CkeditorBundle\Tests\AppKernel;
 
-class CkeditorTypeTest extends TypeTestCase
+class CkeditorTypeTest extends TestCase
 {
     protected static $kernel;
     protected static $container;
 
-    /**
-     * @var \Symfony\Component\Form\FormFactoryInterface
-     */
-    protected $factory;
+    private FormFactoryInterface $factory;
 
-    /**
-     * @var string
-     */
-    protected $formType;
+    private string $formType;
 
     /**
      * {@inheritdooc}.
