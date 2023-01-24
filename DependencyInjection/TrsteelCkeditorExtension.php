@@ -75,8 +75,76 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.templates_replace_content', $config['templates_replace_content']);
     }
 
-    private function getDefaultGroups()
+    /**
+     * @return mixed[]
+     */
+    private function getDefaultGroups(): array
     {
-        return ['document' => ['Source', '-', 'Save', '-', 'Templates'], 'clipboard' => ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'], 'editing' => ['Find', 'Replace', '-', 'SelectAll'], 'basicstyles' => ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'], 'paragraph' => ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'], 'links' => ['Link', 'Unlink', 'Anchor'], 'insert' => ['Image', 'Flash', 'Table', 'HorizontalRule'], 'styles' => ['Styles', 'Format'], 'tools' => ['Maximize', 'ShowBlocks']];
+        return [
+            'document' => [
+                'Source',
+                '-',
+                'Save',
+                '-',
+                'Templates'
+            ],
+            'clipboard' => [
+                'Cut',
+                'Copy',
+                'Paste',
+                'PasteText',
+                'PasteFromWord',
+                '-',
+                'Undo',
+                'Redo'
+            ],
+            'editing' => [
+                'Find',
+                'Replace',
+                '-',
+                'SelectAll'
+            ],
+            'basicstyles' => [
+                'Bold',
+                'Italic',
+                'Underline',
+                'Strike',
+                'Subscript',
+                'Superscript',
+                '-',
+                'RemoveFormat'
+            ],
+            'paragraph' => [
+                'NumberedList',
+                'BulletedList',
+                '-',
+                'Outdent',
+                'Indent',
+                '-',
+                'JustifyLeft',
+                'JustifyCenter',
+                'JustifyRight',
+                'JustifyBlock'
+            ],
+            'links' => [
+                'Link',
+                'Unlink',
+                'Anchor'
+            ],
+            'insert' => [
+                'Image',
+                'Flash',
+                'Table',
+                'HorizontalRule'
+            ],
+            'styles' => [
+                'Styles',
+                'Format'
+            ],
+            'tools' => [
+                'Maximize',
+                'ShowBlocks'
+            ]
+        ];
     }
 }

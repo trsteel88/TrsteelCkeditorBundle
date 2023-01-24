@@ -14,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CkeditorType extends AbstractType
 {
+    /** @var DataTransformerInterface[]  */
     private array $transformers = [];
 
     public function __construct(private readonly ContainerInterface $container)
@@ -136,23 +137,19 @@ class CkeditorType extends AbstractType
     {
         $resolver->setDefaults(['required' => false, 'transformers' => $this->container->getParameter('trsteel_ckeditor.ckeditor.transformers'), 'toolbar' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'), 'toolbar_groups' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), 'startup_outline_blocks' => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks'), 'ui_color' => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_color'), 'width' => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'), 'height' => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'), 'force_paste_as_plaintext' => $this->container->getParameter('trsteel_ckeditor.ckeditor.force_paste_as_plaintext'), 'language' => $this->container->getParameter('trsteel_ckeditor.ckeditor.language'), 'filebrowser_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url'), 'filebrowser_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_upload_url'), 'filebrowser_image_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_browse_url'), 'filebrowser_image_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_upload_url'), 'filebrowser_flash_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'), 'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'), 'skin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'), 'disable_native_spell_checker' => $this->container->getParameter('trsteel_ckeditor.ckeditor.disable_native_spell_checker'), 'format_tags' => $this->container->getParameter('trsteel_ckeditor.ckeditor.format_tags'), 'base_path' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_path'), 'base_href' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_href'), 'body_class' => $this->container->getParameter('trsteel_ckeditor.ckeditor.body_class'), 'contents_css' => $this->container->getParameter('trsteel_ckeditor.ckeditor.contents_css'), 'basic_entities' => $this->container->getParameter('trsteel_ckeditor.ckeditor.basic_entities'), 'entities' => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities'), 'entities_latin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities_latin'), 'startup_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_mode'), 'enter_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.enter_mode'), 'external_plugins' => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'), 'custom_config' => $this->container->getParameter('trsteel_ckeditor.ckeditor.custom_config'), 'templates_files' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_files'), 'allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.allowed_content'), 'extra_allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'), 'templates_replace_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_replace_content')]);
 
-        $allowedValues = ['required' => [true, false], 'startup_outline_blocks' => [null, true, false], 'force_paste_as_plaintext' => [null, true, false], 'disable_native_spell_checker' => [null, true, false], 'basic_entities' => [null, true, false], 'startup_mode' => [null, 'wysiwyg', 'source'], 'enter_mode' => [null, 'ENTER_P', 'ENTER_BR', 'ENTER_DIV']];
+        $resolver->setAllowedValues('required', [true, false]);
+        $resolver->setAllowedValues('startup_outline_blocks', [null, true, false]);
+        $resolver->setAllowedValues('force_paste_as_plaintext', [null, true, false]);
+        $resolver->setAllowedValues('disable_native_spell_checker', [null, true, false]);
+        $resolver->setAllowedValues('basic_entities', [null, true, false]);
+        $resolver->setAllowedValues('startup_mode', [null, 'wysiwyg', 'source']);
+        $resolver->setAllowedValues('enter_mode', [null, 'ENTER_P', 'ENTER_BR', 'ENTER_DIV']);
 
-        $allowedTypes = ['transformers' => 'array', 'toolbar' => 'array', 'toolbar_groups' => 'array', 'format_tags' => 'array', 'external_plugins' => 'array'];
-
-        // BC: Remove version check when support for Symfony <2.6 is dropped.
-        if (Kernel::VERSION_ID >= 20600) {
-            foreach ($allowedValues as $option => $values) {
-                $resolver->setAllowedValues($option, $values);
-            }
-
-            foreach ($allowedTypes as $option => $types) {
-                $resolver->setAllowedTypes($option, $types);
-            }
-        } else {
-            $resolver->setAllowedValues($allowedValues);
-            $resolver->setAllowedTypes($allowedTypes);
-        }
+        $resolver->setAllowedTypes('transformers', 'array');
+        $resolver->setAllowedTypes('toolbar', 'array');
+        $resolver->setAllowedTypes('toolbar_groups', 'array');
+        $resolver->setAllowedTypes('format_tags', 'array');
+        $resolver->setAllowedTypes('external_plugins', 'array');
     }
 
     public function getParent(): ?string

@@ -6,8 +6,11 @@ use Symfony\Component\Form\DataTransformerInterface;
 
 class HTMLPurifierTransformer implements DataTransformerInterface
 {
-    private \HTMLPurifier $purifier;
+    private ?\HTMLPurifier $purifier = null;
 
+    /**
+     * @param mixed[] $config
+     */
     public function __construct(private readonly array $config)
     {
     }
