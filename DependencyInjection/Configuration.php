@@ -209,7 +209,6 @@ class Configuration implements ConfigurationInterface
                     ->info('The path of the custom config.js to use for the editor setup.')
                 ->end()
                 ->arrayNode('external_plugins')
-                    ->useAttributeAsKey(true)
                     ->prototype('array')
                         ->beforeNormalization()
                         ->ifString()
