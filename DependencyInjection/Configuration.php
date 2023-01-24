@@ -12,15 +12,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder()
-    {        
+    public function getConfigTreeBuilder(): TreeBuilder
+    {
         $treeBuilder = new TreeBuilder('trsteel_ckeditor');
-        $rootNode = method_exists(TreeBuilder::class, 'getRootNode')
-            ? $treeBuilder->getRootNode()
-            : $treeBuilder->root('trsteel_ckeditor');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
