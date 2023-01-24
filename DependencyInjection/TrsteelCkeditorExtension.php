@@ -15,10 +15,7 @@ use Symfony\Component\HttpKernel\Kernel;
  */
 class TrsteelCkeditorExtension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
@@ -79,13 +76,6 @@ class TrsteelCkeditorExtension extends Extension
         $container->setParameter('trsteel_ckeditor.ckeditor.allowed_content', $config['allowed_content']);
         $container->setParameter('trsteel_ckeditor.ckeditor.extra_allowed_content', $config['extra_allowed_content']);
         $container->setParameter('trsteel_ckeditor.ckeditor.templates_replace_content', $config['templates_replace_content']);
-
-        if (Kernel::VERSION_ID < 30000) {
-            // BC - Add alias if Symfony < 3.0
-            $container->getDefinition('trsteel_ckeditor.form.type')
-                ->clearTag('form.type')
-                ->addTag('form.type', array('alias' => 'ckeditor'));
-        }
     }
 
     private function getDefaultGroups()

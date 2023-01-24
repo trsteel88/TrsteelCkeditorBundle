@@ -3,40 +3,33 @@
 namespace Trsteel\CkeditorBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 
-/**
- * CKEditor type.
- */
 class CkeditorType extends AbstractType
 {
-    protected $container;
-    protected $transformers;
+    private $transformers = [];
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(private readonly ContainerInterface $container)
     {
-        $this->container = $container;
     }
 
-    public function addTransformer(DataTransformerInterface $transformer, $alias)
+    public function addTransformer(DataTransformerInterface $transformer, string $alias): void
     {
         if (isset($this->transformers[$alias])) {
             throw new \Exception('Transformer alias must be unique.');
         }
+
         $this->transformers[$alias] = $transformer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         foreach ($options['transformers'] as $transformer_alias) {
             if (isset($this->transformers[$transformer_alias])) {
@@ -82,10 +75,7 @@ class CkeditorType extends AbstractType
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildView(FormView $view, FormInterface $form, array $options)
+    public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         $options['toolbar_groups'] = array_merge($this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), $options['toolbar_groups']);
 
@@ -144,18 +134,7 @@ class CkeditorType extends AbstractType
         $view->vars['templates_replace_content'] = $options['templates_replace_content'];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(array(
             'required' => false,
@@ -227,32 +206,12 @@ class CkeditorType extends AbstractType
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getParent()
+    public function getParent(): ?string
     {
-        // Use the Fully Qualified Class Name if the method getBlockPrefix exists.
-        if (method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')) {
-            return 'Symfony\Component\Form\Extension\Core\Type\TextareaType';
-        }
-
-        // BC - Remove this when support for Symfony <2.8 is dropped.
-        return 'textarea';
+        return TextareaType::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->getBlockPrefix();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'ckeditor';
     }
