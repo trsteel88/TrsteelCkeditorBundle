@@ -86,7 +86,7 @@ class TrsteelCkeditorExtension extends Extension
                 '-',
                 'Save',
                 '-',
-                'Templates'
+                'Templates',
             ],
             'clipboard' => [
                 'Cut',
@@ -96,13 +96,13 @@ class TrsteelCkeditorExtension extends Extension
                 'PasteFromWord',
                 '-',
                 'Undo',
-                'Redo'
+                'Redo',
             ],
             'editing' => [
                 'Find',
                 'Replace',
                 '-',
-                'SelectAll'
+                'SelectAll',
             ],
             'basicstyles' => [
                 'Bold',
@@ -112,7 +112,7 @@ class TrsteelCkeditorExtension extends Extension
                 'Subscript',
                 'Superscript',
                 '-',
-                'RemoveFormat'
+                'RemoveFormat',
             ],
             'paragraph' => [
                 'NumberedList',
@@ -124,27 +124,27 @@ class TrsteelCkeditorExtension extends Extension
                 'JustifyLeft',
                 'JustifyCenter',
                 'JustifyRight',
-                'JustifyBlock'
+                'JustifyBlock',
             ],
             'links' => [
                 'Link',
                 'Unlink',
-                'Anchor'
+                'Anchor',
             ],
             'insert' => [
                 'Image',
                 'Flash',
                 'Table',
-                'HorizontalRule'
+                'HorizontalRule',
             ],
             'styles' => [
                 'Styles',
-                'Format'
+                'Format',
             ],
             'tools' => [
                 'Maximize',
-                'ShowBlocks'
-            ]
+                'ShowBlocks',
+            ],
         ];
     }
 }

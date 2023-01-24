@@ -9,12 +9,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CkeditorType extends AbstractType
 {
-    /** @var DataTransformerInterface[]  */
+    /** @var DataTransformerInterface[] */
     private array $transformers = [];
 
     public function __construct(private readonly ContainerInterface $container)
