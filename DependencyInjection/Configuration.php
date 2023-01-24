@@ -4,6 +4,7 @@ namespace Trsteel\CkeditorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Trsteel\CkeditorBundle\Form\Type\CkeditorType;
 
 /**
  * This is the class that validates and merges configuration from your app/config files.
@@ -19,7 +20,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('class')->defaultValue('Trsteel\CkeditorBundle\Form\Type\CkeditorType')->end()
+                ->scalarNode('class')->defaultValue(CkeditorType::class)->end()
                 ->arrayNode('html_purifier')
                     ->addDefaultsIfNotSet()
                     ->children()
