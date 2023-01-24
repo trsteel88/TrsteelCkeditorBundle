@@ -1,8 +1,5 @@
 name: PHPUnit
 
-env:
-    COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
-
 on: [ push, pull_request ]
 
 jobs:
