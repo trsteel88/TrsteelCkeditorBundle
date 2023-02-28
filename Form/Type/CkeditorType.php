@@ -124,6 +124,7 @@ class CkeditorType extends AbstractType
         $view->vars['entities_latin'] = $options['entities_latin'];
         $view->vars['startup_mode'] = $options['startup_mode'];
         $view->vars['enter_mode'] = $options['enter_mode'];
+        $view->vars['remove_plugins'] = $options['remove_plugins'];
         $view->vars['external_plugins'] = $options['external_plugins'];
         $view->vars['custom_config'] = $options['custom_config'];
         $view->vars['templates_files'] = $options['templates_files'];
@@ -163,6 +164,7 @@ class CkeditorType extends AbstractType
             'entities_latin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities_latin'),
             'startup_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_mode'),
             'enter_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.enter_mode'),
+            'remove_plugins' => $this->container->getParameter('trsteel_ckeditor.ckeditor.remove_plugins'),
             'external_plugins' => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
             'custom_config' => $this->container->getParameter('trsteel_ckeditor.ckeditor.custom_config'),
             'templates_files' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_files'),
@@ -183,6 +185,7 @@ class CkeditorType extends AbstractType
         $resolver->setAllowedTypes('toolbar', 'array');
         $resolver->setAllowedTypes('toolbar_groups', 'array');
         $resolver->setAllowedTypes('format_tags', 'array');
+        $resolver->setAllowedTypes('remove_plugins', 'array');
         $resolver->setAllowedTypes('external_plugins', 'array');
     }
 
