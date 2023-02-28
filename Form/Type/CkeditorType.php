@@ -170,7 +170,7 @@ class CkeditorType extends AbstractType
             'templates_files' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_files'),
             'allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.allowed_content'),
             'extra_allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'),
-            'templates_replace_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_replace_content')
+            'templates_replace_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_replace_content'),
         ]);
 
         $resolver->setAllowedValues('required', [true, false]);
