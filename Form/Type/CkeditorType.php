@@ -124,6 +124,7 @@ class CkeditorType extends AbstractType
         $view->vars['entities_latin'] = $options['entities_latin'];
         $view->vars['startup_mode'] = $options['startup_mode'];
         $view->vars['enter_mode'] = $options['enter_mode'];
+        $view->vars['remove_plugins'] = $options['remove_plugins'];
         $view->vars['external_plugins'] = $options['external_plugins'];
         $view->vars['custom_config'] = $options['custom_config'];
         $view->vars['templates_files'] = $options['templates_files'];
@@ -134,7 +135,43 @@ class CkeditorType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['required' => false, 'transformers' => $this->container->getParameter('trsteel_ckeditor.ckeditor.transformers'), 'toolbar' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'), 'toolbar_groups' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'), 'startup_outline_blocks' => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks'), 'ui_color' => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_color'), 'width' => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'), 'height' => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'), 'force_paste_as_plaintext' => $this->container->getParameter('trsteel_ckeditor.ckeditor.force_paste_as_plaintext'), 'language' => $this->container->getParameter('trsteel_ckeditor.ckeditor.language'), 'filebrowser_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url'), 'filebrowser_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_upload_url'), 'filebrowser_image_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_browse_url'), 'filebrowser_image_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_upload_url'), 'filebrowser_flash_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'), 'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'), 'skin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'), 'disable_native_spell_checker' => $this->container->getParameter('trsteel_ckeditor.ckeditor.disable_native_spell_checker'), 'format_tags' => $this->container->getParameter('trsteel_ckeditor.ckeditor.format_tags'), 'base_path' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_path'), 'base_href' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_href'), 'body_class' => $this->container->getParameter('trsteel_ckeditor.ckeditor.body_class'), 'contents_css' => $this->container->getParameter('trsteel_ckeditor.ckeditor.contents_css'), 'basic_entities' => $this->container->getParameter('trsteel_ckeditor.ckeditor.basic_entities'), 'entities' => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities'), 'entities_latin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities_latin'), 'startup_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_mode'), 'enter_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.enter_mode'), 'external_plugins' => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'), 'custom_config' => $this->container->getParameter('trsteel_ckeditor.ckeditor.custom_config'), 'templates_files' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_files'), 'allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.allowed_content'), 'extra_allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'), 'templates_replace_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_replace_content')]);
+        $resolver->setDefaults([
+            'required' => false,
+            'transformers' => $this->container->getParameter('trsteel_ckeditor.ckeditor.transformers'),
+            'toolbar' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
+            'toolbar_groups' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),
+            'startup_outline_blocks' => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_outline_blocks'),
+            'ui_color' => $this->container->getParameter('trsteel_ckeditor.ckeditor.ui_color'),
+            'width' => $this->container->getParameter('trsteel_ckeditor.ckeditor.width'),
+            'height' => $this->container->getParameter('trsteel_ckeditor.ckeditor.height'),
+            'force_paste_as_plaintext' => $this->container->getParameter('trsteel_ckeditor.ckeditor.force_paste_as_plaintext'),
+            'language' => $this->container->getParameter('trsteel_ckeditor.ckeditor.language'),
+            'filebrowser_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_browse_url'),
+            'filebrowser_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_upload_url'),
+            'filebrowser_image_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_browse_url'),
+            'filebrowser_image_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_image_upload_url'),
+            'filebrowser_flash_browse_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url'),
+            'filebrowser_flash_upload_url' => $this->container->getParameter('trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url'),
+            'skin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.skin'),
+            'disable_native_spell_checker' => $this->container->getParameter('trsteel_ckeditor.ckeditor.disable_native_spell_checker'),
+            'format_tags' => $this->container->getParameter('trsteel_ckeditor.ckeditor.format_tags'),
+            'base_path' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_path'),
+            'base_href' => $this->container->getParameter('trsteel_ckeditor.ckeditor.base_href'),
+            'body_class' => $this->container->getParameter('trsteel_ckeditor.ckeditor.body_class'),
+            'contents_css' => $this->container->getParameter('trsteel_ckeditor.ckeditor.contents_css'),
+            'basic_entities' => $this->container->getParameter('trsteel_ckeditor.ckeditor.basic_entities'),
+            'entities' => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities'),
+            'entities_latin' => $this->container->getParameter('trsteel_ckeditor.ckeditor.entities_latin'),
+            'startup_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.startup_mode'),
+            'enter_mode' => $this->container->getParameter('trsteel_ckeditor.ckeditor.enter_mode'),
+            'remove_plugins' => $this->container->getParameter('trsteel_ckeditor.ckeditor.remove_plugins'),
+            'external_plugins' => $this->container->getParameter('trsteel_ckeditor.ckeditor.external_plugins'),
+            'custom_config' => $this->container->getParameter('trsteel_ckeditor.ckeditor.custom_config'),
+            'templates_files' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_files'),
+            'allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.allowed_content'),
+            'extra_allowed_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.extra_allowed_content'),
+            'templates_replace_content' => $this->container->getParameter('trsteel_ckeditor.ckeditor.templates_replace_content'),
+        ]);
 
         $resolver->setAllowedValues('required', [true, false]);
         $resolver->setAllowedValues('startup_outline_blocks', [null, true, false]);
@@ -148,6 +185,7 @@ class CkeditorType extends AbstractType
         $resolver->setAllowedTypes('toolbar', 'array');
         $resolver->setAllowedTypes('toolbar_groups', 'array');
         $resolver->setAllowedTypes('format_tags', 'array');
+        $resolver->setAllowedTypes('remove_plugins', 'array');
         $resolver->setAllowedTypes('external_plugins', 'array');
     }
 
