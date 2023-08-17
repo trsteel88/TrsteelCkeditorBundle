@@ -1,7 +1,7 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    //->exclude('tests/Fixtures')
+    ->exclude('var/cache')
     ->in(__DIR__);
 
 return (new PhpCsFixer\Config())

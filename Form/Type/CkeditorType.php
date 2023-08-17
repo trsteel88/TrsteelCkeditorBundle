@@ -99,6 +99,7 @@ class CkeditorType extends AbstractType
             }
         }
 
+        $view->vars['autoload_ckeditor_js'] = $options['autoload_ckeditor_js'];
         $view->vars['toolbar'] = $toolbar;
         $view->vars['startup_outline_blocks'] = $options['startup_outline_blocks'];
         $view->vars['ui_color'] = $options['ui_color'];
@@ -137,6 +138,7 @@ class CkeditorType extends AbstractType
     {
         $resolver->setDefaults([
             'required' => false,
+            'autoload_ckeditor_js' => $this->container->getParameter('trsteel_ckeditor.autoload_ckeditor_js'),
             'transformers' => $this->container->getParameter('trsteel_ckeditor.ckeditor.transformers'),
             'toolbar' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar'),
             'toolbar_groups' => $this->container->getParameter('trsteel_ckeditor.ckeditor.toolbar_groups'),

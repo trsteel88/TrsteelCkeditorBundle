@@ -7,7 +7,10 @@
     {% endautoescape %}
     </script>
 
-    <script type="text/javascript" src="{{ asset(base_path ~ 'ckeditor.js') }}"></script>
+    {% if autoload_ckeditor_js %}
+        <script type="text/javascript" src="{{ asset(base_path ~ 'ckeditor.js') }}"></script>
+    {% endif %}
+
     <script type="text/javascript">
     {% autoescape false %}
         {% set plugins = '' %}

@@ -16,6 +16,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->skip([
         __DIR__.'/vendor',
         __DIR__.'/Tests',
+        __DIR__.'/var',
     ]);
 
     $rectorConfig->importNames();
