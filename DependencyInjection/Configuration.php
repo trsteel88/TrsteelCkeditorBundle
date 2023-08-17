@@ -21,6 +21,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('class')->defaultValue(CkeditorType::class)->end()
+                ->booleanNode('autoload_ckeditor_js')->defaultTrue()->end()
                 ->arrayNode('html_purifier')
                     ->addDefaultsIfNotSet()
                     ->children()

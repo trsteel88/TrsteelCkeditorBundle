@@ -9,5 +9,6 @@ parameters:
     excludePaths:
         - vendor
         - Tests
+        - var/cache
 
     checkGenericClassInNonGenericObjectType: false
