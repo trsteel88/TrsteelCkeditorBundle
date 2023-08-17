@@ -58,6 +58,33 @@ class CkeditorTypeTest extends TestCase
     /**
      * Check the default required property.
      */
+    public function testDefaultAutoloadCkeditorJs()
+    {
+        $form = $this->factory->create($this->formType);
+        $view = $form->createView();
+        $autoloadCkeditorJs = $view->vars['autoload_ckeditor_js'];
+
+        $this->assertTrue($autoloadCkeditorJs);
+    }
+
+    /**
+     * Check the required property.
+     */
+    public function testAutoloadCkeditorJs()
+    {
+        $form = $this->factory->create($this->formType, null, [
+            'autoload_ckeditor_js' => true,
+        ]);
+
+        $view = $form->createView();
+        $autoloadCkeditorJs = $view->vars['autoload_ckeditor_js'];
+
+        $this->assertSame($autoloadCkeditorJs, true);
+    }
+
+    /**
+     * Check the default required property.
+     */
     public function testDefaultRequired()
     {
         $form = $this->factory->create($this->formType);
