@@ -136,7 +136,8 @@
             {% endif %}
             toolbar: {{ toolbar | json_encode | raw }},
             baseHref: '{{ base_href ? base_href : app.request.schemeAndHttpHost ~ app.request.baseUrl ~ '/' }}',
-            filebrowserUploadMethod: 'form'
+            filebrowserUploadMethod: 'form',
+            versionCheck: false
         };
 
         CKEDITOR.replace("{{ id }}", trsteelConfig);
