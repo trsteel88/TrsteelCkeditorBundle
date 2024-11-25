@@ -35,7 +35,7 @@ class CkeditorType extends AbstractType
             if (isset($this->transformers[$transformer_alias])) {
                 $builder->addViewTransformer($this->transformers[$transformer_alias]);
             } else {
-                throw new \Exception(sprintf("'%s' is not a valid transformer.", $transformer_alias));
+                throw new \Exception(\sprintf("'%s' is not a valid transformer.", $transformer_alias));
             }
         }
 
