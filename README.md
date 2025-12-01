@@ -29,7 +29,7 @@ public function registerBundles()
 
 ### Step 3: Install bundle assets
 ```bash
-$ php ./app/console assets:install web --symlink
+$ php ./bin/console assets:install public --symlink
 ```
 
 --symlink is optional
@@ -38,7 +38,7 @@ $ php ./app/console assets:install web --symlink
 
 For a full configuration dump use:
 ```bash
-$ php ./app/console config:dump-reference TrsteelCkeditorBundle
+$ php ./bin/console config:dump-reference TrsteelCkeditorBundle
 ```
 
 An example configuration:

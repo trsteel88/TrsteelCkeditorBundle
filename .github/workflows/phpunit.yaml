@@ -40,7 +40,7 @@ jobs:
                     dependency-versions: ${{ matrix.dependencies }}
 
             -   name: Cache PHPUnit
-                uses: actions/cache@v2
+                uses: actions/cache@v4
                 with:
                     path: vendor/bin/.phpunit
                     key: ${{ runner.os }}-phpunit-${{ matrix.php }}
