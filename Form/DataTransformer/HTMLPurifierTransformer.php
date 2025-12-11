@@ -22,7 +22,9 @@ class HTMLPurifierTransformer implements DataTransformerInterface
 
     public function reverseTransform(mixed $value): mixed
     {
-        return $this->getPurifier()->purify($value);
+        $content = $this->getPurifier()->purify($value);
+
+        return '' === trim($content) ? null : $content;
     }
 
     protected function getPurifier(): \HTMLPurifier
